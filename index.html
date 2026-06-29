@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>單元四　靈性修養 | 簡報</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color-primary:#862633; --color-primary-dark:#5C1A23;
+  --color-accent:#D4AF37; --color-accent-deep:#A8782E; --color-accent-soft:#E8D080;
+  --color-bg:#FAF7F2; --color-text:#1A1A1A; --color-muted:#6B6B6B; --color-line:#E5DDD0;
+  --grad-accent:linear-gradient(90deg,var(--color-accent-deep),var(--color-accent) 45%,var(--color-accent-soft));
+  --grad-royal:linear-gradient(135deg,#8E2A38 0%,var(--color-primary-dark) 55%,#3d1016 100%);
+  --shadow-soft:0 4px 20px rgba(134,38,51,.08); --shadow-strong:0 12px 40px rgba(134,38,51,.18);
+  --font-sans:"Noto Sans TC","Microsoft JhengHei","微軟正黑體","PingFang TC",sans-serif;
+  --font-serif:"Noto Serif TC","Songti TC","PingFang TC",serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:var(--font-sans);font-size:20px;line-height:1.78;color:var(--color-text);background:var(--color-bg);overflow:hidden}
+.deck{position:relative;width:100vw;height:100vh;overflow:hidden}
+.slide{position:absolute;inset:0;width:100%;height:100%;padding:5vh 6vw;opacity:0;visibility:hidden;transform:translateX(40px);transition:opacity .5s ease,transform .5s ease,visibility 0s linear .5s;display:flex;flex-direction:column;justify-content:center;
+  background:var(--color-bg) radial-gradient(circle at 1px 1px,rgba(134,38,51,.05) 1px,transparent 0) 0 0/22px 22px;}
+.slide.active{opacity:1;visibility:visible;transform:translateX(0);transition:opacity .5s ease,transform .5s ease,visibility 0s}
+.slide.prev{transform:translateX(-40px)}
+.slide.roomy{--gap:.55em}
+.slide>*{position:relative;z-index:1}
+.fitwrap{position:relative;z-index:1;width:100%;height:100%;display:flex;flex-direction:column;justify-content:var(--jc,center);align-items:var(--ai,stretch);gap:var(--gap,0);transform-origin:center center}
+.slide.roomy h1{font-size:clamp(3rem,6.2vw,5.6rem)}
+.slide.roomy h2{font-size:clamp(2.3rem,4.4vw,3.7rem)}
+.slide.roomy p,.slide.roomy .lead{font-size:clamp(1.55rem,2.4vw,2.15rem)}
+.slide.roomy blockquote{font-size:clamp(1.7rem,2.8vw,2.4rem)}
+.slide.roomy ul.fl li{font-size:clamp(1.5rem,2.3vw,2rem)}
+.slide.roomy .big-q{font-size:clamp(2rem,4vw,3.2rem)}
+h1{font-family:var(--font-serif);font-size:clamp(2.6rem,5.2vw,4.8rem);font-weight:900;letter-spacing:.02em;line-height:1.3;color:var(--color-primary);margin-bottom:.4em}
+h2{font-family:var(--font-serif);font-size:clamp(2.2rem,4.2vw,3.6rem);font-weight:700;line-height:1.4;color:var(--color-primary);margin-bottom:.7em;padding-bottom:.35em;border-bottom:3px solid var(--color-accent);display:inline-block}
+h3{font-size:clamp(1.5rem,2.6vw,2.2rem);font-weight:600;color:var(--color-text);margin:.8em 0 .4em}
+p{font-size:clamp(1.35rem,2vw,1.85rem);margin-bottom:.7em;max-width:38em}
+.lead{font-size:clamp(1.55rem,2.5vw,2.2rem);color:var(--color-muted);font-weight:300}
+.muted{color:var(--color-muted)} .accent{color:var(--color-primary);font-weight:700}
+.src{font-size:.95rem;color:var(--color-muted);font-style:italic;margin-top:.4em;max-width:46em}
+blockquote{font-family:var(--font-serif);font-style:italic;font-size:clamp(1.5rem,2.4vw,2.1rem);border-left:4px solid var(--color-accent);padding:.5em 1.2em;margin:.8em 0;color:#4a3b1e;background:rgba(212,175,55,.08);max-width:36em}
+.slide.sec-tint{background-color:var(--color-bg);
+  background-image:
+    radial-gradient(circle at 1px 1px,rgba(134,38,51,.05) 1px,transparent 1.5px),
+    radial-gradient(940px 620px at 95% 0%,rgba(212,175,55,.10),transparent 60%),
+    linear-gradient(155deg,var(--sec-a,#FAF7F2) 0%,var(--sec-b,#EFE7D9) 118%);
+  background-size:24px 24px,100% 100%,100% 100%;}
+.slide.sec-1{--sec-a:#FCF5F3;--sec-b:#EFDCD9}
+.slide.sec-2{--sec-a:#FCF7EA;--sec-b:#F0E2C5}
+.slide.sec-3{--sec-a:#EFF6F1;--sec-b:#D6E6DC}
+.slide.sec-4{--sec-a:#F6F1F8;--sec-b:#E2D6EA}
+.slide.sec-5{--sec-a:#EFF3F8;--sec-b:#D8E2EE}
+.slide.sec-6{--sec-a:#FBF1EA;--sec-b:#F0DDCB}
+.slide.sec-7{--sec-a:#EAF2F4;--sec-b:#CFE0E4}
+.slide.sec-tint::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--grad-accent);opacity:.6;z-index:0}
+.slide.sec-tint::after{content:attr(data-chap);position:absolute;top:-.14em;right:.06em;font-family:var(--font-serif);font-weight:900;line-height:1;font-size:46vh;color:var(--color-primary);opacity:.05;z-index:0;pointer-events:none;user-select:none}
+.section-divider{--ai:flex-start;background:var(--grad-royal);color:#fff;overflow:hidden}
+.section-divider::before{content:"";position:absolute;inset:0;background:radial-gradient(620px 620px at 70% 40%,rgba(212,175,55,.18),transparent 60%),radial-gradient(circle at 1px 1px,rgba(255,255,255,.05) 1px,transparent 0);background-size:auto,28px 28px;z-index:0}
+.section-divider .stage{font-size:clamp(1.1rem,2vw,1.5rem);color:var(--color-accent-soft);font-weight:700;letter-spacing:.3em;margin-bottom:.1em}
+.section-divider .num{font-family:var(--font-serif);font-size:clamp(4rem,13vw,10rem);font-weight:900;line-height:1;background:var(--grad-accent);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 4px 30px rgba(212,175,55,.3)}
+.section-divider h1{margin-top:.05em;color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.25)}
+.section-divider .when{color:rgba(255,255,255,.82);margin-top:.5em;letter-spacing:.05em;max-width:34em}
+.slide.cover{background:var(--grad-royal);color:#fff;text-align:center;--ai:center;overflow:hidden}
+.slide.cover::before{content:"";position:absolute;inset:0;background:radial-gradient(720px 460px at 50% 20%,rgba(212,175,55,.12),transparent 68%),linear-gradient(180deg,rgba(40,8,13,.04),rgba(40,8,13,.28));z-index:1}
+.slide.cover h1{color:#fff;font-size:clamp(2.6rem,6vw,5.2rem)} .slide.cover .lead{color:rgba(255,255,255,.9)}
+.slide.cover .stage{color:var(--color-accent-soft);letter-spacing:.35em;font-weight:700}
+.slide.cover .ornament{width:90px;height:4px;background:var(--grad-accent);margin:1.1em auto;border-radius:2px}
+.slide.cover .meta{margin-top:2em;font-size:1rem;color:rgba(255,255,255,.74);letter-spacing:.08em}
+.cover .stage,.cover h1,.cover .ornament,.cover .lead,.cover .cover-cta,.cover .meta,.cover .back-home-btn{position:relative;z-index:2}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:3vw;align-items:center;flex:1;width:100%}
+.toc-themes{list-style:none;max-width:none;width:100%;margin:.5em 0 0;padding:0}
+.toc-themes li{display:flex;align-items:baseline;gap:.8em;padding:.46em .2em;border-bottom:1px dashed var(--color-line);font-size:clamp(1.15rem,1.75vw,1.6rem);line-height:1.4}
+.toc-themes .tn{font-family:var(--font-serif);font-weight:900;color:var(--color-accent);font-size:1.3em;flex:none;min-width:1.5em;text-align:center}
+.toc-themes b{color:var(--color-primary)}
+.mchips{display:flex;flex-wrap:wrap;gap:.6em;align-content:center}
+.mchip{background:#fff;border:1px solid var(--color-line);border-left:5px solid var(--color-primary);border-radius:10px;padding:.46em .85em;font-size:clamp(1.05rem,1.5vw,1.5rem);font-weight:700;color:var(--color-text);box-shadow:var(--shadow-soft)}
+.qcap{display:flex;gap:.5em;margin-top:.6em;text-align:left;background:rgba(134,38,51,.09);border:1px solid rgba(134,38,51,.20);border-left:5px solid var(--color-primary);border-radius:8px;padding:.55em .8em;font-size:clamp(1.18rem,1.7vw,1.6rem);font-weight:700;color:var(--color-primary);line-height:1.5}
+.qcap .qn{color:var(--color-accent);flex:none}
+.qcap .qt{flex:1}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6vw;width:100%}
+.card{background:#fff;padding:1.3em 1.4em;border-radius:14px;box-shadow:var(--shadow-soft);border-top:4px solid var(--color-accent)}
+.card h3{margin-top:0;color:var(--color-primary)}
+.card.compact p{font-size:1.2rem;margin-bottom:.3em}
+.tag{display:inline-block;background:var(--color-primary);color:#fff;padding:.25em .9em;border-radius:999px;font-size:.85rem;font-weight:600;letter-spacing:.08em;margin-bottom:.6em}
+ul.fl{list-style:none} ul.fl li{position:relative;padding:.5em 0 .5em 1.6em;font-size:clamp(1.25rem,1.9vw,1.7rem);border-bottom:1px dashed var(--color-line)}
+ul.fl li::before{content:"";position:absolute;left:0;top:1.05em;width:.7em;height:.7em;background:var(--color-accent);border-radius:50%}
+.slide.dense ul.fl li{font-size:clamp(1.06rem,1.5vw,1.4rem);padding-top:.36em;padding-bottom:.36em;line-height:1.4}
+.slide.dense ul.fl li::before{top:.9em}
+.practice{background:linear-gradient(135deg,rgba(212,175,55,.13),rgba(212,175,55,.03));border:2px dashed var(--color-accent);padding:1.2em 1.5em;border-radius:16px;margin-top:.5em}
+.practice .label{display:inline-block;background:var(--color-primary);color:#fff;padding:.25em .9em;border-radius:999px;font-size:.85rem;font-weight:600;margin-bottom:.5em;letter-spacing:.1em}
+.big-q{font-family:var(--font-serif);font-size:clamp(1.5rem,3.2vw,2.6rem);font-weight:700;color:var(--color-primary);line-height:1.5}
+.gimg{display:block;border-radius:16px;box-shadow:var(--shadow-strong);border:1px solid rgba(212,175,55,.4);object-fit:cover}
+table.tbl{width:100%;border-collapse:collapse;font-size:clamp(1.02rem,1.45vw,1.42rem);background:rgba(255,255,255,.7);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-soft)}
+table.tbl th,table.tbl td{padding:.72em .95em;text-align:left;border-bottom:1px solid var(--color-line);line-height:1.45;vertical-align:top}
+table.tbl thead th{background:var(--color-primary);color:#fff;font-family:var(--font-serif);font-weight:700;border-bottom:none}
+table.tbl tbody tr:nth-child(even){background:rgba(212,175,55,.06)}
+table.tbl .lv{font-family:var(--font-serif);font-weight:700;color:var(--color-primary);white-space:nowrap}
+.feature-list{list-style:none;counter-reset:li-counter}
+.feature-list li{position:relative;padding:.5em 0 .5em 2.3em;font-size:clamp(1.5rem,1.6vw,1.66rem);border-bottom:1px dashed var(--color-line);line-height:1.5}
+.feature-list li::before{content:counter(li-counter);counter-increment:li-counter;position:absolute;left:0;top:.6em;width:1.6em;height:1.6em;background:var(--color-accent);color:var(--color-primary-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8em}
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6vw;width:100%}
+.method-card{background:#fff;border-radius:16px;box-shadow:var(--shadow-soft);border-top:6px solid var(--color-accent);padding:1.1em 1.2em;display:flex;flex-direction:column;gap:.3em}
+.method-card .mn{font-family:var(--font-serif);font-size:1.6rem;font-weight:900;color:var(--color-accent-deep);line-height:1}
+.method-card h3{margin:.1em 0 .15em;color:var(--color-primary);font-size:clamp(1.25rem,1.8vw,1.7rem)}
+.method-card p{font-size:clamp(1.5rem,1.5vw,1.56rem);color:var(--color-muted);margin:0;line-height:1.45}
+.contrast2{display:grid;grid-template-columns:1fr 1fr;gap:2vw;width:100%;margin-top:.4em}
+.contrast2 .card h3{font-size:clamp(1.4rem,2vw,1.95rem)}
+.contrast2 .card p{font-size:clamp(1.02rem,1.35vw,1.3rem);line-height:1.6}
+.pro-card{border-top-color:#3E7D5A!important;background:linear-gradient(135deg,#fff,#eef6f0)}
+.con-card{border-top-color:#A33!important;background:linear-gradient(135deg,#fff,#f7eeee)}
+.stat-row{display:flex;gap:2vw;width:100%;justify-content:center;flex-wrap:wrap;margin:.3em 0}
+.stat{background:#fff;border-radius:18px;box-shadow:var(--shadow-soft);border-bottom:6px solid var(--color-primary);padding:1.1em 1.4em;text-align:center;min-width:8.5em;flex:1 1 0;max-width:14em}
+.stat .num{font-family:var(--font-serif);font-weight:900;color:var(--color-primary);font-size:clamp(2.6rem,5vw,4rem);line-height:1}
+.stat .cap{font-size:clamp(1.05rem,1.4vw,1.4rem);color:var(--color-text);margin-top:.3em;line-height:1.4}
+.lyrics{font-family:var(--font-serif);font-size:clamp(1.5rem,1.6vw,1.58rem);line-height:1.5;color:#4a3b1e;column-count:3;column-gap:2.2em;max-width:none}
+.lyrics p{font-size:clamp(1.5rem,1.6vw,1.58rem);break-inside:avoid;margin-bottom:.5em;max-width:none}
+.lyrics .h{color:var(--color-primary);font-weight:700;font-style:normal;letter-spacing:.05em}
+.slide.eggsong{background:var(--grad-royal) !important}
+.slide.eggsong::after{content:none !important}
+.eggsong h2{color:#fff;border-bottom-color:var(--color-accent)}
+.eggsong .lyrics{color:#f4e9d8}
+.eggsong .lyrics .h{color:var(--color-accent-soft)}
+.eggsong .src{color:rgba(255,255,255,.72)}
+.eggsong h2,.eggsong .lyrics,.eggsong .src,.eggsong .back-home-btn{position:relative;z-index:2}
+.eggsong .egg-deco{position:absolute;z-index:0;pointer-events:none;opacity:.62}
+.eggsong .egg-deco-tr{top:8vh;right:5vw;width:clamp(95px,9vw,150px)}
+.eggsong .egg-deco-bl{bottom:10vh;left:4.5vw;width:clamp(75px,7.5vw,120px)}
+.closing{text-align:center;background:var(--grad-royal);color:#fff;--ai:center;overflow:hidden}
+.closing::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 480px at 50% 30%,rgba(212,175,55,.18),transparent 62%);z-index:0}
+.closing .ending-line{font-family:var(--font-serif);font-weight:700;color:#fff;font-size:clamp(2.8rem,7vw,5.6rem);letter-spacing:.12em;text-shadow:0 2px 30px rgba(0,0,0,.3);position:relative;z-index:2}
+.closing .ending-sub{position:relative;z-index:2;color:rgba(255,255,255,.88);font-size:clamp(1.3rem,2vw,1.8rem);max-width:30em;margin:.6em auto 0;line-height:1.7}
+.closing .ending-ornament{width:clamp(90px,14vw,200px);height:3px;margin:.9em auto;background:var(--grad-accent);border-radius:999px;box-shadow:0 0 18px rgba(212,175,55,.55);position:relative;z-index:2}
+.closing .signature{font-family:var(--font-serif);font-size:clamp(1.2rem,2vw,1.7rem);letter-spacing:.2em;color:var(--color-accent-soft);position:relative;z-index:2;margin-top:.5em}
+.closing .back-home-btn{position:relative;z-index:2}
+.progress-bar{position:fixed;bottom:0;left:0;height:4px;background:var(--color-accent);width:0;transition:width .4s;z-index:100}
+.page-indicator{position:fixed;bottom:1.4em;right:2em;font-size:.85rem;color:var(--color-muted);font-variant-numeric:tabular-nums;z-index:100;background:rgba(255,255,255,.8);padding:.25em .8em;border-radius:999px;backdrop-filter:blur(8px)}
+.nav-arrows{position:fixed;bottom:1.4em;left:2em;display:flex;gap:.5em;z-index:100}
+.nav-arrows button,.fs-toggle{width:2.3em;height:2.3em;border:none;background:rgba(134,38,51,.1);color:var(--color-primary);border-radius:50%;cursor:pointer;font-size:1.15rem;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:inherit}
+.nav-arrows button:hover,.fs-toggle:hover{background:var(--color-primary);color:#fff;transform:scale(1.1)}
+.fs-toggle{position:fixed;bottom:1.4em;right:5.5em;z-index:100}
+.click-zones{position:fixed;inset:0;display:flex;pointer-events:none;z-index:50}
+.click-zone{flex:1;pointer-events:auto;cursor:pointer}
+body.no-clickzones .click-zones{display:none}
+.cover-cta{position:relative;z-index:60;margin-top:2em;background:var(--color-accent);color:var(--color-primary-dark);border:none;padding:1em 2.4em;font-size:1.05rem;font-weight:700;border-radius:999px;cursor:pointer;font-family:inherit;letter-spacing:.1em;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .2s}
+.cover-cta:hover{transform:translateY(-2px)}
+.back-home-btn{position:relative;z-index:60;margin-top:1.6em;background:transparent;color:var(--color-accent);border:2px solid var(--color-accent);padding:.7em 1.8em;font-size:.95rem;font-weight:600;border-radius:999px;cursor:pointer;font-family:inherit;letter-spacing:.1em;transition:all .2s}
+.back-home-btn:hover{background:var(--color-accent);color:var(--color-primary-dark);transform:translateY(-2px)}
+.toast{position:fixed;top:1.5em;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;padding:.6em 1.4em;border-radius:999px;font-size:.9rem;z-index:200;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+@media(max-width:768px){.grid2,.grid3,.method-grid,.contrast2{grid-template-columns:1fr}.lyrics{column-count:1}}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+<!-- ===================== 封面 ===================== -->
+<section class="slide cover active">
+  <div class="stage">單元四　·　人生第三問</div>
+  <h1>靈性修養</h1>
+  <div class="ornament"></div>
+  <p class="lead">人應如何活出？——當我們知道了該怎麼活，卻發現「我做不到」。</p>
+  <button class="cover-cta" onclick="startPresentation()">進入全螢幕．開始上課</button>
+  <div class="meta">孫效智　|　臺大生命教育研發育成中心　第十期師資培育學分班　|　台北班　Day 4</div>
+  <button class="back-home-btn" style="margin-top:.6em;font-size:.72em;opacity:.55;background:none;border:none;text-decoration:underline;cursor:pointer;padding:0" onclick="goToSlide(document.querySelectorAll('.slide').length)">跳到最後一頁</button>
+</section>
+
+<!-- 目錄 -->
+<section class="slide roomy">
+  <h2>今天的地圖：四段路</h2>
+  <p class="lead" style="max-width:none">你們不是靈修的初學者。從啟航工作坊、農禪寺，到一年半的小組陪伴與靈修筆記——今天，我們把這一路收攏，再往更深處走一段。</p>
+  <ul class="fl">
+    <li><b>壹　回身</b>　從學生之前，先回到老師自己的內在風景</li>
+    <li><b>貳　命名爭戰</b>　把「我做不到」說準——解剖人性的軟弱</li>
+    <li><b>參　內在戰場的真相</b>　念頭、情境與黑夜（本日最深一段）</li>
+    <li><b>肆　託付與裝備</b>　帶著傷，去陪伴學生的靈性</li>
+  </ul>
+  <p class="muted" style="max-width:none">＊全程以探討、案例與你自己的生命經驗推進；真正的靈修操練，留給你已熟悉的導師小組。</p>
+</section>
+
+<!-- ===================== 壹　回身 ===================== -->
+<section class="slide section-divider">
+  <div class="num">壹</div>
+  <h1>回身</h1>
+  <p class="when">在談學生之前，先回到一個更近的人——你自己。你能把學生帶多深，取決於你願意誠實面對自己多深。</p>
+</section>
+
+<section class="slide roomy">
+  <h2>先承認一件事</h2>
+  <blockquote>好的教學，無法被化約為技術。<br>它源自教師的身分認同與內在的整全——<b>我們教的，是我們之所是。</b></blockquote>
+  <p class="src">Parker J. Palmer，《教學的勇氣》（The Courage to Teach）</p>
+  <p>靈性修養不是一門「要教給學生的內容」，<br>它首先是<b>老師存在的品質</b>。所以今天，我們從自己開始。</p>
+</section>
+
+<section class="slide">
+  <h2>你已經走了一年半</h2>
+  <p class="lead" style="max-width:none">今天不是再上一次靈修入門。你早已擁有一整套語言與經驗——我們把它收攏成「一張靈性地圖」，再往下挖。</p>
+  <div class="mchips" style="margin-top:.5em">
+    <span class="mchip">靈修六原則</span>
+    <span class="mchip">靈性修養七面向</span>
+    <span class="mchip">五毒心 vs 七罪宗</span>
+    <span class="mchip">入靜・人生五章</span>
+    <span class="mchip">四道人生</span>
+    <span class="mchip">依納爵神操 vs 緣起</span>
+    <span class="mchip">一年半的靈修筆記</span>
+  </div>
+  <p class="muted" style="max-width:none;margin-top:1em">這些都是地基。今天我們要問的是：在這地基上，還有哪些更深的爭戰，是我們一直繞過去、卻沒真正面對的？</p>
+</section>
+
+<section class="slide">
+  <h2>課前你已經做了一件事</h2>
+  <p class="lead" style="max-width:none">〈我的靈性爭戰地圖〉——你重讀了自己一年半的靈修筆記，並寫下三段話。今天，它們就是我們一起深掘的起點。</p>
+  <div class="grid3" style="flex:none;margin-top:.4em">
+    <div class="card"><h3>溫故</h3><p>你挑出最有感、或當時掙扎最深的紀錄——現在重讀，心情變了嗎？</p></div>
+    <div class="card"><h3>知新</h3><p>那個最常困住你、反覆出現的內在課題，你為它命名了。</p></div>
+    <div class="card"><h3>裝備</h3><p>你也想起一個學生——你曾在他身上，看見怎樣的靈性困境。</p></div>
+  </div>
+  <p class="muted" style="text-align:center;max-width:none;margin-top:1em">課堂分享全出於自願。你帶來的誠實，是今天最珍貴的教材。</p>
+</section>
+
+<section class="slide">
+  <h2>但這不只是我們的事</h2>
+  <p class="lead" style="max-width:none">當我們回身面對自己的靈性，別忘了——講台下，是一整代正在掙扎的年輕靈魂。</p>
+  <div class="stat-row">
+    <div class="stat"><div class="num">10.8%</div><div class="cap">青少年有中度以上<br>自殺意念（約每 10 人 1 人）</div></div>
+    <div class="stat"><div class="num">17.7%</div><div class="cap">有中度以上<br>情緒困擾</div></div>
+  </div>
+  <blockquote style="margin:.6em auto 0">孤獨遠不只是一種壞感覺——它是一場公共衛生危機。</blockquote>
+  <p class="src">數據：兒童福利聯盟《2025 台灣青少年心理健康調查》（n=7,007）｜引語：美國衛生署長 Vivek Murthy，2023</p>
+</section>
+
+<!-- ===================== 貳　命名爭戰 ===================== -->
+<section class="slide section-divider">
+  <div class="num">貳</div>
+  <h1>命名爭戰，解剖軟弱</h1>
+  <p class="when">你有靈性掙扎，不代表你靈修失敗——而代表你認真。第一步，是學會把「我做不到」說得更準。</p>
+</section>
+
+<section class="slide">
+  <h2>先把「掙扎」說準</h2>
+  <p class="lead" style="max-width:none">與其模糊地說「我最近很不好」，不如辨認它是哪一種掙扎。能精準命名，本身就是陪伴的第一步。</p>
+  <table class="tbl" style="margin-top:.3em">
+    <thead><tr><th>掙扎的類型</th><th>它長什麼樣子</th></tr></thead>
+    <tbody>
+      <tr><td class="lv">與超越者</td><td>對神的憤怒、被遺棄感、覺得祈禱沒有回應</td></tr>
+      <tr><td class="lv">道德掙扎</td><td>因自己的過犯而生的罪疚與羞愧</td></tr>
+      <tr><td class="lv">終極意義</td><td>對生命意義、死亡、公義的根本懷疑</td></tr>
+      <tr><td class="lv">信仰懷疑</td><td>對所信的內容動搖、不確定</td></tr>
+      <tr><td class="lv">人際／群體</td><td>被信仰共同體傷害、失望</td></tr>
+      <tr><td class="lv">幽暗勢力</td><td>感到被某種「拉著往下」的力量糾纏</td></tr>
+    </tbody>
+  </table>
+  <p class="src">靈性掙扎六類：Pargament & Exline，宗教靈性掙扎量表（RSS, 2014）；《以靈性掙扎工作於心理治療》（2022）</p>
+</section>
+
+<section class="slide roomy">
+  <h2>掙扎，是門檻不是失敗</h2>
+  <blockquote>真正的成長，不是來自苦難本身，<br>而是來自「<b>與苦難搏鬥</b>」的過程。</blockquote>
+  <p>太快的安慰、急著繞過掙扎，往往<b>截斷</b>了成長。<br>對學生如此，對我們自己也是。</p>
+  <p class="src">後創傷成長研究：Tedeschi & Calhoun, 2004</p>
+</section>
+
+<section class="slide">
+  <h2>那個古老的告白</h2>
+  <blockquote style="font-size:clamp(1.7rem,2.7vw,2.4rem);max-width:30em">「我所願意的善，我不去行；<br>我所憎恨的惡，我反而去做……<br>我真是個可憐的人！」</blockquote>
+  <p class="src">保祿，《羅馬書》7:15、24（思高版）</p>
+  <p class="lead" style="max-width:none">兩千年前的保祿，把我們最熟悉的困境一語道破：<b>知道，與做到之間，隔著一整條河。</b></p>
+</section>
+
+<section class="slide">
+  <h2>知行不一：三種解剖</h2>
+  <div class="grid3" style="flex:none;margin-top:.3em">
+    <div class="card"><h3>亞里斯多德</h3><p>意志薄弱（akrasia）：不是無知，而是激情當下，理性「暫時失明」。</p></div>
+    <div class="card"><h3>王陽明</h3><p>「知而不行，只是未知」——真知是會帶出行動的；沒做到，是因為知得還不夠深。</p></div>
+    <div class="card"><h3>奧斯定</h3><p>分裂的意志：「意志命令自己，卻不服從自己。」靠自力的逞強，本身就是另一種驕傲。</p></div>
+  </div>
+  <p class="muted" style="text-align:center;max-width:none;margin-top:1em">這不是要我們更用力地自我鞭打，而是給「做不到」一份有深度的同情與理解。</p>
+</section>
+
+<section class="slide roomy">
+  <h2>當代的正午魔鬼</h2>
+  <p class="lead" style="max-width:none">沙漠教父早就為它命名——<b>acedia（靈性的倦怠）</b>，「正午的魔鬼」。</p>
+  <blockquote>它不是懶惰，它是「<b>對愛的要求的抵制</b>」。<br>最忙碌的人，可能正是它最深的患者——<br>因為「忙」，可以是逃避靈魂真正工作的藉口。</blockquote>
+  <p class="src">Evagrius Ponticus／John Cassian「正午惡魔」；Rebecca DeYoung,《Glittering Vices》（2009）</p>
+</section>
+
+<section class="slide">
+  <h2>而我們的時代，替它加了油</h2>
+  <p class="lead" style="max-width:none">注意力經濟的設計，正是要打散我們的專注——而<b>專注，是靈性的器官</b>。無法持守，就無法默觀、無法深愛。</p>
+  <blockquote style="margin-top:.3em">「注意力，達到極致時，與祈禱無異。」</blockquote>
+  <p class="src">西蒙娜・韋伊（Simone Weil）｜青少年每天使用社群媒體達 5 小時，逾 1/3 自覺沉迷（兒福聯盟 2023–24）</p>
+  <div class="practice" style="margin-top:.5em"><span class="label">一起想想</span><p style="margin:0;font-size:clamp(1.3rem,1.9vw,1.7rem)">我們操練了一年半的<b>靈修六原則</b>，在一個會「主動瓦解你專注」的環境裡，還做得到嗎？</p></div>
+</section>
+
+<section class="slide roomy">
+  <h2>所以，功夫從來不是「強撐」</h2>
+  <blockquote>「操則存，捨則亡。」</blockquote>
+  <p class="src">《孟子・告子上》</p>
+  <p class="lead" style="max-width:none">古人說「操練」，當代科學說「<b>自動化</b>」——人有近半的日常行為靠習慣完成；在疲乏時還能守住善，靠的不是意志力硬扛，而是早已養成的迴路。</p>
+  <p class="muted" style="max-width:none">靈修操練（規律的默想、省察、辨別）的作用，正是把生命的好選擇，寫進你的預設迴路。</p>
+</section>
+
+<!-- ===================== 參　內在戰場的真相 ===================== -->
+<section class="slide section-divider">
+  <div class="num">參</div>
+  <h1>內在戰場的真相</h1>
+  <p class="when">認識內在戰場，才能不輸在黑暗中。這一段，我們直視念頭、情境，與靈魂的黑夜。</p>
+</section>
+
+<section class="slide roomy">
+  <h2>惡，是怎麼進門的</h2>
+  <p class="lead" style="max-width:none">沙漠教父說：惡念（logismoi）不是罪——它只是「念頭來敲門」。<b>問題不在念頭來，而在你怎麼接待它。</b></p>
+  <blockquote>功夫，在念頭<b>進門的那一瞬</b>就識別它、為它命名，<br>在它取得動力之前，截住它。</blockquote>
+  <p class="src">厄瓦格力烏（Evagrius Ponticus）的「靈魂守護」（nepsis）；八種惡念即七罪宗前身</p>
+</section>
+
+<section class="slide">
+  <h2>而萬惡之首，最不像「惡」</h2>
+  <blockquote style="max-width:32em">驕傲（superbia），不是自信，<br>而是「<b>拒絕承認自己是受造物</b>」——<br>拒絕承認我的生命是被給予的、是有依賴的。</blockquote>
+  <p class="src">多瑪斯・阿奎那；Rebecca DeYoung《Glittering Vices》</p>
+  <p class="lead" style="max-width:none">它把「自我」悄悄放到了神的位置。也因此，它最難被自己看見。</p>
+</section>
+
+<section class="slide">
+  <h2>好人，是怎麼崩壞的</h2>
+  <p class="lead" style="max-width:none">道德的崩壞，多半不是因為一顆邪惡的心，而是因為——<b>思考的停止</b>，加上一個沒有人問責的處境。</p>
+  <div class="contrast2">
+    <div class="card"><h3>情境的力量</h3><p>在一個錯誤的系統與角色裡，尋常的好人會一步步做出自己本不願意的事。知道情境有這種力量，你才抵抗得了它。</p><p class="src" style="margin-top:.4em">Zimbardo《路西法效應》（2007）</p></div>
+    <div class="card"><h3>惡的平庸性</h3><p>艾希曼不是怪物，是一個停止思考的普通人。惡的產生，不需要邪惡，只需要不再追問。</p><p class="src" style="margin-top:.4em">Hannah Arendt（1963）</p></div>
+  </div>
+  <p class="muted" style="text-align:center;max-width:none;margin-top:.8em">這不是替誰免責——而是「自知」的一部分：我也活在各種系統裡，它們正在塑造我的判斷。</p>
+</section>
+
+<section class="slide roomy">
+  <h2>最危險的，是以善為名</h2>
+  <blockquote>靈修越深的人，越要警覺——<br>魔鬼會扮裝成光明的天使。</blockquote>
+  <p class="lead" style="max-width:none">一個人開始做真正的善事，卻可能因驕傲、急躁、自以為義而偏離。特徵是：<b>好的開始，混亂的中段，惡的結果。</b></p>
+  <p class="src">依納爵《神操》第二組分辨規則（§328–336）——許多靈性的受傷，不來自明顯的誘惑，而來自「以靈修為名的驕傲」。</p>
+</section>
+
+<!-- 電影/文學文本（去煽情·停格詰問）；選片待教授定，先以公版文本《伊凡之死》為例 -->
+<section class="slide">
+  <h2>一個「樣樣正確」的好人</h2>
+  <p class="lead" style="max-width:none">托爾斯泰《伊凡・伊里奇之死》：伊凡有好工作、好家庭、好品味——直到病床上，他第一次懷疑：<b>「我這一生過得體面正確，會不會其實全錯了？」</b></p>
+  <div class="practice" style="margin-top:.4em">
+    <span class="label">不問感動，問自己</span>
+    <ul class="fl" style="margin-top:.2em">
+      <li>他沒有犯任何明顯的罪，為什麼臨終卻覺得全錯了？</li>
+      <li>「過得很正確」和「活得很真實」，是不是同一件事？</li>
+      <li>如果有人在你的告別式上，會先想念你，還是先盤算你的位子？</li>
+    </ul>
+  </div>
+  <p class="src">＊文本／片段為示例，實際選用與片段於上課前確認。</p>
+</section>
+
+<section class="slide roomy">
+  <h2>黑夜，是通道不是終點</h2>
+  <p class="lead" style="max-width:none">當祈禱不再甜蜜、神好像不在了——許多人以為自己退步了。但十字聖若望說：那可能正是被邀請，走進更成熟的信德。</p>
+  <div class="contrast2" style="margin-top:.2em">
+    <div class="card"><h3>感官的黑夜</h3><p>靈修的「甜美感」被撤走。不是失去信仰，是信仰正在斷奶、長大。</p></div>
+    <div class="card"><h3>靈魂的黑夜</h3><p>更深的淨化，連理性上的確信也被動搖——通往純粹信德之前的隧道。</p></div>
+  </div>
+  <p class="src">十字聖若望，《靈魂的黑夜》</p>
+</section>
+
+<section class="slide">
+  <h2>她，黑暗了五十年</h2>
+  <blockquote style="max-width:32em">外表最豐盛的服事，內心卻長期感受不到神的臨在——德蕾莎修女的書信，揭露她走過將近五十年的「心靈黑夜」。</blockquote>
+  <p class="lead" style="max-width:none"><b>這打破了一個迷思：靈修好的人，應該常常被感動。</b><br>不。靈性的枯竭，不代表靈性的退步。這是給我們、也是給學生，最溫柔而有深度的安慰。</p>
+  <p class="src">Brian Kolodiejchuk 編，《Mother Teresa: Come Be My Light》（2007）｜書信頁碼引用前待核</p>
+</section>
+
+<section class="slide">
+  <h2>黑暗中的兩束光</h2>
+  <div class="contrast2">
+    <div class="card pro-card"><h3>科學這樣說</h3><p>人在體驗「敬畏」時，大腦中與「自我中心」相關的預設模式網絡活化會明顯下降——<b>「自我的縮小」有了神經科學的語言</b>。靈修不是迷信，是人腦對「超越自我」的真實需求。</p><p class="src" style="margin-top:.4em">van Elk 等, 2019；Keltner《Awe》2023</p></div>
+    <div class="card con-card" style="border-top-color:#A8782E!important;background:linear-gradient(135deg,#fff,#f7f1e6)"><h3>苦難這樣轉</h3><p>「一切都可以從人身上奪走，唯有一件事不行——選擇以何種態度面對處境的自由。」苦難不是靈性成長的障礙，而是它的門廊。</p><p class="src" style="margin-top:.4em">Viktor Frankl（1946）；Paul Wong PP2.0（2021）</p></div>
+  </div>
+</section>
+
+<!-- ===================== 肆　託付與裝備 ===================== -->
+<section class="slide section-divider">
+  <div class="num">肆</div>
+  <h1>託付與裝備</h1>
+  <p class="when">最後，把目光轉向學生。我們不是因為靈性完美才能陪伴——而是因為我們也帶著傷，仍在路上。</p>
+</section>
+
+<section class="slide roomy">
+  <h2>受傷的醫治者</h2>
+  <blockquote>真正的陪伴者，不是醫生，也不是父母，<br>而是一位「<b>款待的主人</b>」——<br>以接待，而非修理，迎接對方。</blockquote>
+  <p class="lead" style="max-width:none">而陪伴的力量，恰恰來自陪伴者<b>自己的傷口</b>。你不是因為靈性完美才能陪學生，而是因為你誠實面對了自己的傷。</p>
+  <p class="src">盧雲（Henri Nouwen），《受傷的醫治者》（The Wounded Healer）</p>
+</section>
+
+<section class="slide">
+  <h2>你要陪伴的，是這樣一代人</h2>
+  <div class="stat-row">
+    <div class="stat"><div class="num">22.9%</div><div class="cap">高中生有嚴重<br>至極度憂鬱</div></div>
+    <div class="stat"><div class="num">17%</div><div class="cap">遇到問題<br>不告訴任何人</div></div>
+    <div class="stat"><div class="num">第 2 位</div><div class="cap">自殺已是青少年<br>十大死因第二位</div></div>
+  </div>
+  <p class="lead" style="max-width:none;margin-top:.6em">他們獨處的能力正在流失，轉向手機與短影音尋找靈性的指引。<b>所以今天的生命教育老師，比以往任何一代都更被需要。</b></p>
+  <p class="src">兒福聯盟 2023；衛福部統計（引用前頁碼待核）</p>
+</section>
+
+<section class="slide">
+  <h2>陪伴，不是拯救——三條界線</h2>
+  <div class="grid3" style="flex:none;margin-top:.3em">
+    <div class="card"><h3>① 開門，不塞答案</h3><p>用「根本問題」鬆土，開啟學生的靈性自覺——而不是把自己的信仰答案塞給他。</p></div>
+    <div class="card"><h3>② 辨識何時轉介</h3><p>陪伴不等於承接學生所有的心理重量。看見界線，知道何時交給輔導室、專業與醫療。</p></div>
+    <div class="card"><h3>③ 不造成依附</h3><p>不利用靈性的權威，製造情感依附或不當的關係。陪伴，是讓他更自由，不是更黏你。</p></div>
+  </div>
+  <p class="muted" style="text-align:center;max-width:none;margin-top:1em">這不是「燃燒自己照亮別人」的口號，而是冷靜、專業、保護雙方的分寸。</p>
+</section>
+
+<section class="slide">
+  <h2>而且，不必擔心被說「傳教」</h2>
+  <p class="lead" style="max-width:none">把「靈性」帶進公立校園，可以既深刻、又不淪為灌輸或心靈雞湯。先學會分辨這三者：</p>
+  <table class="tbl" style="margin-top:.3em">
+    <thead><tr><th>　</th><th>它在做什麼</th><th>分辨線</th></tr></thead>
+    <tbody>
+      <tr><td class="lv">靈性素養</td><td>培育自我反思、敬畏與驚奇、對意義的探問</td><td>開放問題，陪他自己找</td></tr>
+      <tr><td class="lv">靈性灌輸</td><td>把特定信仰的結論當答案要求接受</td><td>先有結論，要他照收</td></tr>
+      <tr><td class="lv">心靈雞湯</td><td>用一時的感動代替真實的思考</td><td>只給感覺，不給深度</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="max-width:none;margin-top:.5em">問自己一句：我未來的課，會落在哪一欄？</p>
+</section>
+
+<section class="slide">
+  <h2>帶一份承諾回去</h2>
+  <div class="practice">
+    <span class="label">我的靈性陪伴宣言</span>
+    <p style="margin:.2em 0 0;font-size:clamp(1.35rem,1.95vw,1.78rem)">不是寫一段感想，而是寫一個<b>承諾</b>——</p>
+    <ul class="fl" style="margin-top:.3em">
+      <li>我會以怎樣的<b>姿態</b>，陪伴我的學生？</li>
+      <li>我會守住哪些<b>界線</b>？</li>
+      <li>我會用怎樣的<b>提問</b>，陪他面對自己的靈性爭戰？</li>
+    </ul>
+  </div>
+  <p class="muted" style="max-width:none;margin-top:.6em">這份宣言，可以帶回你的靈修小組，與導師繼續走下去。</p>
+</section>
+
+<section class="slide roomy">
+  <h2>為什麼，靈性修養是樞紐</h2>
+  <p class="lead" style="max-width:none">走到這裡你會發現：靈性修養不是五大素養旁邊的一項，而是貫穿其中的<b>水分與養分</b>。</p>
+  <ul class="fl">
+    <li>沒有靈性的覺察，<b>終極關懷</b>難以扎根；</li>
+    <li>沒有靈性的反思，<b>價值思辨</b>缺乏深度；</li>
+    <li>靈性的自覺，正是<b>哲學思考</b>（後設思考）的核心；</li>
+    <li>靈性的眼睛，讓人深入<b>人學探索</b>的殿堂。</li>
+  </ul>
+  <p class="muted" style="max-width:none">這也是為什麼，今天是這整週的「中軸」。</p>
+</section>
+
+<!-- 結語 -->
+<section class="slide closing">
+  <div class="ending-line">我們都是受傷的醫治者</div>
+  <div class="ending-ornament"></div>
+  <div class="ending-sub">不是因為靈性完美才能陪伴，<br>而是因為我們也誠實面對自己的傷，並且仍走在路上。</div>
+  <div class="signature">單元四 · 靈性修養</div>
+  <button class="back-home-btn" onclick="goToSlide(1)">↑　回到首頁</button>
+</section>
+
+<!-- 彩蛋·主題曲（末頁） -->
+<section class="slide eggsong">
+  <svg class="egg-deco egg-deco-tr" viewBox="0 0 140 140" aria-hidden="true">
+    <g stroke="#C9A227" stroke-width="6" fill="none" stroke-linecap="round"><path d="M46 104 V40"/><path d="M104 92 V28"/></g>
+    <path d="M44 40 L106 28" stroke="#C9A227" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <ellipse cx="38" cy="106" rx="14" ry="10" fill="#C9A227" transform="rotate(-20 38 106)"/>
+    <ellipse cx="96" cy="94" rx="14" ry="10" fill="#C9A227" transform="rotate(-20 96 94)"/>
+  </svg>
+  <svg class="egg-deco egg-deco-bl" viewBox="0 0 120 140" aria-hidden="true">
+    <path d="M56 104 V36 q0 -18 24 -24" stroke="#C9A227" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <ellipse cx="44" cy="106" rx="14" ry="10" fill="#C9A227" transform="rotate(-20 44 106)"/>
+    <circle cx="96" cy="20" r="6" fill="#D4AF37"/><circle cx="18" cy="58" r="4" fill="#D4AF37"/><circle cx="104" cy="58" r="3.5" fill="#D4AF37"/>
+  </svg>
+  <h2>彩蛋·主題曲〈知與行之間〉</h2>
+  <div class="lyrics">
+    <p><span class="h">〔主歌一〕</span><br>我知道　該對她溫柔一點<br>話到嘴邊　卻還是變成了刀<br>我知道　該放下昨天那口氣<br>可手一鬆　它又回到我心上</p>
+    <p><span class="h">〔導歌〕</span><br>知道，到做到<br>中間隔著　一整條河<br>河的這一邊　是我說過的道理<br>河的那一邊　是我活出的樣子</p>
+    <p><span class="h">〔副歌〕</span><br>操則存，捨則亡<br>這顆心　一鬆手　就溜走<br>不是懂了就會　是練了才能<br>從心所欲　而不踰矩<br>那是一生的功夫　一步一步<br>走在知與行之間</p>
+    <p><span class="h">〔主歌二〕</span><br>慎獨——沒有人看見的時候<br>我是不是　還是我說的那個我<br>靜下來　聽見念頭升起又消失<br>原來覺察　就是回家的路</p>
+    <p><span class="h">〔尾聲｜輕誦〕</span><br>吸氣，我知道我在吸氣<br>吐氣，我知道我在吐氣<br>此刻——<br>知，與行，慢慢　合而為一</p>
+  </div>
+  <p class="src">〈知與行之間〉——把「操則存，捨則亡」的功夫論唱出來；間奏只留呼吸與缽聲。</p>
+  <button class="back-home-btn" onclick="goToSlide(1)">↑　回到首頁</button>
+</section>
+
+</div>
+
+<div class="click-zones" id="clickZones">
+  <div class="click-zone" onclick="prevSlide()" title="前一頁"></div>
+  <div class="click-zone" onclick="nextSlide()" title="下一頁"></div>
+</div>
+<div class="progress-bar" id="progress"></div>
+<div class="page-indicator"><span id="curr">1</span> / <span id="total">1</span></div>
+<div class="nav-arrows"><button onclick="prevSlide()" aria-label="上一頁">‹</button><button onclick="nextSlide()" aria-label="下一頁">›</button></div>
+<button class="fs-toggle" onclick="toggleFullscreen()" title="全螢幕（F）">⛶</button>
+<div class="toast" id="toast"></div>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+let current=1;const total=slides.length;
+document.getElementById('total').textContent=total;
+slides.forEach(s=>{const fw=document.createElement('div');fw.className='fitwrap';while(s.firstChild)fw.appendChild(s.firstChild);s.appendChild(fw);});
+function fitSlide(s){
+  const fw=s.firstElementChild;if(!fw||!fw.classList.contains('fitwrap'))return;
+  fw.style.transform='none';
+  const cs=getComputedStyle(s);
+  const availW=s.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+  const availH=s.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+  const ph=fw.style.height,pj=fw.style.justifyContent;
+  fw.style.height='auto';fw.style.justifyContent='flex-start';
+  const natH=fw.scrollHeight,natW=fw.scrollWidth;
+  fw.style.height=ph;fw.style.justifyContent=pj;
+  let k=Math.min(1,availH/natH,availW/natW);
+  k=Math.floor(k*995)/1000;
+  fw.style.transform=k<1?'scale('+k+')':'';
+}
+function fitAll(){slides.forEach(fitSlide);}
+window.addEventListener('resize',fitAll);
+window.addEventListener('orientationchange',()=>setTimeout(fitAll,80));
+document.addEventListener('fullscreenchange',()=>setTimeout(fitAll,80));
+window.addEventListener('load',()=>setTimeout(fitAll,60));
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitAll);
+fitAll();
+(function assignSectionTints(){
+  const numerals=['壹','貳','參','肆','伍','陸','柒'];
+  let chap=0;
+  slides.forEach(s=>{
+    if(s.classList.contains('section-divider')){chap++;return;}
+    if(s.classList.contains('cover')||s.classList.contains('closing')||s.classList.contains('eggsong'))return;
+    if(chap<1)return;
+    const sec=Math.min(chap,7);
+    s.classList.add('sec-tint','sec-'+sec);
+    s.dataset.chap=numerals[sec-1];
+  });
+})();
+const noClickZoneSlides=[];
+slides.forEach((s,i)=>{if(s.classList.contains('cover')||s.classList.contains('closing')||s.querySelector('iframe,video,.cover-cta,.back-home-btn'))noClickZoneSlides.push(i+1);});
+function showSlide(n){
+  if(n<1)n=1;if(n>total)n=total;
+  slides.forEach((s,i)=>{s.classList.remove('active','prev');if(i+1===n)s.classList.add('active');else if(i+1<n)s.classList.add('prev');});
+  current=n;
+  document.getElementById('curr').textContent=current;
+  document.getElementById('progress').style.width=(current/total*100)+'%';
+  history.replaceState(null,'','#'+current);
+  document.body.classList.toggle('no-clickzones',noClickZoneSlides.includes(n));
+}
+function nextSlide(){showSlide(current+1)}function prevSlide(){showSlide(current-1)}function goToSlide(n){showSlide(n)}
+function getFsReq(el){return el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen||el.msRequestFullscreen||null}
+function getFsExit(){return document.exitFullscreen||document.webkitExitFullscreen||document.mozCancelFullScreen||document.msExitFullscreen||null}
+function isFs(){return document.fullscreenElement||document.webkitFullscreenElement||document.mozFullScreenElement||document.msFullscreenElement}
+function enterFs(el){const r=getFsReq(el);if(!r){showToast('此瀏覽器不支援全螢幕，請按 F11',4000);return Promise.reject()}let p;try{p=r.call(el)}catch(e){return Promise.reject(e)}return(p&&p.then)?p:Promise.resolve()}
+function toggleFullscreen(){if(isFs()){const x=getFsExit();if(x)x.call(document);return}enterFs(document.documentElement).catch(()=>{showToast(window.self!==window.top?'預覽面板內無法全螢幕，請在新分頁開啟':'無法進入全螢幕，請按 F11',4500)})}
+function startPresentation(){enterFs(document.documentElement).catch(()=>{showToast('預覽面板內無法全螢幕，請在新分頁開啟，或按 F11',6000)}).finally(()=>nextSlide())}
+function showToast(m,ms=2500){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),ms)}
+document.addEventListener('keydown',e=>{
+  if(e.target&&/INPUT|TEXTAREA/.test(e.target.tagName))return;
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();nextSlide();}
+  if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prevSlide()}
+  if(e.key==='f'||e.key==='F'){e.preventDefault();toggleFullscreen()}
+  if(e.key==='Escape'&&isFs())(getFsExit()||(()=>{})).call(document);
+  if(e.key==='Home')goToSlide(1);if(e.key==='End')goToSlide(total);
+});
+if(location.hash){const n=parseInt(location.hash.slice(1));if(!isNaN(n))showSlide(n);}
+else{document.body.classList.toggle('no-clickzones',noClickZoneSlides.includes(1));}
+</script>
+</body>
+</html>
