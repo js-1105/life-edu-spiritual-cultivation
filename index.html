@@ -163,10 +163,6 @@ body.no-clickzones .click-zones{display:none}
 .gpage .gbox{flex:1;min-height:0;overflow:auto;background:rgba(255,255,255,.85);border:2px solid var(--color-line);border-radius:14px;padding:.8em .9em;display:flex;flex-direction:column;gap:.6em;width:100%;margin-top:.3em}
 .gitem{background:#fff;border-left:5px solid var(--c,#862633);border-radius:8px;box-shadow:var(--shadow-soft);padding:.6em .9em;font-size:clamp(1.15rem,1.5vw,1.55rem);line-height:1.55;white-space:pre-wrap}
 .gbox .empty-hint{margin:auto;font-size:1.05rem;color:var(--color-muted);font-style:italic;text-align:center}
-.daiuda{display:flex;gap:.5em;align-items:center;margin-top:.6em;flex-wrap:wrap}
-.daiuda .tag{font-size:.78rem;color:var(--color-muted);background:rgba(0,0,0,.05);padding:.28em .8em;border-radius:999px;white-space:nowrap;margin:0}
-.daiuda input{flex:1;min-width:11em;font-family:var(--font-sans);font-size:1rem;padding:.45em .7em;border:2px solid var(--color-line);border-radius:8px;background:#fff;color:var(--color-text)}
-.daiuda .btn{background:var(--color-primary);color:#fff;border:none;border-radius:999px;padding:.5em 1.3em;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit}
 #fbStatus{font-weight:700}
 </style>
 <script src="fbconfig.js"></script>
@@ -303,12 +299,12 @@ body.no-clickzones .click-zones{display:none}
 </section>
 
 <!-- 六組即時頁 -->
-<section class="slide gpage" style="--c:#862633"><h2><span class="g-dot"></span>第1組 · 想討論的靈修課題</h2><div class="gbox" id="pg1"></div><div class="daiuda" data-tp="1"><span class="tag">無網路時·老師代打</span><input type="text" placeholder="代打本組課題，Enter 送出"><button class="btn" onclick="U4dai(this.closest('.daiuda'))">送出</button></div></section>
-<section class="slide gpage" style="--c:#A8782E"><h2><span class="g-dot"></span>第2組 · 想討論的靈修課題</h2><div class="gbox" id="pg2"></div><div class="daiuda" data-tp="2"><span class="tag">無網路時·老師代打</span><input type="text" placeholder="代打本組課題，Enter 送出"><button class="btn" onclick="U4dai(this.closest('.daiuda'))">送出</button></div></section>
-<section class="slide gpage" style="--c:#1E5F74"><h2><span class="g-dot"></span>第3組 · 想討論的靈修課題</h2><div class="gbox" id="pg3"></div><div class="daiuda" data-tp="3"><span class="tag">無網路時·老師代打</span><input type="text" placeholder="代打本組課題，Enter 送出"><button class="btn" onclick="U4dai(this.closest('.daiuda'))">送出</button></div></section>
-<section class="slide gpage" style="--c:#6B5635"><h2><span class="g-dot"></span>第4組 · 想討論的靈修課題</h2><div class="gbox" id="pg4"></div><div class="daiuda" data-tp="4"><span class="tag">無網路時·老師代打</span><input type="text" placeholder="代打本組課題，Enter 送出"><button class="btn" onclick="U4dai(this.closest('.daiuda'))">送出</button></div></section>
-<section class="slide gpage" style="--c:#5C1A23"><h2><span class="g-dot"></span>第5組 · 想討論的靈修課題</h2><div class="gbox" id="pg5"></div><div class="daiuda" data-tp="5"><span class="tag">無網路時·老師代打</span><input type="text" placeholder="代打本組課題，Enter 送出"><button class="btn" onclick="U4dai(this.closest('.daiuda'))">送出</button></div></section>
-<section class="slide gpage" style="--c:#3E7D5A"><h2><span class="g-dot"></span>第6組 · 想討論的靈修課題</h2><div class="gbox" id="pg6"></div><div class="daiuda" data-tp="6"><span class="tag">無網路時·老師代打</span><input type="text" placeholder="代打本組課題，Enter 送出"><button class="btn" onclick="U4dai(this.closest('.daiuda'))">送出</button></div></section>
+<section class="slide gpage" style="--c:#862633"><h2><span class="g-dot"></span>第1組 · 想討論的靈修課題</h2><div class="gbox" id="pg1"></div></section>
+<section class="slide gpage" style="--c:#A8782E"><h2><span class="g-dot"></span>第2組 · 想討論的靈修課題</h2><div class="gbox" id="pg2"></div></section>
+<section class="slide gpage" style="--c:#1E5F74"><h2><span class="g-dot"></span>第3組 · 想討論的靈修課題</h2><div class="gbox" id="pg3"></div></section>
+<section class="slide gpage" style="--c:#6B5635"><h2><span class="g-dot"></span>第4組 · 想討論的靈修課題</h2><div class="gbox" id="pg4"></div></section>
+<section class="slide gpage" style="--c:#5C1A23"><h2><span class="g-dot"></span>第5組 · 想討論的靈修課題</h2><div class="gbox" id="pg5"></div></section>
+<section class="slide gpage" style="--c:#3E7D5A"><h2><span class="g-dot"></span>第6組 · 想討論的靈修課題</h2><div class="gbox" id="pg6"></div></section>
 
 <!-- ===================== 貳　命名爭戰 ===================== -->
 <section class="slide section-divider">
@@ -619,7 +615,7 @@ fitAll();
   });
 })();
 const noClickZoneSlides=[];
-slides.forEach((s,i)=>{if(s.classList.contains('cover')||s.classList.contains('closing')||s.querySelector('iframe,video,.cover-cta,.back-home-btn,.daiuda,.qr-box,.gbox'))noClickZoneSlides.push(i+1);});
+slides.forEach((s,i)=>{if(s.classList.contains('cover')||s.classList.contains('closing')||s.querySelector('iframe,video,.cover-cta,.back-home-btn,.qr-box,.gbox'))noClickZoneSlides.push(i+1);});
 function showSlide(n){
   if(n<1)n=1;if(n>total)n=total;
   slides.forEach((s,i)=>{s.classList.remove('active','prev');if(i+1===n)s.classList.add('active');else if(i+1<n)s.classList.add('prev');});
@@ -679,13 +675,6 @@ window.U4=(function(){
       return true;
     }catch(e){return false;}
   }
-  function dai(row){
-    var g=row.getAttribute('data-tp'); var inp=row.querySelector('input'); var txt=(inp.value||'').trim(); if(!txt)return;
-    if(root){root.child('topics/g'+g).push({txt:txt,t:Date.now()});}
-    else{TOP[g].push(txt);saveLocal();renderTop(g);}
-    inp.value='';inp.focus();
-  }
-  window.U4dai=dai;
   function makeQRs(){
     if(typeof QRCode==='undefined')return;
     document.querySelectorAll('.qr-box[data-tp]').forEach(function(b){var g=b.getAttribute('data-tp');b.innerHTML='';try{new QRCode(b,{text:SUBMIT+'?r=topics&g='+g,width:300,height:300,correctLevel:QRCode.CorrectLevel.M});}catch(e){}});
@@ -719,7 +708,6 @@ window.U4=(function(){
     }else{TOP={1:[],2:[],3:[],4:[],5:[],6:[]};saveLocal();[1,2,3,4,5,6].forEach(renderTop);showToast('已下載 CSV 並清空本場（本機）',3000);}
   }
   function initAll(){
-    document.querySelectorAll('.daiuda input').forEach(function(inp){inp.addEventListener('keydown',function(e){e.stopPropagation();if(e.key==='Enter'){dai(inp.closest('.daiuda'));}});});
     document.addEventListener('keydown',function(e){if(!e.shiftKey)return;if(e.key==='C'||e.key==='c'){e.preventDefault();clearCurrent();}else if(e.key==='E'||e.key==='e'){e.preventDefault();exportAndClear();}});
     if(!initFB())loadLocal();
     [1,2,3,4,5,6].forEach(renderTop);
