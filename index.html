@@ -164,11 +164,23 @@ body.no-clickzones .click-zones{display:none}
 .gitem{background:#fff;border-left:5px solid var(--c,#862633);border-radius:8px;box-shadow:var(--shadow-soft);padding:.6em .9em;font-size:clamp(1.15rem,1.5vw,1.55rem);line-height:1.55;white-space:pre-wrap}
 .gbox .empty-hint{margin:auto;font-size:1.05rem;color:var(--color-muted);font-style:italic;text-align:center}
 #fbStatus{font-weight:700}
+/* 文字雲頁 */
+.cloud-stage{display:grid;grid-template-columns:auto 1fr;gap:2.2vw;align-items:center;flex:1;min-height:0;width:100%;margin-top:.2em}
+.cloud-side{display:flex;flex-direction:column;align-items:center;gap:.7em;width:clamp(190px,18vw,260px)}
+.cloud-side .lead{text-align:center;max-width:none;margin:0;font-size:clamp(1.1rem,1.4vw,1.45rem)}
+.cloud-side .src{text-align:center;max-width:none;margin:0}
+.cloud-qr{background:#fff;border-radius:16px;border-top:7px solid var(--color-accent-deep);box-shadow:var(--shadow-strong);padding:.8em .8em .6em;display:flex;flex-direction:column;align-items:center;gap:.4em}
+.cloud-qr .qr-box{width:clamp(140px,12vw,190px);max-width:none}
+.cloud-qr .qr-cap{font-family:var(--font-serif);font-weight:900;color:var(--color-primary);font-size:clamp(1.1rem,1.3vw,1.4rem)}
+.cloud-canvas-wrap{flex:1 1 auto;position:relative;min-height:60vh;height:100%;border-radius:16px;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.9),transparent 55%),linear-gradient(145deg,#f8f2e8,#efe5d4);box-shadow:var(--shadow-strong);overflow:hidden}
+.cloud-canvas-wrap canvas{position:absolute;inset:0;width:100%;height:100%}
+.cloud-empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--color-muted);font-style:italic;font-size:clamp(1.1rem,1.4vw,1.4rem);text-align:center;padding:0 1em}
 </style>
 <script src="fbconfig.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.2.0/wordcloud2.min.js"></script>
 </head>
 <body>
 <div class="deck" id="deck">
@@ -428,6 +440,22 @@ body.no-clickzones .click-zones{display:none}
   </div>
 </section>
 
+<!-- S26 文字雲：個人靈性掙扎命名 -->
+<section class="slide">
+  <h2>輪到你：為自己的靈性掙扎命一個名</h2>
+  <div class="cloud-stage">
+    <div class="cloud-side">
+      <p class="lead">掃 QR，把<b>此刻你最想面對的那個靈性掙扎</b>，用 1–3 個關鍵詞打上來。</p>
+      <div class="cloud-qr"><div class="qr-box" data-cloud="struggles"></div><div class="qr-cap">掃我投稿</div></div>
+      <p class="src" id="fbStatusCloud">連線狀態</p>
+    </div>
+    <div class="cloud-canvas-wrap">
+      <canvas id="cloud-struggles"></canvas>
+      <div class="cloud-empty" id="empty-struggles">大家投稿的靈性掙扎，會在這裡即時長成一朵雲。</div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== 參　內在戰場的真相 ===================== -->
 <section class="slide section-divider">
   <div class="num">參</div>
@@ -667,6 +695,7 @@ fitAll();
 })();
 const noClickZoneSlides=[];
 slides.forEach((s,i)=>{if(s.classList.contains('cover')||s.classList.contains('closing')||s.querySelector('iframe,video,.cover-cta,.back-home-btn,.qr-box,.gbox'))noClickZoneSlides.push(i+1);});
+const CLOUD_SLIDES=[];slides.forEach((s,i)=>{if(s.querySelector('.cloud-canvas-wrap canvas'))CLOUD_SLIDES.push(i+1);});
 function showSlide(n){
   if(n<1)n=1;if(n>total)n=total;
   slides.forEach((s,i)=>{s.classList.remove('active','prev');if(i+1===n)s.classList.add('active');else if(i+1<n)s.classList.add('prev');});
@@ -675,6 +704,7 @@ function showSlide(n){
   document.getElementById('progress').style.width=(current/total*100)+'%';
   history.replaceState(null,'','#'+current);
   document.body.classList.toggle('no-clickzones',noClickZoneSlides.includes(n));
+  if(window.U4&&CLOUD_SLIDES.includes(n))U4.refreshClouds();
 }
 function nextSlide(){showSlide(current+1)}function prevSlide(){showSlide(current-1)}function goToSlide(n){showSlide(n)}
 function getFsReq(el){return el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen||el.msRequestFullscreen||null}
@@ -702,26 +732,49 @@ window.U4=(function(){
   var ROOM=window.FB_ROOM||'default';
   var esc=function(s){return String(s||'').replace(/[&<>]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[m];});};
   var BASE=location.origin+location.pathname.replace(/[^/]*$/,'');
-  var SUBMIT=BASE+'submit.html';
+  var SUBMIT=BASE+'submit.html', ASK=BASE+'ask.html';
   var configured=function(){return window.FB_CONFIG&&FB_CONFIG.apiKey&&FB_CONFIG.apiKey.indexOf('PASTE')<0;};
   var listify=function(o){return o?Object.keys(o).sort(function(a,b){return (o[a].t||0)-(o[b].t||0);}).map(function(k){return o[k].txt;}):[];};
   var root=null, online=false;
   var TOP={1:[],2:[],3:[],4:[],5:[],6:[]};
+  var CLOUDS={struggles:[]};
   var LK='u4_'+ROOM;
-  function loadLocal(){try{var d=JSON.parse(localStorage.getItem(LK));if(d&&d.TOP)TOP=d.TOP;}catch(e){}}
-  function saveLocal(){try{localStorage.setItem(LK,JSON.stringify({TOP:TOP}));}catch(e){}}
+  function loadLocal(){try{var d=JSON.parse(localStorage.getItem(LK));if(d){if(d.TOP)TOP=d.TOP;if(d.CLOUDS)CLOUDS=d.CLOUDS;}}catch(e){}}
+  function saveLocal(){try{localStorage.setItem(LK,JSON.stringify({TOP:TOP,CLOUDS:CLOUDS}));}catch(e){}}
   function renderTop(g){
     var box=document.getElementById('pg'+g); if(!box)return;
     var a=TOP[g]||[];
     box.innerHTML=a.length?a.map(function(t){return '<div class="gitem">'+esc(t)+'</div>';}).join('')
       :'<div class="empty-hint">掃 QR 把你們這一組想討論的靈修課題打上來，這裡會即時出現。</div>';
   }
+  var wcPending={};
+  function renderCloud(p){if(wcPending[p])return;wcPending[p]=true;requestAnimationFrame(function(){wcPending[p]=false;doRenderCloud(p);});}
+  function doRenderCloud(p){
+    var canvas=document.getElementById('cloud-'+p); if(!canvas)return;
+    var wrap=canvas.parentElement, empty=document.getElementById('empty-'+p);
+    var texts=CLOUDS[p]||[];
+    var freq={}; texts.forEach(function(t){var w=(t||'').trim();if(w)freq[w]=(freq[w]||0)+1;});
+    var entries=Object.entries(freq);
+    if(!entries.length){if(empty)empty.style.display='flex';var ctx=canvas.getContext('2d');canvas.width=canvas.width;if(ctx)ctx.clearRect(0,0,canvas.width,canvas.height);return;}
+    if(empty)empty.style.display='none';
+    var rect=wrap.getBoundingClientRect();
+    var w=Math.floor(rect.width),h=Math.floor(rect.height);
+    if(w<100)w=Math.floor(window.innerWidth*0.55); if(h<100)h=Math.floor(window.innerHeight*0.55);
+    canvas.width=w;canvas.height=h;canvas.style.width='100%';canvas.style.height='100%';
+    var maxF=entries.reduce(function(m,e){return Math.max(m,e[1]);},1);
+    var list=entries.sort(function(a,b){return b[1]-a[1];});
+    var palette=['#862633','#A8782E','#1E5F74','#6B5635','#5C1A23','#B8860B'];
+    var base=Math.max(14,Math.min(w,h)/22);
+    if(typeof WordCloud==='function'){try{WordCloud(canvas,{list:list,gridSize:Math.max(4,Math.round(w/60)),weightFactor:function(n){return base*(0.85+0.6*(n/maxF))*(1+0.15*Math.min(n-1,5));},fontFamily:'"Noto Serif TC",serif',color:function(){return palette[Math.floor(Math.random()*palette.length)];},rotateRatio:0.16,rotationSteps:2,backgroundColor:'transparent',drawOutOfBound:false,shrinkToFit:true,minSize:12});}catch(e){}}
+  }
+  function refreshClouds(){renderCloud('struggles');}
   function initFB(){
     if(!configured()||typeof firebase==='undefined')return false;
     try{
       firebase.initializeApp(window.FB_CONFIG);
       root=firebase.database().ref('rooms/'+ROOM);
       [1,2,3,4,5,6].forEach(function(g){root.child('topics/g'+g).on('value',function(s){TOP[g]=listify(s.val()||{});renderTop(g);});});
+      root.child('clouds/struggles').on('value',function(s){CLOUDS.struggles=listify(s.val()||{});renderCloud('struggles');});
       online=true; setStatus();
       return true;
     }catch(e){return false;}
@@ -729,10 +782,13 @@ window.U4=(function(){
   function makeQRs(){
     if(typeof QRCode==='undefined')return;
     document.querySelectorAll('.qr-box[data-tp]').forEach(function(b){var g=b.getAttribute('data-tp');b.innerHTML='';try{new QRCode(b,{text:SUBMIT+'?r=topics&g='+g,width:300,height:300,correctLevel:QRCode.CorrectLevel.M});}catch(e){}});
+    document.querySelectorAll('.qr-box[data-cloud]').forEach(function(b){var p=b.getAttribute('data-cloud');b.innerHTML='';try{new QRCode(b,{text:ASK+'?p='+p,width:300,height:300,correctLevel:QRCode.CorrectLevel.M});}catch(e){}});
   }
-  function setStatus(){var el=document.getElementById('fbStatus');if(!el)return;el.textContent=root?(online?'● 線上（手機投稿即時更新）':'● 連線中…'):'○ 單機代打模式（未連網）';}
+  function setStatus(){var t=root?(online?'● 線上（手機投稿即時更新）':'● 連線中…'):'○ 單機模式（未連網）';['fbStatus','fbStatusCloud'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=t;});}
   function clearCurrent(){
     var active=document.querySelector('.slide.active'); if(!active)return;
+    var canv=active.querySelector('.cloud-canvas-wrap canvas');
+    if(canv){var p=canv.id.replace('cloud-','');if(root){root.child('clouds/'+p).remove();}else{CLOUDS[p]=[];saveLocal();renderCloud(p);}showToast('已清空此頁文字雲',1800);return;}
     var pg=active.querySelector('.gbox[id^="pg"]');
     if(pg){var g=pg.id.replace('pg','');if(root){root.child('topics/g'+g).remove();}else{TOP[g]=[];saveLocal();renderTop(g);}showToast('已清空第'+g+'組課題',1800);return;}
     showToast('此頁沒有可清空的互動資料',2200);
@@ -740,32 +796,33 @@ window.U4=(function(){
   function nowStamp(){var d=new Date(),p=function(n){return (n<10?'0':'')+n;};return d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'_'+p(d.getHours())+p(d.getMinutes());}
   function csvCell(s){return '"'+String(s==null?'':s).replace(/"/g,'""')+'"';}
   function downloadCSV(stamp){
-    var rows=[['房號','組別','靈修課題']];
-    [1,2,3,4,5,6].forEach(function(g){(TOP[g]||[]).forEach(function(t){rows.push([ROOM,'第'+g+'組',t]);});});
+    var rows=[['房號','區段','內容']];
+    [1,2,3,4,5,6].forEach(function(g){(TOP[g]||[]).forEach(function(t){rows.push([ROOM,'第'+g+'組課題',t]);});});
+    (CLOUDS.struggles||[]).forEach(function(t){rows.push([ROOM,'靈性掙扎雲',t]);});
     var csv=rows.map(function(r){return r.map(csvCell).join(',');}).join('\r\n');
-    var blob=new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
-    a.href=url;a.download='單元四靈性修養_課題_'+ROOM+'_'+stamp+'.csv';document.body.appendChild(a);a.click();a.remove();
+    var blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+    a.href=url;a.download='單元四靈性修養_'+ROOM+'_'+stamp+'.csv';document.body.appendChild(a);a.click();a.remove();
     setTimeout(function(){URL.revokeObjectURL(url);},1500);
   }
   function exportAndClear(){
     var stamp=nowStamp();
     downloadCSV(stamp);
-    if(!confirm('本場課題已下載成 CSV（存在這台電腦的「下載」資料夾）。要現在把本場全部清空、房間掃乾淨嗎？')){showToast('已下載備份，未清空',2500);return;}
+    if(!confirm('本場資料已下載成 CSV（存在這台電腦的「下載」資料夾）。要現在把本場全部清空、房間掃乾淨嗎？')){showToast('已下載備份，未清空',2500);return;}
     if(root){
       root.once('value').then(function(snap){
         var val=snap.val(),fin=function(){root.remove();showToast('已下載 CSV＋雲端封存，並清空本場',3000);};
         if(val){firebase.database().ref('rooms/_archives/'+ROOM+'__'+stamp).set(val).then(fin,fin);}else fin();
       });
-    }else{TOP={1:[],2:[],3:[],4:[],5:[],6:[]};saveLocal();[1,2,3,4,5,6].forEach(renderTop);showToast('已下載 CSV 並清空本場（本機）',3000);}
+    }else{TOP={1:[],2:[],3:[],4:[],5:[],6:[]};CLOUDS={struggles:[]};saveLocal();[1,2,3,4,5,6].forEach(renderTop);refreshClouds();showToast('已下載 CSV 並清空本場（本機）',3000);}
   }
   function initAll(){
     document.addEventListener('keydown',function(e){if(!e.shiftKey)return;if(e.key==='C'||e.key==='c'){e.preventDefault();clearCurrent();}else if(e.key==='E'||e.key==='e'){e.preventDefault();exportAndClear();}});
     if(!initFB())loadLocal();
     [1,2,3,4,5,6].forEach(renderTop);
-    makeQRs(); setStatus();
+    refreshClouds(); makeQRs(); setStatus();
   }
   if(document.readyState!=='loading')initAll();else document.addEventListener('DOMContentLoaded',initAll);
-  return {};
+  return {refreshClouds:refreshClouds};
 })();
 </script>
 </body>
