@@ -152,7 +152,27 @@ body.no-clickzones .click-zones{display:none}
 .toast{position:fixed;top:1.5em;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;padding:.6em 1.4em;border-radius:999px;font-size:.9rem;z-index:200;opacity:0;transition:opacity .3s;pointer-events:none}
 .toast.show{opacity:1}
 @media(max-width:768px){.grid2,.grid3,.method-grid,.contrast2{grid-template-columns:1fr}.lyrics{column-count:1}}
+/* 互動：六組 QR ＋ 即時投稿頁 */
+.qr-intro{max-width:none;margin:.25em 0 .55em;font-size:clamp(1.3rem,1.9vw,1.85rem);line-height:1.5;color:var(--color-text)}
+.qr-stage{display:flex;justify-content:center;align-items:center;gap:1.6vw;flex:1;min-height:0;width:100%}
+.qr-card{flex:1 1 0;max-width:240px;background:#fff;border-radius:20px;border-top:9px solid var(--c,#862633);box-shadow:var(--shadow-strong);padding:1.1em 1em 1.2em;display:flex;flex-direction:column;align-items:center;gap:.7em}
+.qr-box{width:100%;max-width:200px;aspect-ratio:1;background:#fff;display:flex;align-items:center;justify-content:center}
+.qr-box img,.qr-box canvas{width:100%!important;height:100%!important;display:block}
+.qr-cap{font-family:var(--font-serif);font-weight:900;color:var(--c,#862633);font-size:clamp(1.5rem,2.05vw,2.05rem);text-align:center;line-height:1.12}
+.gpage h2 .g-dot{display:inline-block;width:.62em;height:.62em;border-radius:50%;background:var(--c);margin-right:.45em;vertical-align:middle}
+.gpage .gbox{flex:1;min-height:0;overflow:auto;background:rgba(255,255,255,.85);border:2px solid var(--color-line);border-radius:14px;padding:.8em .9em;display:flex;flex-direction:column;gap:.6em;width:100%;margin-top:.3em}
+.gitem{background:#fff;border-left:5px solid var(--c,#862633);border-radius:8px;box-shadow:var(--shadow-soft);padding:.6em .9em;font-size:clamp(1.15rem,1.5vw,1.55rem);line-height:1.55;white-space:pre-wrap}
+.gbox .empty-hint{margin:auto;font-size:1.05rem;color:var(--color-muted);font-style:italic;text-align:center}
+.daiuda{display:flex;gap:.5em;align-items:center;margin-top:.6em;flex-wrap:wrap}
+.daiuda .tag{font-size:.78rem;color:var(--color-muted);background:rgba(0,0,0,.05);padding:.28em .8em;border-radius:999px;white-space:nowrap;margin:0}
+.daiuda input{flex:1;min-width:11em;font-family:var(--font-sans);font-size:1rem;padding:.45em .7em;border:2px solid var(--color-line);border-radius:8px;background:#fff;color:var(--color-text)}
+.daiuda .btn{background:var(--color-primary);color:#fff;border:none;border-radius:999px;padding:.5em 1.3em;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit}
+#fbStatus{font-weight:700}
 </style>
+<script src="fbconfig.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
 <div class="deck" id="deck">
@@ -195,42 +215,98 @@ body.no-clickzones .click-zones{display:none}
   <p>靈性修養不是一門「要教給學生的內容」，<br>它首先是<b>老師存在的品質</b>。所以今天，我們從自己開始。</p>
 </section>
 
+<!-- 複習導言 -->
 <section class="slide">
-  <h2>你已經走了一年半</h2>
-  <p class="lead" style="max-width:none">今天不是再上一次靈修入門。你早已擁有一整套語言與經驗——我們把它收攏成「一張靈性地圖」，再往下挖。</p>
-  <div class="mchips" style="margin-top:.5em">
-    <span class="mchip">靈修六原則</span>
-    <span class="mchip">靈性修養七面向</span>
-    <span class="mchip">五毒心 vs 七罪宗</span>
-    <span class="mchip">入靜・人生五章</span>
-    <span class="mchip">四道人生</span>
-    <span class="mchip">依納爵神操 vs 緣起</span>
-    <span class="mchip">一年半的靈修筆記</span>
-  </div>
-  <p class="muted" style="max-width:none;margin-top:1em">這些都是地基。今天我們要問的是：在這地基上，還有哪些更深的爭戰，是我們一直繞過去、卻沒真正面對的？</p>
+  <h2>先複習：我們一路學過的</h2>
+  <p class="lead" style="max-width:none">今天不是再上一次靈修入門。你早已擁有一整套語言與經驗——我們先快速複習四件最重要的，把它收攏成「一張靈性地圖」，再往下挖。</p>
+  <ul class="fl" style="margin-top:.3em">
+    <li><b>一、靈性修養是什麼</b>——靈性、靈性健康，與「操則存，捨則亡」</li>
+    <li><b>二、靈修六原則</b>——一年半來你日日操練的那六句</li>
+    <li><b>三、它與五大素養的關係</b>——靈性修養為什麼是「樞紐」</li>
+    <li><b>四、日常生活中的操練</b>——早晚課、境界現前、靈修筆記</li>
+  </ul>
 </section>
 
+<!-- 複習① 核心概念 -->
 <section class="slide">
-  <h2>課前你已經做了一件事</h2>
-  <p class="lead" style="max-width:none">〈我的靈性爭戰地圖〉——你重讀了自己一年半的靈修筆記，並寫下三段話。今天，它們就是我們一起深掘的起點。</p>
-  <div class="grid3" style="flex:none;margin-top:.4em">
-    <div class="card"><h3>溫故</h3><p>你挑出最有感、或當時掙扎最深的紀錄——現在重讀，心情變了嗎？</p></div>
-    <div class="card"><h3>知新</h3><p>那個最常困住你、反覆出現的內在課題，你為它命名了。</p></div>
-    <div class="card"><h3>裝備</h3><p>你也想起一個學生——你曾在他身上，看見怎樣的靈性困境。</p></div>
+  <h2>複習①　靈性修養，是什麼</h2>
+  <div class="grid3" style="flex:none;margin-top:.3em">
+    <div class="card"><h3>靈性</h3><p>人的「主體性」「我性」——統整我這個人、指揮身心，追求圓滿與至善的那種潛能。</p></div>
+    <div class="card"><h3>靈性健康</h3><p>靈魂的健康，是身體、心理、關係等<b>全人健康的樞紐</b>。</p></div>
+    <div class="card"><h3>靈性修養</h3><p>「<b>操則存，捨則亡</b>」——如同身體需要鍛鍊，靈性也需要持續操練才會顯現。</p></div>
   </div>
-  <p class="muted" style="text-align:center;max-width:none;margin-top:1em">課堂分享全出於自願。你帶來的誠實，是今天最珍貴的教材。</p>
+  <p class="muted" style="text-align:center;max-width:none;margin-top:1em">靈性修養是一場無止境的朝聖旅程——在行住坐臥的每一刻，透過覺察、選擇與行動，邁向圓滿。</p>
 </section>
 
+<!-- 複習② 靈修六原則 -->
 <section class="slide">
-  <h2>但這不只是我們的事</h2>
-  <p class="lead" style="max-width:none">當我們開始面對自己的靈性，別忘了——講台下，是一整代正在尋找方向的年輕靈魂。</p>
-  <div class="stat-row">
-    <div class="stat"><div class="num">10.8%</div><div class="cap">青少年有中度以上<br>自殺意念（約每 10 人 1 人）</div></div>
-    <div class="stat"><div class="num">17.7%</div><div class="cap">有中度以上<br>情緒困擾</div></div>
-  </div>
-  <blockquote style="margin:.6em auto 0">孤獨遠不只是一種壞感覺——它是一場公共衛生危機。</blockquote>
-  <p class="src">數據：兒童福利聯盟《2025 台灣青少年心理健康調查》（n=7,007）｜引語：美國衛生署長 Vivek Murthy，2023</p>
+  <h2>複習②　靈修六原則</h2>
+  <ul class="feature-list" style="margin-top:.2em">
+    <li>在每一個人身上，看見神、看見佛、看見人</li>
+    <li>第一個去愛、第一個去給</li>
+    <li>給人信心、給人希望、給人歡喜、給人方便</li>
+    <li>緩於發怒、敏於寬恕、勇於道歉、時時感恩</li>
+    <li>擇善固執、不變隨緣</li>
+    <li>誠意正心、戒慎恐懼</li>
+  </ul>
+  <p class="muted" style="max-width:none;margin-top:.6em">這六句，是你們一年半來在小組與靈修筆記裡，日日操練的功夫。</p>
 </section>
+
+<!-- 複習③ 與五大素養關係（樞紐） -->
+<section class="slide roomy">
+  <h2>複習③　它為什麼是「樞紐」</h2>
+  <p class="lead" style="max-width:none">靈性修養不是五大素養旁邊的一項，而是貫穿其中的<b>水分與養分</b>。</p>
+  <ul class="fl" style="margin-top:.2em">
+    <li>靈性的覺醒，縮短人與<b>終極關懷</b>的距離；</li>
+    <li>靈性的反思，是<b>哲學思考（後設思考）</b>的核心，並深化<b>價值思辨</b>；</li>
+    <li>靈性的自覺，讓人超越理性與邏輯，深入<b>人學探索</b>的殿堂。</li>
+  </ul>
+  <p class="muted" style="max-width:none">所以，今天是這整週的「中軸」。</p>
+</section>
+
+<!-- 複習④ 日常操練 -->
+<section class="slide">
+  <h2>複習④　日常生活中的操練</h2>
+  <div class="grid2" style="flex:none;align-items:stretch;gap:2vw;margin-top:.3em">
+    <div class="card"><h3>早課・晚課</h3><p>晨起，默想六原則、立定一天的決心；睡前，省察今天——好的感恩、不好的悔改，再準備明天。飯前、睡前的簡短祈禱與默想亦然。</p></div>
+    <div class="card"><h3>境界現前時</h3><p>只用五官看事件，就容易被它役使；睜開靈性的眼睛，每一件外在的事，都可以是「神人交往」的時機。</p></div>
+  </div>
+  <p class="muted" style="text-align:center;max-width:none;margin-top:.8em">還有你們一直在寫的<b>靈修筆記</b>——把生活中的事件與省思記下來，就是把好的選擇，一點一點寫進生命的迴路。</p>
+</section>
+
+<!-- 課前作業：六組討論 -->
+<section class="slide">
+  <h2>課前作業 →　換你們提問</h2>
+  <p class="lead" style="max-width:none">課前，你重讀了自己一年半的靈修筆記，寫下〈我的靈性爭戰地圖〉。現在，<b>分成六組</b>，把各自的反思放在一起討論——</p>
+  <div class="practice" style="margin-top:.3em">
+    <span class="label">小組任務</span>
+    <p style="margin:.2em 0 0;font-size:clamp(1.4rem,2vw,1.85rem)">提出<b>一個（或多個）你們這一組最想在班上深入討論的靈修課題</b>。<br>可以是一個真實的困惑、掙扎，或一個想一起想清楚的問題。</p>
+  </div>
+  <p class="muted" style="text-align:center;max-width:none;margin-top:.8em">等一下掃 QR，把你們的課題打上來；它們會匯成今天下半場我們一起深掘的題目。</p>
+</section>
+
+<!-- 課前作業 QR 上傳 -->
+<section class="slide">
+  <h2>各組掃碼，上傳想討論的靈修課題</h2>
+  <p class="lead qr-intro" style="text-align:left">六組各派一位掃自己的 QR，把全組討論出的<b>靈修課題</b>打上來（不只一題、可分多次送出），即時出現在投影幕上你們這一組的頁面。</p>
+  <div class="qr-stage">
+    <div class="qr-card" style="--c:#862633"><div class="qr-box" data-tp="1"></div><div class="qr-cap">第1組</div></div>
+    <div class="qr-card" style="--c:#A8782E"><div class="qr-box" data-tp="2"></div><div class="qr-cap">第2組</div></div>
+    <div class="qr-card" style="--c:#1E5F74"><div class="qr-box" data-tp="3"></div><div class="qr-cap">第3組</div></div>
+    <div class="qr-card" style="--c:#6B5635"><div class="qr-box" data-tp="4"></div><div class="qr-cap">第4組</div></div>
+    <div class="qr-card" style="--c:#5C1A23"><div class="qr-box" data-tp="5"></div><div class="qr-cap">第5組</div></div>
+    <div class="qr-card" style="--c:#3E7D5A"><div class="qr-box" data-tp="6"></div><div class="qr-cap">第6組</div></div>
+  </div>
+  <p class="src" id="fbStatus" style="text-align:center">連線狀態</p>
+</section>
+
+<!-- 六組即時頁 -->
+<section class="slide gpage" style="--c:#862633"><h2><span class="g-dot"></span>第1組 · 想討論的靈修課題</h2><div class="gbox" id="pg1"></div><div class="daiuda" data-tp="1"><span class="tag">無網路時·老師代打</span><input type="text" placeholder="代打本組課題，Enter 送出"><button class="btn" onclick="U4dai(this.closest('.daiuda'))">送出</button></div></section>
+<section class="slide gpage" style="--c:#A8782E"><h2><span class="g-dot"></span>第2組 · 想討論的靈修課題</h2><div class="gbox" id="pg2"></div><div class="daiuda" data-tp="2"><span class="tag">無網路時·老師代打</span><input type="text" placeholder="代打本組課題，Enter 送出"><button class="btn" onclick="U4dai(this.closest('.daiuda'))">送出</button></div></section>
+<section class="slide gpage" style="--c:#1E5F74"><h2><span class="g-dot"></span>第3組 · 想討論的靈修課題</h2><div class="gbox" id="pg3"></div><div class="daiuda" data-tp="3"><span class="tag">無網路時·老師代打</span><input type="text" placeholder="代打本組課題，Enter 送出"><button class="btn" onclick="U4dai(this.closest('.daiuda'))">送出</button></div></section>
+<section class="slide gpage" style="--c:#6B5635"><h2><span class="g-dot"></span>第4組 · 想討論的靈修課題</h2><div class="gbox" id="pg4"></div><div class="daiuda" data-tp="4"><span class="tag">無網路時·老師代打</span><input type="text" placeholder="代打本組課題，Enter 送出"><button class="btn" onclick="U4dai(this.closest('.daiuda'))">送出</button></div></section>
+<section class="slide gpage" style="--c:#5C1A23"><h2><span class="g-dot"></span>第5組 · 想討論的靈修課題</h2><div class="gbox" id="pg5"></div><div class="daiuda" data-tp="5"><span class="tag">無網路時·老師代打</span><input type="text" placeholder="代打本組課題，Enter 送出"><button class="btn" onclick="U4dai(this.closest('.daiuda'))">送出</button></div></section>
+<section class="slide gpage" style="--c:#3E7D5A"><h2><span class="g-dot"></span>第6組 · 想討論的靈修課題</h2><div class="gbox" id="pg6"></div><div class="daiuda" data-tp="6"><span class="tag">無網路時·老師代打</span><input type="text" placeholder="代打本組課題，Enter 送出"><button class="btn" onclick="U4dai(this.closest('.daiuda'))">送出</button></div></section>
 
 <!-- ===================== 貳　命名爭戰 ===================== -->
 <section class="slide section-divider">
@@ -541,7 +617,7 @@ fitAll();
   });
 })();
 const noClickZoneSlides=[];
-slides.forEach((s,i)=>{if(s.classList.contains('cover')||s.classList.contains('closing')||s.querySelector('iframe,video,.cover-cta,.back-home-btn'))noClickZoneSlides.push(i+1);});
+slides.forEach((s,i)=>{if(s.classList.contains('cover')||s.classList.contains('closing')||s.querySelector('iframe,video,.cover-cta,.back-home-btn,.daiuda,.qr-box,.gbox'))noClickZoneSlides.push(i+1);});
 function showSlide(n){
   if(n<1)n=1;if(n>total)n=total;
   slides.forEach((s,i)=>{s.classList.remove('active','prev');if(i+1===n)s.classList.add('active');else if(i+1<n)s.classList.add('prev');});
@@ -569,6 +645,87 @@ document.addEventListener('keydown',e=>{
 });
 if(location.hash){const n=parseInt(location.hash.slice(1));if(!isNaN(n))showSlide(n);}
 else{document.body.classList.toggle('no-clickzones',noClickZoneSlides.includes(1));}
+</script>
+
+<!-- ===================== 單元四 課前作業·六組靈修課題 Firebase 即時投稿 ===================== -->
+<script>
+window.U4=(function(){
+  var ROOM=window.FB_ROOM||'default';
+  var esc=function(s){return String(s||'').replace(/[&<>]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[m];});};
+  var BASE=location.origin+location.pathname.replace(/[^/]*$/,'');
+  var SUBMIT=BASE+'submit.html';
+  var configured=function(){return window.FB_CONFIG&&FB_CONFIG.apiKey&&FB_CONFIG.apiKey.indexOf('PASTE')<0;};
+  var listify=function(o){return o?Object.keys(o).sort(function(a,b){return (o[a].t||0)-(o[b].t||0);}).map(function(k){return o[k].txt;}):[];};
+  var root=null, online=false;
+  var TOP={1:[],2:[],3:[],4:[],5:[],6:[]};
+  var LK='u4_'+ROOM;
+  function loadLocal(){try{var d=JSON.parse(localStorage.getItem(LK));if(d&&d.TOP)TOP=d.TOP;}catch(e){}}
+  function saveLocal(){try{localStorage.setItem(LK,JSON.stringify({TOP:TOP}));}catch(e){}}
+  function renderTop(g){
+    var box=document.getElementById('pg'+g); if(!box)return;
+    var a=TOP[g]||[];
+    box.innerHTML=a.length?a.map(function(t){return '<div class="gitem">'+esc(t)+'</div>';}).join('')
+      :'<div class="empty-hint">掃 QR 把你們這一組想討論的靈修課題打上來，這裡會即時出現。</div>';
+  }
+  function initFB(){
+    if(!configured()||typeof firebase==='undefined')return false;
+    try{
+      firebase.initializeApp(window.FB_CONFIG);
+      root=firebase.database().ref('rooms/'+ROOM);
+      [1,2,3,4,5,6].forEach(function(g){root.child('topics/g'+g).on('value',function(s){TOP[g]=listify(s.val()||{});renderTop(g);});});
+      online=true; setStatus();
+      return true;
+    }catch(e){return false;}
+  }
+  function dai(row){
+    var g=row.getAttribute('data-tp'); var inp=row.querySelector('input'); var txt=(inp.value||'').trim(); if(!txt)return;
+    if(root){root.child('topics/g'+g).push({txt:txt,t:Date.now()});}
+    else{TOP[g].push(txt);saveLocal();renderTop(g);}
+    inp.value='';inp.focus();
+  }
+  window.U4dai=dai;
+  function makeQRs(){
+    if(typeof QRCode==='undefined')return;
+    document.querySelectorAll('.qr-box[data-tp]').forEach(function(b){var g=b.getAttribute('data-tp');b.innerHTML='';try{new QRCode(b,{text:SUBMIT+'?r=topics&g='+g,width:300,height:300,correctLevel:QRCode.CorrectLevel.M});}catch(e){}});
+  }
+  function setStatus(){var el=document.getElementById('fbStatus');if(!el)return;el.textContent=root?(online?'● 線上（手機投稿即時更新）':'● 連線中…'):'○ 單機代打模式（未連網）';}
+  function clearCurrent(){
+    var active=document.querySelector('.slide.active'); if(!active)return;
+    var pg=active.querySelector('.gbox[id^="pg"]');
+    if(pg){var g=pg.id.replace('pg','');if(root){root.child('topics/g'+g).remove();}else{TOP[g]=[];saveLocal();renderTop(g);}showToast('已清空第'+g+'組課題',1800);return;}
+    showToast('此頁沒有可清空的互動資料',2200);
+  }
+  function nowStamp(){var d=new Date(),p=function(n){return (n<10?'0':'')+n;};return d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'_'+p(d.getHours())+p(d.getMinutes());}
+  function csvCell(s){return '"'+String(s==null?'':s).replace(/"/g,'""')+'"';}
+  function downloadCSV(stamp){
+    var rows=[['房號','組別','靈修課題']];
+    [1,2,3,4,5,6].forEach(function(g){(TOP[g]||[]).forEach(function(t){rows.push([ROOM,'第'+g+'組',t]);});});
+    var csv=rows.map(function(r){return r.map(csvCell).join(',');}).join('\r\n');
+    var blob=new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+    a.href=url;a.download='單元四靈性修養_課題_'+ROOM+'_'+stamp+'.csv';document.body.appendChild(a);a.click();a.remove();
+    setTimeout(function(){URL.revokeObjectURL(url);},1500);
+  }
+  function exportAndClear(){
+    var stamp=nowStamp();
+    downloadCSV(stamp);
+    if(!confirm('本場課題已下載成 CSV（存在這台電腦的「下載」資料夾）。要現在把本場全部清空、房間掃乾淨嗎？')){showToast('已下載備份，未清空',2500);return;}
+    if(root){
+      root.once('value').then(function(snap){
+        var val=snap.val(),fin=function(){root.remove();showToast('已下載 CSV＋雲端封存，並清空本場',3000);};
+        if(val){firebase.database().ref('rooms/_archives/'+ROOM+'__'+stamp).set(val).then(fin,fin);}else fin();
+      });
+    }else{TOP={1:[],2:[],3:[],4:[],5:[],6:[]};saveLocal();[1,2,3,4,5,6].forEach(renderTop);showToast('已下載 CSV 並清空本場（本機）',3000);}
+  }
+  function initAll(){
+    document.querySelectorAll('.daiuda input').forEach(function(inp){inp.addEventListener('keydown',function(e){e.stopPropagation();if(e.key==='Enter'){dai(inp.closest('.daiuda'));}});});
+    document.addEventListener('keydown',function(e){if(!e.shiftKey)return;if(e.key==='C'||e.key==='c'){e.preventDefault();clearCurrent();}else if(e.key==='E'||e.key==='e'){e.preventDefault();exportAndClear();}});
+    if(!initFB())loadLocal();
+    [1,2,3,4,5,6].forEach(renderTop);
+    makeQRs(); setStatus();
+  }
+  if(document.readyState!=='loading')initAll();else document.addEventListener('DOMContentLoaded',initAll);
+  return {};
+})();
 </script>
 </body>
 </html>
