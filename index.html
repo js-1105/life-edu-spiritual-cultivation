@@ -175,6 +175,24 @@ body.no-clickzones .click-zones{display:none}
 .cloud-canvas-wrap{flex:1 1 auto;position:relative;min-height:60vh;height:100%;border-radius:16px;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.9),transparent 55%),linear-gradient(145deg,#f8f2e8,#efe5d4);box-shadow:var(--shadow-strong);overflow:hidden}
 .cloud-canvas-wrap canvas{position:absolute;inset:0;width:100%;height:100%}
 .cloud-empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--color-muted);font-style:italic;font-size:clamp(1.1rem,1.4vw,1.4rem);text-align:center;padding:0 1em}
+/* 樂章標記 ＋ 影片卡（參·三樂章） */
+.movement{font-family:var(--font-serif);font-weight:900;letter-spacing:.14em;color:var(--color-accent-deep);font-size:clamp(1.05rem,1.5vw,1.45rem);margin-bottom:.15em}
+.movement .mv-num{color:var(--color-primary);margin-right:.4em}
+.vstage{display:flex;gap:2.2vw;align-items:center;width:100%;flex:none;margin-top:.4em}
+.vstage.tall{align-items:stretch}
+.vframe,.vph{flex:1 1 56%;aspect-ratio:16/9;border-radius:16px;box-shadow:var(--shadow-strong);overflow:hidden;position:relative}
+.vframe{background:#000;border:1px solid rgba(212,175,55,.4)}
+.vframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vph{border:2px dashed var(--color-accent);background:linear-gradient(140deg,#3a161c,#5C1A23 60%,#2a1014);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.45em;text-align:center;padding:1em}
+.vph .pbtn{width:2.4em;height:2.4em;border-radius:50%;background:rgba(212,175,55,.92);color:#5C1A23;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.vph .vt{font-family:var(--font-serif);font-weight:900;font-size:clamp(1.3rem,2vw,1.9rem);line-height:1.2}
+.vph .vm{font-size:.92rem;color:var(--color-accent-soft);letter-spacing:.06em}
+.vside{flex:1 1 44%;min-width:0}
+.vside h3{margin-top:0}
+.mini-list{list-style:none;display:flex;flex-direction:column;gap:.5em}
+.mini-list li{background:#fff;border-left:5px solid var(--color-accent);border-radius:10px;box-shadow:var(--shadow-soft);padding:.55em .85em;font-size:clamp(1.05rem,1.45vw,1.42rem);line-height:1.45}
+.mini-list li b{color:var(--color-primary)}
+.mini-list li .mt{font-family:var(--font-serif);font-weight:700;color:var(--color-primary);margin-right:.5em}
 </style>
 <script src="fbconfig.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -203,7 +221,7 @@ body.no-clickzones .click-zones{display:none}
   <ul class="fl">
     <li><b>壹　回到自己</b>　在談學生之前，先回到老師自己的內在風景</li>
     <li><b>貳　命名爭戰</b>　把「我做不到」說準——解剖人性的軟弱</li>
-    <li><b>參　內在戰場的真相</b>　念頭、情境與黑夜</li>
+    <li><b>參　內在戰場與修練之道</b>　從直視真相，到「你會怎麼修」</li>
     <li><b>肆　託付與裝備</b>　以陪伴與界線，把靈性交付給學生</li>
   </ul>
   <p class="muted" style="max-width:none">＊全程以探討、案例與你自己的生命經驗推進；真正的靈修操練，留給你已熟悉的導師小組。</p>
@@ -457,11 +475,29 @@ body.no-clickzones .click-zones{display:none}
   </div>
 </section>
 
-<!-- ===================== 參　內在戰場的真相 ===================== -->
+<!-- ===================== 參　內在戰場與修練之道 ===================== -->
 <section class="slide section-divider">
   <div class="num">參</div>
-  <h1>內在戰場的真相</h1>
-  <p class="when">認識內在戰場，才能不輸在黑暗中。這一段，我們直視念頭、情境，與靈魂的黑夜。</p>
+  <h1>內在戰場與修練之道</h1>
+  <p class="when">先直視內在戰場的真相，再問「你會怎麼修」，最後一起收攏出可以帶走的靈修之道。三個樂章，從認識到裝備。</p>
+</section>
+
+<!-- ───── 樂章一·認識戰場（真相，精簡） ───── -->
+<!-- 影片：西遊記修行（心猿意馬）2:56；YouTube 連結查證中，先以本機影片卡呈現，確認後換 iframe -->
+<section class="slide">
+  <div class="movement"><span class="mv-num">樂章一</span>認識戰場</div>
+  <h2>心猿意馬：修行，沒有捷徑</h2>
+  <div class="vstage">
+    <div class="vph" data-yt="西遊記修行">
+      <div class="pbtn">▶</div>
+      <div class="vt">西遊記，是一則修行寓言</div>
+      <div class="vm">本機短講影片 · 約 2:56</div>
+    </div>
+    <div class="vside">
+      <p class="lead" style="max-width:none">孫悟空一個跟頭十萬八千里，卻仍得一步步去取經。<b>「心猿意馬」——降伏浮動的心念，才是真功夫。</b></p>
+      <p class="muted" style="max-width:none">在這分心的時代，內在戰場的第一個敵人，往往就是我們自己那顆停不下來的心。</p>
+    </div>
+  </div>
 </section>
 
 <section class="slide roomy">
@@ -475,7 +511,8 @@ body.no-clickzones .click-zones{display:none}
   <h2>而萬惡之首，最不像「惡」</h2>
   <blockquote style="max-width:32em">驕傲（superbia），不是自信，<br>而是「<b>拒絕承認自己是受造物</b>」——<br>拒絕承認我的生命是被給予的、是有依賴的。</blockquote>
   <p class="src">多瑪斯・阿奎那；Rebecca DeYoung《Glittering Vices》</p>
-  <p class="lead" style="max-width:none">它把「自我」悄悄放到了神的位置。也因此，它最難被自己看見。</p>
+  <p class="lead" style="max-width:none">它把「自我」悄悄放到了神的位置，也因此最難被自己看見。<b>越是靈修深的人越要警覺：魔鬼會扮裝成光明的天使</b>——好的開始，混亂的中段，惡的結果。</p>
+  <p class="src" style="margin-top:.1em">依納爵《神操》第二組分辨規則（§328–336）：許多靈性的受傷，來自「以靈修為名的驕傲」。</p>
 </section>
 
 <section class="slide">
@@ -488,51 +525,128 @@ body.no-clickzones .click-zones{display:none}
   <p class="muted" style="text-align:center;max-width:none;margin-top:.8em">這不是替誰免責——而是「自知」的一部分：我也活在各種系統裡，它們正在塑造我的判斷。</p>
 </section>
 
-<section class="slide roomy">
-  <h2>最危險的，是以善為名</h2>
-  <blockquote>靈修越深的人，越要警覺——<br>魔鬼會扮裝成光明的天使。</blockquote>
-  <p class="lead" style="max-width:none">一個人開始做真正的善事，卻可能因驕傲、急躁、自以為義而偏離。特徵是：<b>好的開始，混亂的中段，惡的結果。</b></p>
-  <p class="src">依納爵《神操》第二組分辨規則（§328–336）——許多靈性的受傷，不來自明顯的誘惑，而來自「以靈修為名的驕傲」。</p>
-</section>
-
-<!-- 電影/文學文本（去煽情·停格詰問）；選片待教授定，先以公版文本《伊凡之死》為例 -->
 <section class="slide">
-  <h2>一個「樣樣正確」的好人</h2>
-  <p class="lead" style="max-width:none">托爾斯泰《伊凡・伊里奇之死》：伊凡有好工作、好家庭、好品味——直到病床上，他第一次懷疑：<b>「我這一生過得體面正確，會不會其實全錯了？」</b></p>
-  <div class="practice" style="margin-top:.4em">
-    <span class="label">不問感動，問自己</span>
-    <ul class="fl" style="margin-top:.2em">
-      <li>他沒有犯任何明顯的罪，為什麼臨終卻覺得全錯了？</li>
-      <li>「過得很正確」和「活得很真實」，是不是同一件事？</li>
-      <li>如果有人在你的告別式上，會先想念你，還是先盤算你的位子？</li>
-    </ul>
-  </div>
-  <p class="src">＊文本／片段為示例，實際選用與片段於上課前確認。</p>
-</section>
-
-<section class="slide roomy">
   <h2>黑夜，是通道不是終點</h2>
-  <p class="lead" style="max-width:none">當祈禱不再甜蜜、神好像不在了——許多人以為自己退步了。但十字聖若望說：那可能正是被邀請，走進更成熟的信德。</p>
+  <p class="lead" style="max-width:none">當祈禱不再甜蜜、神好像不在了——許多人以為自己退步了。但十字聖若望說：那可能正是被邀請，走進更成熟的信德。<b>德蕾莎修女走過將近五十年的「心靈黑夜」</b>，外表服事最豐盛，內心卻久久感受不到神的臨在。</p>
   <div class="contrast2" style="margin-top:.2em">
     <div class="card"><h3>感官的黑夜</h3><p>靈修的「甜美感」被撤走。不是失去信仰，是信仰正在斷奶、長大。</p></div>
     <div class="card"><h3>靈魂的黑夜</h3><p>更深的淨化，連理性上的確信也被動搖——通往純粹信德之前的隧道。</p></div>
   </div>
-  <p class="src">十字聖若望，《靈魂的黑夜》</p>
+  <p class="muted" style="text-align:center;max-width:none;margin-top:.5em"><b>靈性的枯竭，不代表靈性的退步</b>——這是給我們、也是給學生，最有深度的安慰。</p>
+  <p class="src">十字聖若望《靈魂的黑夜》；Brian Kolodiejchuk 編《Mother Teresa: Come Be My Light》（2007）</p>
 </section>
 
-<section class="slide">
-  <h2>她，黑暗了五十年</h2>
-  <blockquote style="max-width:32em">外表最豐盛的服事，內心卻長期感受不到神的臨在——德蕾莎修女的書信，揭露她走過將近五十年的「心靈黑夜」。</blockquote>
-  <p class="lead" style="max-width:none"><b>這打破了一個迷思：靈修好的人，應該常常被感動。</b><br>不。靈性的枯竭，不代表靈性的退步。這是給我們、也是給學生，最溫柔而有深度的安慰。</p>
-  <p class="src">Brian Kolodiejchuk 編，《Mother Teresa: Come Be My Light》（2007）｜書信頁碼引用前待核</p>
-</section>
-
-<section class="slide">
-  <h2>黑暗中的兩束光</h2>
-  <div class="contrast2">
-    <div class="card pro-card"><h3>科學這樣說</h3><p>人在體驗「敬畏」時，大腦中與「自我中心」相關的預設模式網絡活化會明顯下降——<b>「自我的縮小」有了神經科學的語言</b>。靈修不是迷信，是人腦對「超越自我」的真實需求。</p><p class="src" style="margin-top:.4em">van Elk 等, 2019；Keltner《Awe》2023</p></div>
-    <div class="card con-card" style="border-top-color:#A8782E!important;background:linear-gradient(135deg,#fff,#f7f1e6)"><h3>苦難這樣轉</h3><p>「一切都可以從人身上奪走，唯有一件事不行——選擇以何種態度面對處境的自由。」苦難不是靈性成長的障礙，而是它的門廊。</p><p class="src" style="margin-top:.4em">Viktor Frankl（1946）；Paul Wong PP2.0（2021）</p></div>
+<!-- ───── 樂章二·你會怎麼修？（生生互動投稿） ───── -->
+<section class="slide roomy">
+  <div class="movement"><span class="mv-num">樂章二</span>你會怎麼修？</div>
+  <h2>先別急著聽我說——你都怎麼撐過來的？</h2>
+  <p class="lead" style="max-width:none">看清了內在戰場，問題就來了：<b>遇到你剛才命名的那個掙扎，你都怎麼面對、怎麼修？</b>一年半的小組與靈修筆記，你其實早已累積了自己的方法。</p>
+  <div class="practice" style="margin-top:.3em">
+    <span class="label">小組討論</span>
+    <p style="margin:.2em 0 0;font-size:clamp(1.4rem,2vw,1.85rem)">回到你最在意的那個靈性掙扎——<br><b>分享一個你親身用過、真的有用的「修練之道」或心法</b>（哪怕很小、很土）。每組整理出幾個，等一下投稿匯成全班的一朵雲。</p>
   </div>
+  <p class="muted" style="text-align:center;max-width:none;margin-top:.6em">真正的智慧，常常就在你們彼此的生命經驗裡。</p>
+</section>
+
+<section class="slide">
+  <h2>掃碼，把你的「修練之道」放上來</h2>
+  <div class="cloud-stage">
+    <div class="cloud-side">
+      <p class="lead">掃 QR，用 <b>1–5 個字</b>寫下一個你用過、有用的修練方法或心法（可分多次送出）。</p>
+      <div class="cloud-qr"><div class="qr-box" data-cloud="remedies"></div><div class="qr-cap">掃我投稿</div></div>
+      <p class="src" id="fbStatusCloud2">連線狀態</p>
+    </div>
+    <div class="cloud-canvas-wrap">
+      <canvas id="cloud-remedies"></canvas>
+      <div class="cloud-empty" id="empty-remedies">全班的修練之道，會在這裡即時長成一朵雲——這就是我們的「土法煉鋼智慧庫」。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── 樂章三·靈修之道（方法卡 ＋ 短影音） ───── -->
+<section class="slide roomy">
+  <div class="movement"><span class="mv-num">樂章三</span>靈修之道</div>
+  <h2>真相之後，是修養</h2>
+  <p class="lead" style="max-width:none">這些掙扎不是要消滅，也不是用來定罪——同一股能量，<b>看穿並修養之後，能轉成智慧與美德</b>（還記得「五毒化五智、七罪對七美德」嗎）。下面按四個關係領域，各給幾個可操練的法門。</p>
+  <p class="muted" style="max-width:none">這些方法跨越宗教與心理學傳統，可彼此補充——擇你相應的，帶回小組慢慢練。<b>不是懂了就會，是練了才能。</b></p>
+  <p class="src">法門整理自：依納爵《神操》、本篤會傳統、佛教禪修、Worthington／Rosenberg／Berkeley Greater Good 等實證研究，及孫效智〈以生命教育為核心重構靈性健康理論〉（2025）。</p>
+</section>
+
+<section class="slide">
+  <h2>① 我與自己：安頓那顆停不下來的心</h2>
+  <p class="muted" style="max-width:none;margin-bottom:.2em">對治：知行不一、提不起勁（acedia）、情緒淹沒、難以自我接納。</p>
+  <div class="grid3" style="flex:none;margin-top:.2em">
+    <div class="card"><h3>意識省察 Examen</h3><p>每天回望這一日：天主在哪裡臨在、我往哪裡偏離。求光→感恩重溫→留意情緒→揀一事對話→迎向明天。</p><p class="src" style="margin-top:.3em">依納爵／耶穌會</p></div>
+    <div class="card"><h3>正念呼吸・數息</h3><p>把心錨在呼吸上，吸呼數「一」到「十」；念起即覺、輕輕拉回，不自責。<b>現在就試 30 秒。</b></p><p class="src" style="margin-top:.3em">安那般那念（MN 118）</p></div>
+    <div class="card"><h3>自我疏離</h3><p>情緒翻湧時，把「我怎麼這麼糟」換成第三人稱：「（你的名字）現在很挫折，因為…他下一步可以怎麼做？」</p><p class="src" style="margin-top:.3em">Kross & Moser 實證</p></div>
+  </div>
+</section>
+
+<!-- 影片：垃圾人定律（瞋·課題分離）1:33；YouTube 連結查證中 -->
+<section class="slide">
+  <h2>② 我與他人：接住情緒，不接收垃圾</h2>
+  <div class="vstage">
+    <div class="vframe">
+      <iframe src="https://www.youtube.com/embed/26kro3lPUEI?rel=0" title="垃圾人定律" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="vside">
+      <p class="muted" style="max-width:none;margin:0 0 .2em">對治：易怒、記仇、嫉妒、難寬恕。「生命的 90% 在於你如何看待事情。」</p>
+      <ul class="mini-list">
+        <li><span class="mt">REACH 寬恕</span>回想→同理→把寬恕當禮物送出→立志→守住。<span class="muted">（Worthington）</span></li>
+        <li><span class="mt">慈心觀</span>祝福句由己及人，連難相處的人也包進來。<span class="muted">（Metta）</span></li>
+        <li><span class="mt">非暴力溝通</span>觀察→感受→需要→請求，不指責。<span class="muted">（Rosenberg）</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide roomy">
+  <h2>③ 我與物：鬆開被名利綁住的手</h2>
+  <p class="muted" style="max-width:none;margin-bottom:.2em">對治：被金錢名利綑綁、貪求與比較、「役於物」、與自然失去連結。</p>
+  <div class="grid2" style="flex:none;gap:2vw;margin-top:.2em">
+    <div class="card"><h3>敬畏漫步 Awe Walk</h3><p>散步時刻意尋找「大於自己」的事物——天空、大樹、光影、廣闊。自我縮小，煩惱也縮小。<b>體驗敬畏時，大腦「自我中心」的網絡活化會明顯下降——自我的縮小有了神經科學的語言。</b></p><p class="src" style="margin-top:.3em">UC Berkeley／UCSF 實證；Keltner《Awe》</p></div>
+    <div class="card"><h3>三件好事・感恩記錄</h3><p>每天（或每週三次）寫下三件具體的好事，並簡述「為何發生／我的角色」。盤點已擁有的好，貪求的心自然鬆開。</p><p class="src" style="margin-top:.3em">Seligman；Emmons & McCullough 實證</p></div>
+  </div>
+</section>
+
+<!-- 影片：晨起祈願文/依納爵原則與基礎（天·日常法門）；YouTube 連結查證中 -->
+<section class="slide">
+  <h2>④ 我與超越者：在枯竭裡，仍然守住</h2>
+  <div class="vstage">
+    <div class="vph" data-yt="晨起祈願文">
+      <div class="pbtn">▶</div>
+      <div class="vt">晨起祈願文</div>
+      <div class="vm">星雲大師 · 本機影片 · 約 5:20</div>
+    </div>
+    <div class="vside">
+      <p class="muted" style="max-width:none;margin:0 0 .2em">對治：信仰枯竭、神枯、想放棄靈修。以謙卑感恩開啟一天。</p>
+      <ul class="mini-list">
+        <li><span class="mt">神枯的分辨</span>神枯中不更改神慰時所立的決定，並反向施力——多祈禱、多省察，耐心等候。<span class="muted">（依納爵《神操》）</span></li>
+        <li><span class="mt">避靜・退省</span>暫離喧囂，騰出整段靜默讓天主說話，結束時記下一個帶回生活的決定。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 影片：練習很重要（知行合一·操則存）3:22；YouTube 連結查證中 -->
+<section class="slide">
+  <div class="movement"><span class="mv-num">收束</span>知行合一</div>
+  <h2>⑤ 貫穿一切：把「知道」練成「做到」</h2>
+  <div class="vstage">
+    <div class="vph" data-yt="練習很重要">
+      <div class="pbtn">▶</div>
+      <div class="vt">練習，很重要</div>
+      <div class="vm">本機影片 · 約 3:22</div>
+    </div>
+    <div class="vside">
+      <p class="muted" style="max-width:none;margin:0 0 .2em">對治那條貫穿所有領域的掙扎——知道，卻做不到。</p>
+      <ul class="mini-list">
+        <li><span class="mt">「若—則」執行意向</span>把「我想更耐心」寫成「若晚餐後，則做 5 分鐘省察」——讓善行自動化。<span class="muted">（Gollwitzer 實證）</span></li>
+        <li><span class="mt">致中和・慎獨</span>不壓抑情緒，而是讓它「發而中節」；獨處時也覺察起心動念。<span class="muted">（《中庸》）</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="muted" style="text-align:center;max-width:none;margin-top:.4em">習慣養成的科學，接上了千年的功夫論——「操則存，捨則亡」，一步一步走在知與行之間。</p>
 </section>
 
 <!-- ===================== 肆　託付與裝備 ===================== -->
@@ -738,7 +852,7 @@ window.U4=(function(){
   var listify=function(o){return o?Object.keys(o).sort(function(a,b){return (o[a].t||0)-(o[b].t||0);}).map(function(k){return o[k].txt;}):[];};
   var root=null, online=false;
   var TOP={1:[],2:[],3:[],4:[],5:[],6:[]};
-  var CLOUDS={struggles:[]};
+  var CLOUDS={struggles:[],remedies:[]};
   var LK='u4_'+ROOM;
   function loadLocal(){try{var d=JSON.parse(localStorage.getItem(LK));if(d){if(d.TOP)TOP=d.TOP;if(d.CLOUDS)CLOUDS=d.CLOUDS;}}catch(e){}}
   function saveLocal(){try{localStorage.setItem(LK,JSON.stringify({TOP:TOP,CLOUDS:CLOUDS}));}catch(e){}}
@@ -768,7 +882,7 @@ window.U4=(function(){
     var base=Math.max(14,Math.min(w,h)/22);
     if(typeof WordCloud==='function'){try{WordCloud(canvas,{list:list,gridSize:Math.max(4,Math.round(w/60)),weightFactor:function(n){return base*(0.85+0.6*(n/maxF))*(1+0.15*Math.min(n-1,5));},fontFamily:'"Noto Serif TC",serif',color:function(){return palette[Math.floor(Math.random()*palette.length)];},rotateRatio:0.16,rotationSteps:2,backgroundColor:'transparent',drawOutOfBound:false,shrinkToFit:true,minSize:12});}catch(e){}}
   }
-  function refreshClouds(){renderCloud('struggles');}
+  function refreshClouds(){renderCloud('struggles');renderCloud('remedies');}
   function initFB(){
     if(!configured()||typeof firebase==='undefined')return false;
     try{
@@ -776,6 +890,7 @@ window.U4=(function(){
       root=firebase.database().ref('rooms/'+ROOM);
       [1,2,3,4,5,6].forEach(function(g){root.child('topics/g'+g).on('value',function(s){TOP[g]=listify(s.val()||{});renderTop(g);});});
       root.child('clouds/struggles').on('value',function(s){CLOUDS.struggles=listify(s.val()||{});renderCloud('struggles');});
+      root.child('clouds/remedies').on('value',function(s){CLOUDS.remedies=listify(s.val()||{});renderCloud('remedies');});
       online=true; setStatus();
       return true;
     }catch(e){return false;}
@@ -785,7 +900,7 @@ window.U4=(function(){
     document.querySelectorAll('.qr-box[data-tp]').forEach(function(b){var g=b.getAttribute('data-tp');b.innerHTML='';try{new QRCode(b,{text:SUBMIT+'?r=topics&g='+g,width:300,height:300,correctLevel:QRCode.CorrectLevel.M});}catch(e){}});
     document.querySelectorAll('.qr-box[data-cloud]').forEach(function(b){var p=b.getAttribute('data-cloud');b.innerHTML='';try{new QRCode(b,{text:ASK+'?p='+p,width:300,height:300,correctLevel:QRCode.CorrectLevel.M});}catch(e){}});
   }
-  function setStatus(){var t=root?(online?'● 線上（手機投稿即時更新）':'● 連線中…'):'○ 單機模式（未連網）';['fbStatus','fbStatusCloud'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=t;});}
+  function setStatus(){var t=root?(online?'● 線上（手機投稿即時更新）':'● 連線中…'):'○ 單機模式（未連網）';['fbStatus','fbStatusCloud','fbStatusCloud2'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=t;});}
   function clearCurrent(){
     var active=document.querySelector('.slide.active'); if(!active)return;
     var canv=active.querySelector('.cloud-canvas-wrap canvas');
@@ -800,6 +915,7 @@ window.U4=(function(){
     var rows=[['房號','區段','內容']];
     [1,2,3,4,5,6].forEach(function(g){(TOP[g]||[]).forEach(function(t){rows.push([ROOM,'第'+g+'組課題',t]);});});
     (CLOUDS.struggles||[]).forEach(function(t){rows.push([ROOM,'靈性掙扎雲',t]);});
+    (CLOUDS.remedies||[]).forEach(function(t){rows.push([ROOM,'修練之道雲',t]);});
     var csv=rows.map(function(r){return r.map(csvCell).join(',');}).join('\r\n');
     var blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
     a.href=url;a.download='單元四靈性修養_'+ROOM+'_'+stamp+'.csv';document.body.appendChild(a);a.click();a.remove();
@@ -814,7 +930,7 @@ window.U4=(function(){
         var val=snap.val(),fin=function(){root.remove();showToast('已下載 CSV＋雲端封存，並清空本場',3000);};
         if(val){firebase.database().ref('rooms/_archives/'+ROOM+'__'+stamp).set(val).then(fin,fin);}else fin();
       });
-    }else{TOP={1:[],2:[],3:[],4:[],5:[],6:[]};CLOUDS={struggles:[]};saveLocal();[1,2,3,4,5,6].forEach(renderTop);refreshClouds();showToast('已下載 CSV 並清空本場（本機）',3000);}
+    }else{TOP={1:[],2:[],3:[],4:[],5:[],6:[]};CLOUDS={struggles:[],remedies:[]};saveLocal();[1,2,3,4,5,6].forEach(renderTop);refreshClouds();showToast('已下載 CSV 並清空本場（本機）',3000);}
   }
   function initAll(){
     document.addEventListener('keydown',function(e){if(!e.shiftKey)return;if(e.key==='C'||e.key==='c'){e.preventDefault();clearCurrent();}else if(e.key==='E'||e.key==='e'){e.preventDefault();exportAndClear();}});

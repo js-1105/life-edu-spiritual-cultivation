@@ -51,6 +51,15 @@ button.send:active{transform:translateY(1px);opacity:.9}
   var P=(new URLSearchParams(location.search).get('p')||'struggles');
   document.documentElement.style.setProperty('--c','#862633');
   document.title='靈性掙扎雲 · 投稿';
+  if(P==='remedies'){
+    document.title='修練之道雲 · 投稿';
+    var set=function(id,html){var el=document.getElementById(id);if(el)el.innerHTML=html;};
+    set('barG','修練之道雲');
+    set('barS','分享你用過、有用的修練方法');
+    set('lblText','我用過、有用的一個修練之道');
+    set('introTxt','回到你最在意的那個靈性掙扎——<b>分享一個你親身用過、真的有用的方法或心法</b>（哪怕很小、很土）。用 <b>1–5 個字</b>命名它（每則單獨送出），即時匯成全班的一朵雲。');
+    var ta=document.getElementById('text');if(ta)ta.setAttribute('placeholder','例：深呼吸三次　／　寫感恩日記　／　先離開現場　／　找人說　／　散步');
+  }
   function esc(s){return String(s||'').replace(/[&<>]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[m];});}
   function configured(){return window.FB_CONFIG&&FB_CONFIG.apiKey&&FB_CONFIG.apiKey.indexOf('PASTE')<0;}
   function listify(o){if(!o)return[];return Object.keys(o).sort(function(a,b){return (o[a].t||0)-(o[b].t||0);}).map(function(k){return {k:k,txt:o[k].txt};});}
