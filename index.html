@@ -202,6 +202,16 @@ body.no-clickzones .click-zones{display:none}
 .vc-frame iframe{width:100%;height:100%;border:0;border-radius:10px;box-shadow:0 24px 70px rgba(0,0,0,.6)}
 .vc-close{position:fixed;top:1em;right:1.2em;z-index:100000;width:2.5em;height:2.5em;border:none;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-size:1.35rem;line-height:1;cursor:pointer;font-family:inherit}
 .vc-close:hover{background:rgba(255,255,255,.32)}
+/* 選擇的冰山（背後因素四層） */
+.iceberg{display:flex;flex-direction:column;align-items:center;gap:.4em;width:100%;flex:none;margin:.2em 0}
+.ice-layer{border-radius:12px;padding:.5em 1.1em;text-align:center;box-shadow:var(--shadow-soft);line-height:1.35}
+.ice-layer .il-t{font-family:var(--font-serif);font-weight:900;font-size:clamp(1.15rem,1.7vw,1.55rem);display:block}
+.ice-layer .il-d{font-size:clamp(.98rem,1.3vw,1.25rem);opacity:.92}
+.ice-tip{width:46%;background:#fff;border:2px solid var(--color-accent);color:var(--color-primary)}
+.ice-waterline{width:100%;border-top:2px dashed #2f6f8f;text-align:right;color:#2f6f8f;font-size:.82rem;font-weight:700;letter-spacing:.15em;padding-top:.05em}
+.ice-1{width:64%;background:linear-gradient(135deg,#f6eddd,#ecd8b8);color:#5a4420}
+.ice-2{width:82%;background:linear-gradient(135deg,#e3c3ba,#c68b82);color:#4a1f1a}
+.ice-3{width:100%;background:linear-gradient(135deg,#7c2331,#5C1A23);color:#fff;border-bottom:4px solid var(--color-accent)}
 </style>
 <script src="fbconfig.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -522,6 +532,38 @@ body.no-clickzones .click-zones{display:none}
     <p class="lead" style="max-width:none;margin-top:.6em">這份守望的功夫，靈修傳統稱為 <b>νῆψις</b>（nepsis，守望）——一門<b>看顧內心、守望念頭</b>的學問：時時保持清醒，在念頭剛起的那一刻就覺察它。它被看作一切內在修養的地基。</p>
   </div>
   <p class="src" style="max-width:none;font-size:.9rem;line-height:1.55;border-top:1px solid var(--color-line);padding-top:.6em">名詞小註｜這是基督宗教「沙漠教父」（三、四世紀退隱埃及曠野的隱修者）的洞見。厄瓦格力烏（Evagrius，約 345–399）最早把這些擾人的念頭（希臘文 <b>λογισμοί</b>／logismoi，即「念頭」）整理成「八種惡念」，日後成為西方「七罪宗」的前身。</p>
+</section>
+
+<!-- ───── 選擇現象學：一個選擇是一座冰山（孫效智「選擇現象學」，S29 之後插入）───── -->
+<section class="slide">
+  <div class="movement"><span class="mv-num">樂章一</span>認識戰場</div>
+  <h2>一個選擇，是一座冰山</h2>
+  <p class="lead" style="max-width:none">νῆψις 守住的，是念頭「進門」那一瞬——冰山露出水面的一角。但從<b>起心動念</b>到真正<b>拍板</b>，水面下還藏著一整座冰山。看懂它，才能在內在戰場「<b>從頭到尾</b>」保持覺醒。</p>
+  <p class="muted" style="max-width:none;margin-top:.4em"><b>選擇現象學</b>——探究人的選擇，瞭解其性質、背後因素與歷程的學問。為什麼值得探究？因為「<b>選擇形塑我，也形塑我的人生</b>」。<br>（孟子：「學問之道無他，求其放心而已矣」；曾子：「吾日三省吾身」。）</p>
+</section>
+
+<section class="slide">
+  <h2>選擇的冰山：從表象到深層</h2>
+  <div class="iceberg">
+    <div class="ice-layer ice-tip"><span class="il-t">選擇行為</span><span class="il-d">大大小小、時時刻刻的選擇——我做了什麼</span></div>
+    <div class="ice-waterline">水面</div>
+    <div class="ice-layer ice-1"><span class="il-t">理性因素</span><span class="il-d">價值、信念、人生觀</span></div>
+    <div class="ice-layer ice-2"><span class="il-t">非理性因素</span><span class="il-d">習氣／反射、慾望情緒、五毒心、體力</span></div>
+    <div class="ice-layer ice-3"><span class="il-t">靈性・覺性</span><span class="il-d">在理性與非理性的爭戰中「敲板定案」的決定性因素</span></div>
+  </div>
+  <p class="muted" style="text-align:center;max-width:none;margin-top:.3em">我們在〈貳〉命名的<b>五毒心</b>，就藏在「非理性因素」這一層作用；而最底的<b>靈性・覺性</b>，正是決定這場內在爭戰勝負的那一槌。</p>
+</section>
+
+<section class="slide">
+  <h2>潛下去，再浮上來：全程的覺醒</h2>
+  <p class="lead" style="max-width:none">「當下三問」引領我們一層一層划向生命深處——潛到底，再帶著答案浮回生活：</p>
+  <ul class="feature-list" style="margin-top:.2em">
+    <li><b>當下反思</b>　我為何會做這個選擇？（反思選擇背後的因素）</li>
+    <li><b>自我覺察</b>　做出這選擇的我，是一個怎樣的人？</li>
+    <li><b>人生願景</b>　我希望成為怎樣的人、過怎樣的人生？</li>
+    <li><b>終極關懷</b>　什麼，是值得我活出的人生意義？</li>
+  </ul>
+  <p class="muted" style="max-width:none;margin-top:.3em">門口的 <b>νῆψις</b>（守住起心動念）＋ 看懂整座<b>冰山</b>（潛到底的覺察）＝ 內在靈性戰場「<b>從頭到尾</b>」的覺醒。它最終接上生命教育的<b>人生三問</b>：為何而活、如何而活、如何知行合一。</p>
 </section>
 
 <section class="slide">
