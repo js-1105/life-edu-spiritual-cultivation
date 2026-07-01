@@ -193,6 +193,15 @@ body.no-clickzones .click-zones{display:none}
 .mini-list li{background:#fff;border-left:5px solid var(--color-accent);border-radius:10px;box-shadow:var(--shadow-soft);padding:.55em .85em;font-size:clamp(1.05rem,1.45vw,1.42rem);line-height:1.45}
 .mini-list li b{color:var(--color-primary)}
 .mini-list li .mt{font-family:var(--font-serif);font-weight:700;color:var(--color-primary);margin-right:.5em}
+/* 影片自製全螢幕（⛶）＋放大浮層：不用 Fullscreen API，保留簡報全螢幕；浮層掛 body 層避開 fitwrap transform 坑 */
+.vframe .vfs{position:absolute;bottom:.6em;right:.6em;z-index:6;width:2.3em;height:2.3em;border:none;border-radius:9px;background:rgba(0,0,0,.6);color:#fff;font-size:1.15rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;font-family:inherit}
+.vframe .vfs:hover{background:rgba(134,38,51,.95)}
+.video-cinema{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.94);display:flex;align-items:center;justify-content:center}
+.video-cinema[hidden]{display:none}
+.vc-frame{width:min(95vw,168vh);aspect-ratio:16/9;max-height:92vh}
+.vc-frame iframe{width:100%;height:100%;border:0;border-radius:10px;box-shadow:0 24px 70px rgba(0,0,0,.6)}
+.vc-close{position:fixed;top:1em;right:1.2em;z-index:100000;width:2.5em;height:2.5em;border:none;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-size:1.35rem;line-height:1;cursor:pointer;font-family:inherit}
+.vc-close:hover{background:rgba(255,255,255,.32)}
 </style>
 <script src="fbconfig.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -488,8 +497,9 @@ body.no-clickzones .click-zones{display:none}
   <div class="movement"><span class="mv-num">樂章一</span>認識戰場</div>
   <h2>心猿意馬：修行，沒有捷徑</h2>
   <div class="vstage">
-    <div class="vframe">
-      <iframe src="https://www.youtube.com/embed/cFmJt8iBAfU?rel=0" title="西遊記你讀懂了嗎" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    <div class="vframe" data-video="cFmJt8iBAfU">
+      <iframe src="https://www.youtube-nocookie.com/embed/cFmJt8iBAfU?rel=0&fs=0&modestbranding=1" title="西遊記你讀懂了嗎" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
+      <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片">⛶</button>
     </div>
     <div class="vside">
       <p class="lead" style="max-width:none">孫悟空一個跟頭十萬八千里，卻仍得一步步去取經。<b>「心猿意馬」——降伏浮動的心念，才是真功夫。</b></p>
@@ -584,8 +594,9 @@ body.no-clickzones .click-zones{display:none}
 <section class="slide">
   <h2>② 我與他人：接住情緒，不接收垃圾</h2>
   <div class="vstage">
-    <div class="vframe">
-      <iframe src="https://www.youtube.com/embed/26kro3lPUEI?rel=0" title="垃圾人定律" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    <div class="vframe" data-video="26kro3lPUEI">
+      <iframe src="https://www.youtube-nocookie.com/embed/26kro3lPUEI?rel=0&fs=0&modestbranding=1" title="垃圾人定律" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
+      <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片">⛶</button>
     </div>
     <div class="vside">
       <p class="muted" style="max-width:none;margin:0 0 .2em">對治：易怒、記仇、嫉妒、難寬恕。「生命的 90% 在於你如何看待事情。」</p>
@@ -928,6 +939,29 @@ window.U4=(function(){
   }
   if(document.readyState!=='loading')initAll();else document.addEventListener('DOMContentLoaded',initAll);
   return {refreshClouds:refreshClouds};
+})();
+</script>
+
+<!-- ===================== 影片放大浮層（自製全螢幕鈕；不用 Fullscreen API，保留簡報全螢幕）===================== -->
+<div class="video-cinema" id="videoCinema" hidden>
+  <div class="vc-frame" id="vcFrame"></div>
+  <button class="vc-close" id="vcClose" title="關閉（或點暗處）" aria-label="關閉">✕</button>
+</div>
+<script>
+(function(){
+  var ov=document.getElementById('videoCinema'),fr=document.getElementById('vcFrame'),cl=document.getElementById('vcClose');
+  if(!ov)return;
+  function clean(id){return String(id||'').replace(/[^\w-]/g,'');}
+  function open(id){id=clean(id);if(!id)return;
+    fr.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&fs=0&modestbranding=1&autoplay=1" title="影片放大" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>';
+    ov.hidden=false;}
+  function close(){ov.hidden=true;fr.innerHTML='';}
+  document.querySelectorAll('.vframe .vfs').forEach(function(b){
+    b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var vf=b.closest('.vframe');open(vf&&vf.getAttribute('data-video'));});
+  });
+  cl.addEventListener('click',function(e){e.stopPropagation();close();});
+  ov.addEventListener('click',function(e){if(e.target===ov)close();});
+  document.addEventListener('keydown',function(e){if(!ov.hidden&&e.key==='Escape'){e.stopPropagation();close();}},true);
 })();
 </script>
 </body>
