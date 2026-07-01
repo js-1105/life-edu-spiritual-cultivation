@@ -51,12 +51,19 @@ button.send:active{transform:translateY(1px);opacity:.9}
   var GROUPS={1:'#862633',2:'#A8782E',3:'#1E5F74',4:'#6B5635',5:'#5C1A23',6:'#3E7D5A'};
   var p=new URLSearchParams(location.search);
   var g=(p.get('g')||'1').replace(/[^1-6]/g,'')||'1';
-  var round='topics';
+  var round=(p.get('r')||'topics').replace(/[^a-z]/g,'')||'topics';
   var C=GROUPS[g]||'#862633';
   document.documentElement.style.setProperty('--c',C);
   document.getElementById('gName').textContent='第 '+g+' 組';
   document.getElementById('blkMain').style.borderTopColor=C;
   document.title='第'+g+'組 靈修課題 · 投稿';
+  if(round==='battle'){
+    document.querySelector('.bar .s').textContent='透過覺察心法，想討論的念頭與修法';
+    document.getElementById('introTxt').innerHTML='說說看：透過「覺察心法」，你們最想討論的<b>念頭</b>是什麼？這些念頭若盤據心頭、成了習性，會把人拖成某種靈性上的人格，或成為難纏的靈性掙扎。你們有什麼<b>好的靈修方法</b>能在這場戰役裡慢慢致勝？又從<b>失敗的經驗</b>學到什麼？把重點打上來（可分多次送出）。';
+    document.querySelector('#blkMain label').textContent='我們這一組的討論重點';
+    document.getElementById('main').setAttribute('placeholder','例：最想討論的念頭／有效的靈修方法／失敗中學到的……');
+    document.title='第'+g+'組 討論 · 投稿';
+  }
   function esc(s){return String(s||'').replace(/[&<>]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[m];});}
   function configured(){return window.FB_CONFIG&&FB_CONFIG.apiKey&&FB_CONFIG.apiKey.indexOf('PASTE')<0;}
   function listify(o){if(!o)return[];return Object.keys(o).sort(function(a,b){return (o[a].t||0)-(o[b].t||0);}).map(function(k){return {k:k,txt:o[k].txt};});}

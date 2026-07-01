@@ -60,6 +60,15 @@ button.send:active{transform:translateY(1px);opacity:.9}
     set('introTxt','回到你最在意的那個靈性掙扎——<b>分享一個你親身用過、真的有用的方法或心法</b>（哪怕很小、很土）。用 <b>1–5 個字</b>命名它（每則單獨送出），即時匯成全班的一朵雲。');
     var ta=document.getElementById('text');if(ta)ta.setAttribute('placeholder','例：深呼吸三次　／　寫感恩日記　／　先離開現場　／　找人說　／　散步');
   }
+  if(P==='knock'){
+    document.title='壞念頭雲 · 投稿';
+    var setk=function(id,html){var el=document.getElementById(id);if(el)el.innerHTML=html;};
+    setk('barG','壞念頭雲');
+    setk('barS','為來敲門的壞念頭命名');
+    setk('lblText','我最想面對的那個壞念頭');
+    setk('introTxt','用剛學的「覺察心法」，挑出<b>最困擾你、或最想討論</b>的那個念頭——它可能還在門口敲門，也可能早已進門住下。用 <b>1–3 個字</b>為它命名（每則單獨送出），即時匯成全班的一朵雲。');
+    var tak=document.getElementById('text');if(tak)tak.setAttribute('placeholder','例：拖延　／　比較　／　放不下　／　滑手機逃避　／　易怒');
+  }
   function esc(s){return String(s||'').replace(/[&<>]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[m];});}
   function configured(){return window.FB_CONFIG&&FB_CONFIG.apiKey&&FB_CONFIG.apiKey.indexOf('PASTE')<0;}
   function listify(o){if(!o)return[];return Object.keys(o).sort(function(a,b){return (o[a].t||0)-(o[b].t||0);}).map(function(k){return {k:k,txt:o[k].txt};});}
