@@ -202,16 +202,16 @@ body.no-clickzones .click-zones{display:none}
 .vc-frame iframe{width:100%;height:100%;border:0;border-radius:10px;box-shadow:0 24px 70px rgba(0,0,0,.6)}
 .vc-close{position:fixed;top:1em;right:1.2em;z-index:100000;width:2.5em;height:2.5em;border:none;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-size:1.35rem;line-height:1;cursor:pointer;font-family:inherit}
 .vc-close:hover{background:rgba(255,255,255,.32)}
-/* 選擇的冰山（背後因素四層） */
-.iceberg{display:flex;flex-direction:column;align-items:center;gap:.4em;width:100%;flex:none;margin:.2em 0}
-.ice-layer{border-radius:12px;padding:.5em 1.1em;text-align:center;box-shadow:var(--shadow-soft);line-height:1.35}
-.ice-layer .il-t{font-family:var(--font-serif);font-weight:900;font-size:clamp(1.15rem,1.7vw,1.55rem);display:block}
-.ice-layer .il-d{font-size:clamp(.98rem,1.3vw,1.25rem);opacity:.92}
-.ice-tip{width:46%;background:#fff;border:2px solid var(--color-accent);color:var(--color-primary)}
-.ice-waterline{width:100%;border-top:2px dashed #2f6f8f;text-align:right;color:#2f6f8f;font-size:.82rem;font-weight:700;letter-spacing:.15em;padding-top:.05em}
-.ice-1{width:64%;background:linear-gradient(135deg,#f6eddd,#ecd8b8);color:#5a4420}
-.ice-2{width:82%;background:linear-gradient(135deg,#e3c3ba,#c68b82);color:#4a1f1a}
-.ice-3{width:100%;background:linear-gradient(135deg,#7c2331,#5C1A23);color:#fff;border-bottom:4px solid var(--color-accent)}
+/* 追溯選擇的根源：層層內縮的同心方框（依教授原簡報「Trace to the Root」意象） */
+.root-trace{width:min(60vh,540px);margin:.15em auto;font-family:var(--font-serif);font-weight:700;line-height:1.2}
+.root-trace .rt{border-radius:10px;padding:.42em .8em .62em;text-align:center;box-shadow:0 3px 12px rgba(0,0,0,.12)}
+.root-trace .rt .rt{margin-top:.38em}
+.root-trace .rt-l{display:block;font-size:clamp(1.02rem,1.5vw,1.45rem)}
+.root-trace .rt-1{background:#f1e3cd;color:#5a4420}
+.root-trace .rt-2{background:#e8cea8;color:#543818}
+.root-trace .rt-3{background:#d9ab8d;color:#47220f}
+.root-trace .rt-4{background:#bd7263;color:#fff}
+.root-trace .rt-5{background:#5C1A23;color:#fff;box-shadow:inset 0 0 0 2px var(--color-accent),0 3px 12px rgba(0,0,0,.2)}
 </style>
 <script src="fbconfig.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -536,22 +536,26 @@ body.no-clickzones .click-zones{display:none}
 
 <!-- ───── 選擇現象學：一個選擇是一座冰山（孫效智「選擇現象學」，S29 之後插入）───── -->
 <section class="slide">
-  <div class="movement"><span class="mv-num">樂章一</span>認識戰場</div>
   <h2>一個選擇，是一座冰山</h2>
   <p class="lead" style="max-width:none">νῆψις 守住的，是念頭「進門」那一瞬——冰山露出水面的一角。但從<b>起心動念</b>到真正<b>拍板</b>，水面下還藏著一整座冰山。看懂它，才能在內在戰場「<b>從頭到尾</b>」保持覺醒。</p>
   <p class="muted" style="max-width:none;margin-top:.4em"><b>選擇現象學</b>——探究人的選擇，瞭解其性質、背後因素與歷程的學問。為什麼值得探究？因為「<b>選擇形塑我，也形塑我的人生</b>」。<br>（孟子：「學問之道無他，求其放心而已矣」；曾子：「吾日三省吾身」。）</p>
 </section>
 
 <section class="slide">
-  <h2>選擇的冰山：從表象到深層</h2>
-  <div class="iceberg">
-    <div class="ice-layer ice-tip"><span class="il-t">選擇行為</span><span class="il-d">大大小小、時時刻刻的選擇——我做了什麼</span></div>
-    <div class="ice-waterline">水面</div>
-    <div class="ice-layer ice-1"><span class="il-t">理性因素</span><span class="il-d">價值、信念、人生觀</span></div>
-    <div class="ice-layer ice-2"><span class="il-t">非理性因素</span><span class="il-d">習氣／反射、慾望情緒、五毒心、體力</span></div>
-    <div class="ice-layer ice-3"><span class="il-t">靈性・覺性</span><span class="il-d">在理性與非理性的爭戰中「敲板定案」的決定性因素</span></div>
+  <h2>從表象到深層：追溯選擇的根源</h2>
+  <p class="lead" style="text-align:center;max-width:none;margin-bottom:.1em">一個選擇的根源是<b>一層一層</b>的——從最表面的「選擇」，一路追到最深處：</p>
+  <div class="root-trace">
+    <div class="rt rt-1"><span class="rt-l">選擇</span>
+      <div class="rt rt-2"><span class="rt-l">價值</span>
+        <div class="rt rt-3"><span class="rt-l">人生觀</span>
+          <div class="rt rt-4"><span class="rt-l">終極信念</span>
+            <div class="rt rt-5"><span class="rt-l">理性與非理性因素的靈性爭戰</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <p class="muted" style="text-align:center;max-width:none;margin-top:.3em">我們在〈貳〉命名的<b>五毒心</b>，就藏在「非理性因素」這一層作用；而最底的<b>靈性・覺性</b>，正是決定這場內在爭戰勝負的那一槌。</p>
+  <p class="muted" style="text-align:center;max-width:none;margin-top:.35em">最深處，是理性與非理性（含我們命名過的<b>五毒心</b>）的拉鋸；決定勝負的，是<b>靈性／覺性</b>那一槌。</p>
 </section>
 
 <section class="slide">
