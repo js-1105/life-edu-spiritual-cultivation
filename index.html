@@ -193,15 +193,13 @@ body.no-clickzones .click-zones{display:none}
 .mini-list li{background:#fff;border-left:5px solid var(--color-accent);border-radius:10px;box-shadow:var(--shadow-soft);padding:.55em .85em;font-size:clamp(1.05rem,1.45vw,1.42rem);line-height:1.45}
 .mini-list li b{color:var(--color-primary)}
 .mini-list li .mt{font-family:var(--font-serif);font-weight:700;color:var(--color-primary);margin-right:.5em}
-/* 影片自製全螢幕（⛶）＋放大浮層：不用 Fullscreen API，保留簡報全螢幕；浮層掛 body 層避開 fitwrap transform 坑 */
-.vframe .vfs{position:absolute;bottom:.6em;right:.6em;z-index:6;width:2.3em;height:2.3em;border:none;border-radius:9px;background:rgba(0,0,0,.6);color:#fff;font-size:1.15rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;font-family:inherit}
+/* 影片放大＝同一個 iframe「就地」放大（只切 CSS class，不換 iframe→播放不中斷、不重頭、不停止）。放大時暫清祖先 transform，讓 position:fixed 對齊真實視窗，避開 fitwrap scale 坑。右下 ⛶ 在大小兩態都在，隨時 toggle。 */
+.vframe .vfs{position:absolute;bottom:.6em;right:.6em;z-index:8;width:2.3em;height:2.3em;border:none;border-radius:9px;background:rgba(0,0,0,.6);color:#fff;font-size:1.15rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;font-family:inherit}
 .vframe .vfs:hover{background:rgba(134,38,51,.95)}
-.video-cinema{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.94);display:flex;align-items:center;justify-content:center}
-.video-cinema[hidden]{display:none}
-.vc-frame{width:min(95vw,168vh);aspect-ratio:16/9;max-height:92vh}
-.vc-frame iframe{width:100%;height:100%;border:0;border-radius:10px;box-shadow:0 24px 70px rgba(0,0,0,.6)}
-.vc-close{position:fixed;top:1em;right:1.2em;z-index:100000;width:2.5em;height:2.5em;border:none;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-size:1.35rem;line-height:1;cursor:pointer;font-family:inherit}
-.vc-close:hover{background:rgba(255,255,255,.32)}
+#zoomBackdrop{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:99990;opacity:0;visibility:hidden;transition:opacity .2s}
+body.has-zoom #zoomBackdrop{opacity:1;visibility:visible}
+.vframe.zoom{position:fixed;inset:2vh 2vw;width:auto;height:auto;aspect-ratio:auto;max-width:none;z-index:99999;border-radius:12px;box-shadow:0 30px 90px rgba(0,0,0,.7)}
+.vframe.zoom .vfs{width:2.7em;height:2.7em;font-size:1.35rem;bottom:1em;right:1em}
 /* 追溯選擇的根源：層層內縮的同心方框（依教授原簡報「Trace to the Root」意象） */
 .root-trace{width:min(60vh,540px);margin:.15em auto;font-family:var(--font-serif);font-weight:700;line-height:1.2}
 .root-trace .rt{border-radius:10px;padding:.42em .8em .62em;text-align:center;box-shadow:0 3px 12px rgba(0,0,0,.12)}
@@ -1031,22 +1029,9 @@ fitAll();
 const noClickZoneSlides=[];
 slides.forEach((s,i)=>{if(s.classList.contains('cover')||s.classList.contains('closing')||s.querySelector('iframe,video,.cover-cta,.back-home-btn,.qr-box,.gbox'))noClickZoneSlides.push(i+1);});
 const CLOUD_SLIDES=[];slides.forEach((s,i)=>{if(s.querySelector('.cloud-canvas-wrap canvas'))CLOUD_SLIDES.push(i+1);});
-// 只讓「目前這一頁」的影片小視窗載入；其餘頁一律停播，杜絕跨頁殘留聲音
-function syncSlideVideos(){
-  var active=document.querySelector('.slide.active');
-  document.querySelectorAll('.slide').forEach(function(s){
-    var f=s.querySelector('.vframe iframe'); if(!f)return;
-    if(f.dataset.osrc===undefined)f.dataset.osrc=f.getAttribute('src')||'';
-    if(s===active){
-      if(f.getAttribute('src')==='about:blank'&&f.dataset.osrc)f.setAttribute('src',f.dataset.osrc);
-    }else if(f.getAttribute('src')!=='about:blank'){
-      try{f.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');}catch(e){}
-      f.setAttribute('src','about:blank');
-    }
-  });
-}
 function showSlide(n){
   if(n<1)n=1;if(n>total)n=total;
+  if(window.__exitVideoZoom)window.__exitVideoZoom();
   slides.forEach((s,i)=>{s.classList.remove('active','prev');if(i+1===n)s.classList.add('active');else if(i+1<n)s.classList.add('prev');});
   current=n;
   document.getElementById('curr').textContent=current;
@@ -1054,7 +1039,6 @@ function showSlide(n){
   history.replaceState(null,'','#'+current);
   document.body.classList.toggle('no-clickzones',noClickZoneSlides.includes(n));
   if(window.U4&&CLOUD_SLIDES.includes(n))U4.refreshClouds();
-  syncSlideVideos();
 }
 function nextSlide(){showSlide(current+1)}function prevSlide(){showSlide(current-1)}function goToSlide(n){showSlide(n)}
 function getFsReq(el){return el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen||el.msRequestFullscreen||null}
@@ -1190,40 +1174,39 @@ window.U4=(function(){
 })();
 </script>
 
-<!-- ===================== 影片放大浮層（自製全螢幕鈕；不用 Fullscreen API，保留簡報全螢幕）===================== -->
-<div class="video-cinema" id="videoCinema" hidden>
-  <div class="vc-frame" id="vcFrame"></div>
-  <button class="vc-close" id="vcClose" title="關閉（或點暗處）" aria-label="關閉">✕</button>
-</div>
+<!-- ===================== 影片就地放大（同一 iframe 切 CSS class；播放不中斷、不重頭、不停止）===================== -->
+<div id="zoomBackdrop"></div>
 <script>
 (function(){
-  var ov=document.getElementById('videoCinema'),fr=document.getElementById('vcFrame'),cl=document.getElementById('vcClose');
-  if(!ov)return;
-  function clean(id){return String(id||'').replace(/[^\w-]/g,'');}
-  function stopInline(){
-    // 放大時，先讓所有頁內小視窗停播，避免與放大視窗雙重聲音
-    document.querySelectorAll('.vframe iframe').forEach(function(f){
-      if(f.dataset.osrc===undefined)f.dataset.osrc=f.getAttribute('src')||'';
-      try{f.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');}catch(e){}
-      f.setAttribute('src','about:blank');
-    });
+  var backdrop=document.getElementById('zoomBackdrop');
+  function zoomedFrame(){return document.querySelector('.vframe.zoom');}
+  function enter(vf){
+    // 暫清祖先 transform，讓 position:fixed 對齊真實視窗（fitwrap scale / slide translateX 都會綁架 fixed）
+    var fw=vf.closest('.fitwrap'), sl=vf.closest('.slide');
+    if(fw){fw.dataset.savedT=fw.style.transform||'';fw.style.transform='none';}
+    if(sl){sl.dataset.savedT=sl.style.transform||'';sl.style.transform='none';}
+    vf.classList.add('zoom');
+    document.body.classList.add('has-zoom');
   }
-  function restoreInline(){
-    document.querySelectorAll('.vframe iframe').forEach(function(f){
-      if(f.dataset.osrc!==undefined&&f.getAttribute('src')==='about:blank')f.setAttribute('src',f.dataset.osrc);
-    });
+  function exit(){
+    var vf=zoomedFrame();
+    document.body.classList.remove('has-zoom');
+    if(!vf)return;
+    var fw=vf.closest('.fitwrap'), sl=vf.closest('.slide');
+    vf.classList.remove('zoom');
+    if(fw)fw.style.transform=fw.dataset.savedT||'';
+    if(sl)sl.style.transform=sl.dataset.savedT||'';
   }
-  function open(id){id=clean(id);if(!id)return;
-    stopInline();
-    fr.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&fs=0&modestbranding=1&autoplay=1" title="影片放大" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>';
-    ov.hidden=false;}
-  function close(){ov.hidden=true;fr.innerHTML='';if(window.syncSlideVideos){syncSlideVideos();}else{restoreInline();}}
+  function toggle(vf){
+    if(vf.classList.contains('zoom')){exit();}
+    else{var cur=zoomedFrame();if(cur&&cur!==vf)exit();enter(vf);}
+  }
+  window.__exitVideoZoom=exit; // 換頁時由 showSlide 呼叫，確保還原
   document.querySelectorAll('.vframe .vfs').forEach(function(b){
-    b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var vf=b.closest('.vframe');open(vf&&vf.getAttribute('data-video'));});
+    b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();toggle(b.closest('.vframe'));});
   });
-  cl.addEventListener('click',function(e){e.stopPropagation();close();});
-  ov.addEventListener('click',function(e){if(e.target===ov)close();});
-  document.addEventListener('keydown',function(e){if(!ov.hidden&&e.key==='Escape'){e.stopPropagation();close();}},true);
+  if(backdrop)backdrop.addEventListener('click',function(e){e.stopPropagation();exit();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&zoomedFrame()){e.stopPropagation();exit();}},true);
 })();
 </script>
 </body>
