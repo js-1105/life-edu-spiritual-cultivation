@@ -234,6 +234,18 @@ body.no-clickzones .click-zones{display:none}
 .q3card.r2{--c:#A8782E}.q3card.r2 .n{--c1:#C79A48;--c2:#A8782E}
 .q3card.r3{--c:#862633}.q3card.r3 .n{--c1:#B0424F;--c2:#862633}
 .q3foot{text-align:center;max-width:none;margin-top:.3em;font-style:italic}
+
+/* S30 冰山背景疊字：追溯選擇根源 */
+.icepanel{position:relative;flex:none;width:clamp(230px,29vw,330px);aspect-ratio:2385/3465;max-height:74vh;border-radius:16px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.32);background:url('images/iceberg_photo.jpg?v=1') center/cover}
+.icepanel::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,26,48,.30),rgba(6,26,48,.34) 42%,rgba(6,26,48,.56))}
+.icepanel .lab{position:absolute;left:0;right:0;text-align:center;color:#fff;font-family:var(--font-serif);text-shadow:0 2px 10px rgba(0,10,25,.9),0 0 3px rgba(0,10,25,.8);line-height:1.2;padding:0 .5em}
+.icepanel .lab .o{display:block;font-size:clamp(.62rem,.9vw,.82rem);letter-spacing:.22em;color:#F0D48A;font-weight:700;margin-bottom:1px}
+.icepanel .lab .t{font-weight:900}
+.icepanel .l1{top:7%}.icepanel .l1 .t{font-size:clamp(1rem,1.5vw,1.4rem)}
+.icepanel .l2{top:25%}.icepanel .l2 .t{font-size:clamp(1.05rem,1.6vw,1.5rem)}
+.icepanel .l3{top:43%}.icepanel .l3 .t{font-size:clamp(1.15rem,1.7vw,1.6rem)}
+.icepanel .l4{top:60%}.icepanel .l4 .t{font-size:clamp(1.2rem,1.8vw,1.7rem)}
+.icepanel .l5{top:75%}.icepanel .l5 .t{font-size:clamp(1.25rem,1.9vw,1.75rem);color:#FCE7C8}
 </style>
 <script src="fbconfig.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -551,9 +563,17 @@ body.no-clickzones .click-zones{display:none}
 <section class="slide">
   <h2>選擇現象學：追溯選擇根源（Trace to the Root）</h2>
   <div class="grid2" style="align-items:center;gap:2.6vw">
-    <img class="gimg" src="images/trace_to_root.jpg?v=2" alt="Trace to the Root：選擇→價值→人生觀→終極信念／理想→理性與非理性因素的靈性爭戰" style="width:100%;background:#fff">
+    <div style="display:flex;justify-content:center">
+      <div class="icepanel">
+        <div class="lab l1"><span class="o">表層</span><span class="t">選擇</span></div>
+        <div class="lab l2"><span class="t">價值</span></div>
+        <div class="lab l3"><span class="t">人生觀</span></div>
+        <div class="lab l4"><span class="t">終極信念／理想</span></div>
+        <div class="lab l5"><span class="o">最深</span><span class="t">理性與非理性的靈性爭戰</span></div>
+      </div>
+    </div>
     <div>
-      <p class="lead" style="max-width:none">再<b>往內</b>看：從表面的「選擇」，一層一層<b>追本溯源</b>——價值 → 人生觀 → 終極信念／理想 → 最深的<b>理性與非理性因素的靈性爭戰</b>。</p>
+      <p class="lead" style="max-width:none">從表面的「選擇」，一層一層<b>追本溯源</b>，直到最深處。</p>
       <p style="max-width:none">最深處，是<b>理性與非理性因素之間的靈性爭戰</b>：<b>靈性與覺性</b>代表朝向終極信念與理想的<b>理性因素</b>，情緒、五毒心、七罪宗等則代表<b>非理性因素</b>。靈性（或覺性）是否以及如何起作用，將決定非理性因素的影響，因此左右一個人的選擇。</p>
     </div>
   </div>
