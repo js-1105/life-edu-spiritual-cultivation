@@ -222,21 +222,18 @@ body.no-clickzones .click-zones{display:none}
 .q3list .qb3{background:linear-gradient(135deg,#A23B48,#862633)}
 .q3list b{color:var(--color-primary)}
 
-/* 當下三問：編輯風深化階梯（大型漸層襯線數字，向下深沉） */
-.q3flow{display:flex;flex-direction:column;gap:.55em;width:100%;max-width:none;margin:.5em 0 .2em}
-.q3row{display:flex;align-items:center;gap:1.05em}
-.q3row.r2{margin-left:2.2em}.q3row.r3{margin-left:4.4em}
-.q3row .n{font-family:var(--font-serif);font-weight:900;line-height:.82;flex:none;text-align:center;
-  background:linear-gradient(155deg,var(--n1),var(--n2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  filter:drop-shadow(0 3px 8px rgba(92,26,35,.18))}
-.q3row.r1 .n{font-size:clamp(3rem,6.4vw,5.4rem);--n1:#E6C56A;--n2:#B8860B}
-.q3row.r2 .n{font-size:clamp(3.8rem,7.6vw,6.4rem);--n1:#C79A48;--n2:#A8782E}
-.q3row.r3 .n{font-size:clamp(4.6rem,9vw,7.6rem);--n1:#B0424F;--n2:#862633}
-.q3row .qt{display:flex;flex-direction:column}
-.q3row .q{font-family:var(--font-serif);font-weight:700;font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.3;color:var(--color-text)}
-.q3row .q b{color:var(--color-primary)}
-.q3row .g{color:var(--color-muted);font-size:clamp(1rem,1.4vw,1.3rem);margin-top:.12em;letter-spacing:.02em}
-.q3foot{text-align:center;max-width:none;margin-top:.35em;font-style:italic}
+/* 當下三問：深化卡片時間軸 */
+.q3flow{position:relative;display:flex;flex-direction:column;gap:clamp(.5em,1.1vw,.85em);width:100%;max-width:none;margin:.45em 0 .2em}
+.q3flow::before{content:"";position:absolute;left:2.15em;top:1.6em;bottom:1.6em;width:3px;background:linear-gradient(#E0BE5C,#A8782E 50%,#862633);border-radius:2px;opacity:.45;z-index:0}
+.q3card{position:relative;z-index:1;display:flex;align-items:center;gap:1.1em;background:linear-gradient(120deg,rgba(255,255,255,.86),rgba(255,255,255,.62));border:1px solid var(--color-line);border-left:6px solid var(--c);border-radius:16px;box-shadow:var(--shadow-soft);padding:clamp(.55em,1vw,.85em) clamp(1em,1.6vw,1.5em)}
+.q3card .n{flex:none;width:clamp(2.3rem,3.4vw,3.1rem);height:clamp(2.3rem,3.4vw,3.1rem);border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;font-family:var(--font-serif);font-weight:900;font-size:clamp(1.2rem,1.7vw,1.6rem);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(92,26,35,.26)}
+.q3card .q{font-family:var(--font-serif);font-weight:700;font-size:clamp(1.4rem,2.2vw,2rem);line-height:1.3}
+.q3card .q b{color:var(--color-primary)}
+.q3card .g{color:var(--color-muted);font-size:clamp(.98rem,1.35vw,1.28rem);margin-top:.12em}
+.q3card.r1{--c:#B8860B}.q3card.r1 .n{--c1:#E6C56A;--c2:#B8860B}
+.q3card.r2{--c:#A8782E}.q3card.r2 .n{--c1:#C79A48;--c2:#A8782E}
+.q3card.r3{--c:#862633}.q3card.r3 .n{--c1:#B0424F;--c2:#862633}
+.q3foot{text-align:center;max-width:none;margin-top:.3em;font-style:italic}
 </style>
 <script src="fbconfig.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -590,9 +587,9 @@ body.no-clickzones .click-zones{display:none}
 <section class="slide">
   <h2>當下三問：吾日三省吾身</h2>
   <div class="q3flow">
-    <div class="q3row r1"><div class="n">一</div><div class="qt"><span class="q">我為何會做出<b>這個選擇</b>？</span><span class="g">看見選擇背後，那個真正的動機。</span></div></div>
-    <div class="q3row r2"><div class="n">二</div><div class="qt"><span class="q">做這選擇的我，是<b>一個怎樣的人</b>？</span><span class="g">從一個選擇，照見此刻的自己。</span></div></div>
-    <div class="q3row r3"><div class="n">三</div><div class="qt"><span class="q">我希望<b>成為怎樣的人</b>？過怎樣的人生？</span><span class="g">讓嚮往，回頭校正眼前的每一個選擇。</span></div></div>
+    <div class="q3card r1"><div class="n">一</div><div class="qt"><div class="q">我為何會做出<b>這個選擇</b>？</div><div class="g">看見選擇背後，那個真正的動機。</div></div></div>
+    <div class="q3card r2"><div class="n">二</div><div class="qt"><div class="q">做這選擇的我，是<b>一個怎樣的人</b>？</div><div class="g">從一個選擇，照見此刻的自己。</div></div></div>
+    <div class="q3card r3"><div class="n">三</div><div class="qt"><div class="q">我希望<b>成為怎樣的人</b>？過怎樣的人生？</div><div class="g">讓嚮往，回頭校正眼前的每一個選擇。</div></div></div>
   </div>
   <p class="q3foot muted">一問比一問深——像曾子「三省吾身」，一層層把我們划向生命的深處。</p>
 </section>
