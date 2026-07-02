@@ -995,6 +995,7 @@ document.getElementById('total').textContent=total;
 slides.forEach(s=>{const fw=document.createElement('div');fw.className='fitwrap';while(s.firstChild)fw.appendChild(s.firstChild);s.appendChild(fw);});
 function fitSlide(s){
   const fw=s.firstElementChild;if(!fw||!fw.classList.contains('fitwrap'))return;
+  if(fw.querySelector('.vframe.zoom'))return; // 影片放大中：勿動這頁的縮放，以免綁架放大定位
   fw.style.transform='none';
   const cs=getComputedStyle(s);
   const availW=s.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
@@ -1181,9 +1182,11 @@ window.U4=(function(){
   var backdrop=document.getElementById('zoomBackdrop');
   function zoomedFrame(){return document.querySelector('.vframe.zoom');}
   function enter(vf){
-    // 暫清祖先 transform，讓 position:fixed 對齊真實視窗（fitwrap scale / slide translateX 都會綁架 fixed）
+    // 暫清祖先 transform＋fitwrap 的 z-index：transform 會綁架 position:fixed 的定位；
+    // fitwrap 的 z-index:1 會形成疊層上下文，把影片的 z-index 困在裡面 → 背景幕反而蓋住影片（變黑的元凶）
     var fw=vf.closest('.fitwrap'), sl=vf.closest('.slide');
-    if(fw){fw.dataset.savedT=fw.style.transform||'';fw.style.transform='none';}
+    if(fw){fw.dataset.savedT=fw.style.transform||'';fw.style.transform='none';
+           fw.dataset.savedZ=fw.style.zIndex||'';fw.style.zIndex='auto';}
     if(sl){sl.dataset.savedT=sl.style.transform||'';sl.style.transform='none';}
     vf.classList.add('zoom');
     document.body.classList.add('has-zoom');
@@ -1194,8 +1197,9 @@ window.U4=(function(){
     if(!vf)return;
     var fw=vf.closest('.fitwrap'), sl=vf.closest('.slide');
     vf.classList.remove('zoom');
-    if(fw)fw.style.transform=fw.dataset.savedT||'';
+    if(fw){fw.style.transform=fw.dataset.savedT||'';fw.style.zIndex=fw.dataset.savedZ||'';}
     if(sl)sl.style.transform=sl.dataset.savedT||'';
+    if(window.fitAll)fitAll(); // 放大期間若曾 resize，補一次正確縮放
   }
   function toggle(vf){
     if(vf.classList.contains('zoom')){exit();}
