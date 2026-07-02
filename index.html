@@ -1031,6 +1031,20 @@ fitAll();
 const noClickZoneSlides=[];
 slides.forEach((s,i)=>{if(s.classList.contains('cover')||s.classList.contains('closing')||s.querySelector('iframe,video,.cover-cta,.back-home-btn,.qr-box,.gbox'))noClickZoneSlides.push(i+1);});
 const CLOUD_SLIDES=[];slides.forEach((s,i)=>{if(s.querySelector('.cloud-canvas-wrap canvas'))CLOUD_SLIDES.push(i+1);});
+// 只讓「目前這一頁」的影片小視窗載入；其餘頁一律停播，杜絕跨頁殘留聲音
+function syncSlideVideos(){
+  var active=document.querySelector('.slide.active');
+  document.querySelectorAll('.slide').forEach(function(s){
+    var f=s.querySelector('.vframe iframe'); if(!f)return;
+    if(f.dataset.osrc===undefined)f.dataset.osrc=f.getAttribute('src')||'';
+    if(s===active){
+      if(f.getAttribute('src')==='about:blank'&&f.dataset.osrc)f.setAttribute('src',f.dataset.osrc);
+    }else if(f.getAttribute('src')!=='about:blank'){
+      try{f.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');}catch(e){}
+      f.setAttribute('src','about:blank');
+    }
+  });
+}
 function showSlide(n){
   if(n<1)n=1;if(n>total)n=total;
   slides.forEach((s,i)=>{s.classList.remove('active','prev');if(i+1===n)s.classList.add('active');else if(i+1<n)s.classList.add('prev');});
@@ -1040,6 +1054,7 @@ function showSlide(n){
   history.replaceState(null,'','#'+current);
   document.body.classList.toggle('no-clickzones',noClickZoneSlides.includes(n));
   if(window.U4&&CLOUD_SLIDES.includes(n))U4.refreshClouds();
+  syncSlideVideos();
 }
 function nextSlide(){showSlide(current+1)}function prevSlide(){showSlide(current-1)}function goToSlide(n){showSlide(n)}
 function getFsReq(el){return el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen||el.msRequestFullscreen||null}
@@ -1202,7 +1217,7 @@ window.U4=(function(){
     stopInline();
     fr.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&fs=0&modestbranding=1&autoplay=1" title="影片放大" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>';
     ov.hidden=false;}
-  function close(){ov.hidden=true;fr.innerHTML='';restoreInline();}
+  function close(){ov.hidden=true;fr.innerHTML='';if(window.syncSlideVideos){syncSlideVideos();}else{restoreInline();}}
   document.querySelectorAll('.vframe .vfs').forEach(function(b){
     b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var vf=b.closest('.vframe');open(vf&&vf.getAttribute('data-video'));});
   });
