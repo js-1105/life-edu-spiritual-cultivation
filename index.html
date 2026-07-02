@@ -1185,10 +1185,24 @@ window.U4=(function(){
   var ov=document.getElementById('videoCinema'),fr=document.getElementById('vcFrame'),cl=document.getElementById('vcClose');
   if(!ov)return;
   function clean(id){return String(id||'').replace(/[^\w-]/g,'');}
+  function stopInline(){
+    // 放大時，先讓所有頁內小視窗停播，避免與放大視窗雙重聲音
+    document.querySelectorAll('.vframe iframe').forEach(function(f){
+      if(f.dataset.osrc===undefined)f.dataset.osrc=f.getAttribute('src')||'';
+      try{f.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');}catch(e){}
+      f.setAttribute('src','about:blank');
+    });
+  }
+  function restoreInline(){
+    document.querySelectorAll('.vframe iframe').forEach(function(f){
+      if(f.dataset.osrc!==undefined&&f.getAttribute('src')==='about:blank')f.setAttribute('src',f.dataset.osrc);
+    });
+  }
   function open(id){id=clean(id);if(!id)return;
+    stopInline();
     fr.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&fs=0&modestbranding=1&autoplay=1" title="影片放大" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>';
     ov.hidden=false;}
-  function close(){ov.hidden=true;fr.innerHTML='';}
+  function close(){ov.hidden=true;fr.innerHTML='';restoreInline();}
   document.querySelectorAll('.vframe .vfs').forEach(function(b){
     b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var vf=b.closest('.vframe');open(vf&&vf.getAttribute('data-video'));});
   });
