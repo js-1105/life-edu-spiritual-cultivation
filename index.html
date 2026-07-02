@@ -255,6 +255,14 @@ body.has-zoom #zoomBackdrop{opacity:1;visibility:visible}
 .dstep .lab{font-family:var(--font-serif);font-weight:900;font-size:clamp(1.15rem,1.65vw,1.5rem);color:#12303a}
 .dstep .g{color:#4a5560;font-size:clamp(.9rem,1.25vw,1.14rem);margin-left:.45em;font-weight:400}
 .dive .backup{display:block;text-align:right;color:#F0D48A;font-weight:700;letter-spacing:.05em;font-size:clamp(.82rem,1.1vw,1.02rem);margin-top:.5em}
+/* S31 覺察心法：壞念頭試圖闖門＋眼睛注視其動靜（同一節奏循環，呈現「注意→它收斂」的因果） */
+@keyframes s31ImpLunge{0%,28%,100%{transform:translate(0,0) rotate(0deg)}40%{transform:translate(15px,-5px) rotate(-9deg)}50%{transform:translate(17px,-6px) rotate(-10deg)}60%{transform:translate(13px,-4px) rotate(-8deg)}76%{transform:translate(0,0) rotate(0deg)}}
+@keyframes s31EyeTrack{0%,28%,100%{transform:translate(0,0) scale(1)}40%,60%{transform:translate(-9px,-1px) scale(1.06)}76%{transform:translate(0,0) scale(1)}}
+@keyframes s31GlowPulse{0%,28%,100%{transform:scale(1)}40%,60%{transform:scale(1.12)}76%{transform:scale(1)}}
+.s31-imp-wrap{transform-box:fill-box;transform-origin:center;animation:s31ImpLunge 4.2s ease-in-out infinite}
+.s31-eye-wrap{animation:s31EyeTrack 4.2s ease-in-out infinite}
+.s31-glow{transform-box:fill-box;transform-origin:center;animation:s31GlowPulse 4.2s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.s31-imp-wrap,.s31-eye-wrap,.s31-glow{animation:none}}
 </style>
 <script src="fbconfig.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -605,13 +613,16 @@ body.has-zoom #zoomBackdrop{opacity:1;visibility:visible}
 <path d="M46 296 L46 146 Q46 74 150 74 Q254 74 254 146 L254 296 Z" fill="none" stroke="url(#gold)" stroke-width="8" stroke-linejoin="round"/>
 <line x1="30" y1="296" x2="270" y2="296" stroke="url(#gold)" stroke-width="8" stroke-linecap="round"/>
 <!-- eye of awareness above door -->
-<ellipse cx="150" cy="46" rx="128" ry="70" fill="url(#glow)"/>
+<ellipse class="s31-glow" cx="150" cy="46" rx="128" ry="70" fill="url(#glow)"/>
 <g stroke="url(#gold)" stroke-width="3" stroke-linecap="round" opacity="0.72"><line x1="150" y1="2" x2="150" y2="-8" transform="translate(0 8)"/><line x1="110" y1="12" x2="100" y2="0"/><line x1="190" y1="12" x2="200" y2="0"/><line x1="80" y1="30" x2="66" y2="22"/><line x1="220" y1="30" x2="234" y2="22"/></g>
 <path d="M78 48 Q150 12 222 48 Q150 84 78 48 Z" fill="#FCF7EA" stroke="#8a5a12" stroke-width="3"/>
+<g class="s31-eye-wrap">
 <circle cx="144" cy="52" r="24" fill="url(#iris)"/>
 <circle cx="140" cy="55" r="10.5" fill="#2a0d13"/>
 <circle cx="146" cy="47" r="3.6" fill="#FCF7EA" opacity="0.9"/>
+</g>
 <path d="M82 46 Q150 14 218 46" fill="none" stroke="#C9A227" stroke-width="3.2" stroke-linecap="round" opacity="0.85"/>
+<g class="s31-imp-wrap">
 <g transform="translate(14 192) scale(0.33)">
 <line x1="66" y1="330" x2="66" y2="150" stroke="#2a2540" stroke-width="7" stroke-linecap="round"/>
 <path d="M40 150 L40 108 M66 150 L66 100 M92 150 L92 108" stroke="#2a2540" stroke-width="7" stroke-linecap="round" fill="none"/>
@@ -628,6 +639,7 @@ body.has-zoom #zoomBackdrop{opacity:1;visibility:visible}
 <circle cx="146" cy="180" r="14" fill="#F3ECDD"/><circle cx="196" cy="180" r="14" fill="#F3ECDD"/>
 <path d="M138 214 Q172 248 206 216" fill="none" stroke="#F3ECDD" stroke-width="9" stroke-linecap="round"/>
 <path d="M206 216 q6 8 0 18" fill="none" stroke="#F3ECDD" stroke-width="9" stroke-linecap="round"/>
+</g>
 </g>
 </svg>
       <div style="font-family:var(--font-serif);font-weight:700;color:var(--color-accent-deep);letter-spacing:.14em;font-size:clamp(1.35rem,1.95vw,1.75rem);align-self:center">νῆψις · 覺察心法</div>
