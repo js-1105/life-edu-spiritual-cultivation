@@ -592,27 +592,34 @@ body.no-clickzones .click-zones{display:none}
 <section class="slide">
   <h2>覺察心法：守在念頭的門口</h2>
   <div class="grid2" style="align-items:center;gap:2.8vw">
-    <div style="display:flex;flex-direction:column;align-items:center;gap:.6em;width:clamp(200px,25vw,285px);margin:0 auto">
-      <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-height:52vh">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:.6em;width:clamp(280px,35vw,430px);margin:0 auto">
+      <svg viewBox="0 0 340 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-height:56vh">
 <defs>
-<radialGradient id="med" cx="0.5" cy="0.4" r="0.7"><stop offset="0" stop-color="#FBF3E0"/><stop offset="1" stop-color="#EAD9B0"/></radialGradient>
-<linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6C56A"/><stop offset="1" stop-color="#B8860B"/></linearGradient>
+<radialGradient id="glow2" cx="0.5" cy="0.42" r="0.55"><stop offset="0" stop-color="#E6C56A" stop-opacity="0.45"/><stop offset="1" stop-color="#E6C56A" stop-opacity="0"/></radialGradient>
+<radialGradient id="iris" cx="0.42" cy="0.38" r="0.7"><stop offset="0" stop-color="#FBF3E0"/><stop offset="0.4" stop-color="#E6C56A"/><stop offset="0.8" stop-color="#B8860B"/><stop offset="1" stop-color="#862633"/></radialGradient>
+<linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6C56A"/><stop offset="1" stop-color="#B8860B"/></linearGradient>
 </defs>
-<circle cx="120" cy="120" r="110" fill="url(#med)" stroke="url(#gold)" stroke-width="5"/>
-<circle cx="120" cy="120" r="99" fill="none" stroke="#B8860B" stroke-width="1.5" opacity="0.5"/>
-<!-- doorway arch (threshold) -->
-<path d="M74 182 L74 118 Q74 66 120 66 Q166 66 166 118 L166 182 Z" fill="#5C1A23"/>
-<path d="M74 182 L74 118 Q74 66 120 66 Q166 66 166 118 L166 182" fill="none" stroke="url(#gold)" stroke-width="4" stroke-linejoin="round"/>
-<line x1="60" y1="182" x2="180" y2="182" stroke="url(#gold)" stroke-width="5" stroke-linecap="round"/>
-<!-- watchful eye within the doorway -->
-<path d="M88 128 Q120 104 152 128 Q120 152 88 128 Z" fill="#FBF3E0"/>
-<circle cx="120" cy="128" r="12" fill="#5C1A23"/>
-<circle cx="120" cy="128" r="5.5" fill="#E6C56A"/>
-<circle cx="124" cy="124" r="2" fill="#FBF3E0"/>
-<path d="M88 128 Q120 104 152 128 Q120 152 88 128 Z" fill="none" stroke="#B8860B" stroke-width="2.5"/>
-<!-- knocking thought dot outside the door -->
-<circle cx="196" cy="150" r="7" fill="#B8860B" opacity="0.85"/>
-<circle cx="182" cy="164" r="4" fill="#B8860B" opacity="0.55"/>
+<ellipse cx="170" cy="122" rx="150" ry="120" fill="url(#glow2)"/>
+<!-- awareness rays -->
+<g stroke="url(#g2)" stroke-width="3" stroke-linecap="round" opacity="0.75">
+<line x1="170" y1="40" x2="170" y2="14"/>
+<line x1="120" y1="48" x2="106" y2="26"/><line x1="220" y1="48" x2="234" y2="26"/>
+<line x1="80" y1="70" x2="60" y2="54"/><line x1="260" y1="70" x2="280" y2="54"/>
+<line x1="52" y1="104" x2="28" y2="96"/><line x1="288" y1="104" x2="312" y2="96"/>
+</g>
+<!-- eye almond -->
+<path d="M56 122 Q170 52 284 122 Q170 192 56 122 Z" fill="#FCF7EA" stroke="#8a5a12" stroke-width="3.5"/>
+<!-- iris + pupil -->
+<circle cx="170" cy="122" r="50" fill="url(#iris)"/>
+<circle cx="170" cy="122" r="23" fill="#3a0f16"/>
+<circle cx="180" cy="110" r="7" fill="#FBF3E0" opacity="0.9"/>
+<!-- upper lid crease -->
+<path d="M64 118 Q170 58 276 118" fill="none" stroke="#C9A227" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+<!-- a thought (念頭) rising to be noticed by awareness -->
+<path d="M92 232 C110 205 120 180 150 158" fill="none" stroke="#862633" stroke-width="2.5" stroke-dasharray="2 8" stroke-linecap="round" opacity="0.6"/>
+<circle cx="88" cy="236" r="8" fill="#862633"/>
+<circle cx="88" cy="236" r="16" fill="none" stroke="#862633" stroke-width="2" opacity="0.5"/>
+<circle cx="88" cy="236" r="25" fill="none" stroke="#862633" stroke-width="1.5" opacity="0.26"/>
 </svg>
       <div style="font-family:var(--font-serif);font-weight:700;color:var(--color-accent-deep);letter-spacing:.14em;font-size:clamp(1rem,1.4vw,1.35rem)">νῆψις · 覺察心法</div>
     </div>
