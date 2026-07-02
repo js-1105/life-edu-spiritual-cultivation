@@ -246,6 +246,17 @@ body.no-clickzones .click-zones{display:none}
 .icepanel .l3{top:58%}.icepanel .l3 .t{font-size:clamp(1.15rem,1.7vw,1.6rem)}
 .icepanel .l4{top:71%}.icepanel .l4 .t{font-size:clamp(1.2rem,1.8vw,1.7rem)}
 .icepanel .l5{top:84%}.icepanel .l5 .t{font-size:clamp(1.25rem,1.9vw,1.75rem);color:#FCE7C8}
+
+/* S33 深潛階梯：向下深潛的四層反思 */
+.dive{position:relative;border-radius:18px;overflow:hidden;width:100%;padding:clamp(1.2em,2vw,1.7em) clamp(1.2em,2.2vw,2em) clamp(1em,1.8vw,1.4em);background:linear-gradient(180deg,#d7edf5 0%,#5fa0bd 30%,#1f6d90 62%,#083046 100%);box-shadow:0 18px 44px rgba(0,0,0,.22)}
+.dive .surf{position:absolute;top:.55em;left:1.5em;font-size:clamp(.68rem,1vw,.88rem);letter-spacing:.3em;color:#0a4a63;font-weight:700}
+.dstep{display:flex;align-items:center;gap:clamp(.6em,1.1vw,1em);background:rgba(255,255,255,.94);border-radius:13px;box-shadow:0 6px 16px rgba(0,20,40,.28);padding:clamp(.5em,.9vw,.72em) clamp(.9em,1.5vw,1.25em);margin:clamp(.38em,.75vw,.6em) 0}
+.dstep.s1{width:72%;margin-left:0}.dstep.s2{width:72%;margin-left:7%}.dstep.s3{width:72%;margin-left:14%}.dstep.s4{width:72%;margin-left:21%}
+.dstep .n{flex:none;width:clamp(2.1rem,3vw,2.8rem);height:clamp(2.1rem,3vw,2.8rem);border-radius:50%;color:#fff;font-family:var(--font-serif);font-weight:900;font-size:clamp(1.1rem,1.5vw,1.4rem);display:flex;align-items:center;justify-content:center}
+.dstep.s1 .n{background:#3f9fc0}.dstep.s2 .n{background:#2c86ae}.dstep.s3 .n{background:#276b95}.dstep.s4 .n{background:#0f4e74}
+.dstep .lab{font-family:var(--font-serif);font-weight:900;font-size:clamp(1.15rem,1.65vw,1.5rem);color:#12303a}
+.dstep .g{color:#4a5560;font-size:clamp(.9rem,1.25vw,1.14rem);margin-left:.45em;font-weight:400}
+.dive .backup{display:block;text-align:right;color:#F0D48A;font-weight:700;letter-spacing:.05em;font-size:clamp(.82rem,1.1vw,1.02rem);margin-top:.5em}
 </style>
 <script src="fbconfig.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -600,14 +611,16 @@ body.no-clickzones .click-zones{display:none}
 </section>
 <section class="slide">
   <h2>潛下去，再浮上來：全程的覺醒</h2>
-  <p class="lead" style="max-width:none">「當下三問」引領我們一層一層划向生命深處——潛到底，再帶著答案浮回生活：</p>
-  <ul class="feature-list" style="margin-top:.2em">
-    <li><b>當下反思</b>　我為何會做這個選擇？（反思選擇背後的因素）</li>
-    <li><b>自我覺察</b>　做出這選擇的我，是一個怎樣的人？</li>
-    <li><b>人生願景</b>　我希望成為怎樣的人、過怎樣的人生？</li>
-    <li><b>終極關懷</b>　什麼，是值得我活出的人生意義？</li>
-  </ul>
-  <p class="muted" style="max-width:none;margin-top:.3em">門口的 <b>νῆψις</b>（守住起心動念）＋ 看懂整座<b>冰山</b>（潛到底的覺察）＝ 內在靈性戰場「<b>從頭到尾</b>」的覺醒。它最終接上生命教育的<b>人生三問</b>：為何而活、如何而活、如何知行合一。</p>
+  <p class="lead" style="max-width:none;margin-bottom:.3em">「當下三問」引領我們一層一層划向生命深處——潛到底，再帶著答案浮回生活：</p>
+  <div class="dive">
+    <span class="surf">水面</span>
+    <div class="dstep s1"><div class="n">一</div><div><span class="lab">當下反思</span><span class="g">我為何會做這個選擇？</span></div></div>
+    <div class="dstep s2"><div class="n">二</div><div><span class="lab">自我覺察</span><span class="g">做這選擇的我，是怎樣的人？</span></div></div>
+    <div class="dstep s3"><div class="n">三</div><div><span class="lab">人生願景</span><span class="g">我希望成為怎樣的人、過怎樣的人生？</span></div></div>
+    <div class="dstep s4"><div class="n">四</div><div><span class="lab">終極關懷</span><span class="g">什麼，是值得我活出的人生意義？</span></div></div>
+    <span class="backup">↑ 帶著答案，浮回生活</span>
+  </div>
+  <p class="muted" style="max-width:none;margin-top:.35em">門口的 <b>覺察心法</b>（守住起心動念）＋ 看懂整座<b>冰山</b>（潛到底的覺察）＝ 內在戰場「<b>從頭到尾</b>」的覺醒，最終接上<b>人生三問</b>：為何而活、如何而活、如何知行合一。</p>
 </section>
 <section class="slide">
   <h2>換你來：為來敲門的壞念頭命名</h2>
