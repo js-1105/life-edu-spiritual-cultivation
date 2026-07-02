@@ -255,13 +255,39 @@ body.has-zoom #zoomBackdrop{opacity:1;visibility:visible}
 .dstep .lab{font-family:var(--font-serif);font-weight:900;font-size:clamp(1.15rem,1.65vw,1.5rem);color:#12303a}
 .dstep .g{color:#4a5560;font-size:clamp(.9rem,1.25vw,1.14rem);margin-left:.45em;font-weight:400}
 .dive .backup{display:block;text-align:right;color:#F0D48A;font-weight:700;letter-spacing:.05em;font-size:clamp(.82rem,1.1vw,1.02rem);margin-top:.5em}
-/* S31 覺察心法：壞念頭試圖闖門＋眼睛注視其動靜（同一節奏循環，呈現「注意→它收斂」的因果） */
-@keyframes s31ImpLunge{0%,28%,100%{transform:translate(0,0) rotate(0deg)}40%{transform:translate(15px,-5px) rotate(-9deg)}50%{transform:translate(17px,-6px) rotate(-10deg)}60%{transform:translate(13px,-4px) rotate(-8deg)}76%{transform:translate(0,0) rotate(0deg)}}
-@keyframes s31EyeTrack{0%,28%,100%{transform:translate(0,0) scale(1)}40%,60%{transform:translate(-9px,-1px) scale(1.06)}76%{transform:translate(0,0) scale(1)}}
-@keyframes s31GlowPulse{0%,28%,100%{transform:scale(1)}40%,60%{transform:scale(1.12)}76%{transform:scale(1)}}
-.s31-imp-wrap{transform-box:fill-box;transform-origin:center;animation:s31ImpLunge 4.2s ease-in-out infinite}
-.s31-eye-wrap{animation:s31EyeTrack 4.2s ease-in-out infinite}
-.s31-glow{transform-box:fill-box;transform-origin:center;animation:s31GlowPulse 4.2s ease-in-out infinite}
+/* S31 覺察心法：壞念頭從門外往門內竄，眼珠左右跟隨它的動靜，光暈隨警覺增亮（同一 5.2s 節奏） */
+@keyframes s31ImpLunge{
+  0%,22%{transform:translate(0,0) rotate(0deg)}
+  28%{transform:translate(-7px,2px) rotate(4deg)}
+  38%{transform:translate(46px,-6px) rotate(-10deg)}
+  46%{transform:translate(76px,-10px) rotate(-12deg)}
+  50%{transform:translate(82px,-11px) rotate(-8deg)}
+  54%{transform:translate(75px,-10px) rotate(-13deg)}
+  58%{transform:translate(80px,-10px) rotate(-9deg)}
+  68%{transform:translate(-10px,1px) rotate(6deg)}
+  78%,100%{transform:translate(0,0) rotate(0deg)}
+}
+@keyframes s31EyeTrack{
+  0%,22%{transform:translate(0,0) scale(1)}
+  28%{transform:translate(-13px,3px) scale(1.04)}
+  38%{transform:translate(-5px,2px) scale(1.07)}
+  46%{transform:translate(6px,3px) scale(1.09)}
+  50%{transform:translate(9px,3px) scale(1.1)}
+  54%{transform:translate(5px,3px) scale(1.09)}
+  58%{transform:translate(8px,3px) scale(1.09)}
+  68%{transform:translate(-11px,2px) scale(1.05)}
+  78%,100%{transform:translate(0,0) scale(1)}
+}
+@keyframes s31GlowPulse{
+  0%,22%{transform:scale(1);opacity:.55}
+  28%{transform:scale(1.08);opacity:.75}
+  38%,58%{transform:scale(1.32);opacity:1}
+  68%{transform:scale(1.1);opacity:.8}
+  78%,100%{transform:scale(1);opacity:.55}
+}
+.s31-imp-wrap{transform-box:fill-box;transform-origin:center;animation:s31ImpLunge 5.2s ease-in-out infinite}
+.s31-eye-wrap{transform-box:fill-box;transform-origin:center;animation:s31EyeTrack 5.2s ease-in-out infinite}
+.s31-glow{transform-box:fill-box;transform-origin:center;animation:s31GlowPulse 5.2s ease-in-out infinite}
 @media (prefers-reduced-motion: reduce){.s31-imp-wrap,.s31-eye-wrap,.s31-glow{animation:none}}
 </style>
 <script src="fbconfig.js"></script>
@@ -601,7 +627,7 @@ body.has-zoom #zoomBackdrop{opacity:1;visibility:visible}
     <div style="display:flex;flex-direction:column;align-items:flex-start;gap:.4em;width:100%">
       <svg viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-height:88vh">
 <defs>
-<radialGradient id="glow" cx="0.5" cy="0.4" r="0.55"><stop offset="0" stop-color="#F0D48A" stop-opacity="0.5"/><stop offset="1" stop-color="#F0D48A" stop-opacity="0"/></radialGradient>
+<radialGradient id="glow" cx="0.5" cy="0.4" r="0.55"><stop offset="0" stop-color="#F0C243" stop-opacity="0.9"/><stop offset="0.55" stop-color="#F0D48A" stop-opacity="0.5"/><stop offset="1" stop-color="#F0D48A" stop-opacity="0"/></radialGradient>
 <radialGradient id="iris" cx="0.42" cy="0.4" r="0.7"><stop offset="0" stop-color="#FCF7EA"/><stop offset="0.4" stop-color="#E6C56A"/><stop offset="0.82" stop-color="#B8860B"/><stop offset="1" stop-color="#7c1f2b"/></radialGradient>
 <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6C56A"/><stop offset="1" stop-color="#B8860B"/></linearGradient>
 <linearGradient id="inner" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf6ea"/><stop offset="1" stop-color="#efe0c2"/></linearGradient>
