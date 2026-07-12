@@ -1180,6 +1180,7 @@ window.U4=(function(){
     if(sl){sl.dataset.savedT=sl.style.transform||'';sl.style.transform='none';}
     vf.classList.add('zoom');
     document.body.classList.add('has-zoom');
+    var b=vf.querySelector('.vfs');if(b)b.textContent='✕';
   }
   function exit(){
     var vf=zoomedFrame();
@@ -1189,6 +1190,7 @@ window.U4=(function(){
     vf.classList.remove('zoom');
     if(fw){fw.style.transform=fw.dataset.savedT||'';fw.style.zIndex=fw.dataset.savedZ||'';}
     if(sl)sl.style.transform=sl.dataset.savedT||'';
+    var b=vf.querySelector('.vfs');if(b)b.textContent='⛶';
     if(window.fitAll)fitAll(); // 放大期間若曾 resize，補一次正確縮放
   }
   function toggle(vf){
