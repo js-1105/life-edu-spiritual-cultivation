@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>施與受　溝通同理．關懷服務體驗活動</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color-primary:#862633; --color-primary-dark:#5C1A23;
+  --color-accent:#D4AF37; --color-accent-deep:#A8782E; --color-accent-soft:#E8D080;
+  --color-bg:#FAF7F2; --color-text:#1A1A1A; --color-muted:#6B6B6B; --color-line:#E5DDD0;
+  --grad-accent:linear-gradient(90deg,var(--color-accent-deep),var(--color-accent) 45%,var(--color-accent-soft));
+  --grad-royal:linear-gradient(135deg,#8E2A38 0%,var(--color-primary-dark) 55%,#3d1016 100%);
+  --shadow-soft:0 4px 20px rgba(134,38,51,.08); --shadow-strong:0 12px 40px rgba(134,38,51,.18);
+  --font-sans:"Noto Sans TC","Microsoft JhengHei","微軟正黑體","PingFang TC",sans-serif;
+  --font-serif:"Noto Serif TC","Songti TC","PingFang TC",serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+html{background:var(--color-bg)}
+::backdrop{background:var(--color-bg)}
+body{font-family:var(--font-sans);font-size:20px;line-height:1.78;color:var(--color-text);background:var(--color-bg);overflow:hidden}
+.deck{position:relative;width:100vw;height:100vh;overflow:hidden}
+.slide{position:absolute;inset:0;width:100%;height:100%;padding:5vh 6vw;opacity:0;visibility:hidden;transform:translateX(40px);transition:opacity .5s ease,transform .5s ease,visibility 0s linear .5s;display:flex;flex-direction:column;justify-content:center;
+  background:var(--color-bg) radial-gradient(circle at 1px 1px,rgba(134,38,51,.05) 1px,transparent 0) 0 0/22px 22px;}
+.slide.active{opacity:1;visibility:visible;transform:translateX(0);transition:opacity .5s ease,transform .5s ease,visibility 0s}
+.slide.prev{transform:translateX(-40px)}
+.slide.roomy{--gap:.55em}
+.slide>*{position:relative;z-index:1}
+.fitwrap{position:relative;z-index:1;width:100%;height:100%;display:flex;flex-direction:column;justify-content:var(--jc,center);align-items:var(--ai,stretch);gap:var(--gap,0);transform-origin:center center}
+.slide.roomy h1{font-size:clamp(3rem,6.2vw,5.6rem)}
+.slide.roomy h2{font-size:clamp(2.3rem,4.4vw,3.7rem)}
+.slide.roomy p,.slide.roomy .lead{font-size:clamp(1.55rem,2.4vw,2.15rem)}
+.slide.roomy blockquote{font-size:clamp(1.5rem,2.4vw,2.05rem)}
+.slide.roomy ul.fl li{font-size:clamp(1.5rem,2.3vw,2rem)}
+.slide.roomy .big-q{font-size:clamp(2rem,4vw,3.2rem)}
+h1{font-family:var(--font-serif);font-size:clamp(2.6rem,5.2vw,4.8rem);font-weight:900;letter-spacing:.02em;line-height:1.3;color:var(--color-primary);margin-bottom:.4em}
+h2{font-family:var(--font-serif);font-size:clamp(2.2rem,4.2vw,3.6rem);font-weight:700;line-height:1.4;color:var(--color-primary);margin-bottom:.7em;padding-bottom:.35em;border-bottom:3px solid var(--color-accent);display:inline-block}
+h3{font-size:clamp(1.5rem,2.6vw,2.2rem);font-weight:600;color:var(--color-text);margin:.8em 0 .4em}
+p{font-size:clamp(1.35rem,2vw,1.85rem);margin-bottom:.7em;max-width:38em}
+.lead{font-size:clamp(1.55rem,2.5vw,2.2rem);color:var(--color-muted);font-weight:300}
+.muted{color:var(--color-muted)} .accent{color:var(--color-primary);font-weight:700}
+.src{font-size:.95rem;color:var(--color-muted);font-style:italic;margin-top:.4em;max-width:46em}
+blockquote{font-family:var(--font-serif);font-style:italic;font-size:clamp(1.3rem,2vw,1.75rem);border-left:4px solid var(--color-accent);padding:.5em 1.2em;margin:.8em 0;color:#4a3b1e;background:rgba(212,175,55,.08);max-width:44em;line-height:1.85}
+blockquote.col2{max-width:none;column-count:2;column-gap:2.4em;font-size:clamp(1.3rem,1.7vw,1.58rem);line-height:1.7;text-align:justify}
+.slide.sec-tint{background-color:var(--color-bg);
+  background-image:
+    radial-gradient(circle at 1px 1px,rgba(134,38,51,.05) 1px,transparent 1.5px),
+    radial-gradient(940px 620px at 95% 0%,rgba(212,175,55,.10),transparent 60%),
+    linear-gradient(155deg,var(--sec-a,#FAF7F2) 0%,var(--sec-b,#EFE7D9) 118%);
+  background-size:24px 24px,100% 100%,100% 100%;}
+.slide.sec-1{--sec-a:#FCF5F3;--sec-b:#EFDCD9}
+.slide.sec-2{--sec-a:#FCF7EA;--sec-b:#F0E2C5}
+.slide.sec-3{--sec-a:#EFF6F1;--sec-b:#D6E6DC}
+.slide.sec-4{--sec-a:#F6F1F8;--sec-b:#E2D6EA}
+/* 章節分隔頁 */
+.section-divider{--ai:flex-start;background:var(--grad-royal);color:#fff;overflow:hidden}
+.section-divider::before{content:"";position:absolute;inset:0;background:radial-gradient(620px 620px at 70% 40%,rgba(212,175,55,.18),transparent 60%),radial-gradient(circle at 1px 1px,rgba(255,255,255,.05) 1px,transparent 0);background-size:auto,28px 28px;z-index:0}
+.section-divider .num{font-family:var(--font-serif);font-size:clamp(4rem,13vw,10rem);font-weight:900;line-height:1;background:var(--grad-accent);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 4px 30px rgba(212,175,55,.3)}
+.section-divider h1{margin-top:.05em;color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.25)}
+.section-divider .when{color:rgba(255,255,255,.82);margin-top:.5em;letter-spacing:.05em;max-width:34em}
+/* 版面元件 */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:3vw;align-items:center;flex:1;width:100%}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6vw;width:100%}
+.card{background:#fff;padding:1.3em 1.4em;border-radius:14px;box-shadow:var(--shadow-soft);border-top:4px solid var(--color-accent)}
+.card h3{margin-top:0;color:var(--color-primary)}
+ul.fl{list-style:none} ul.fl li{position:relative;padding:.5em 0 .5em 1.6em;font-size:clamp(1.25rem,1.9vw,1.7rem);border-bottom:1px dashed var(--color-line)}
+ul.fl li::before{content:"";position:absolute;left:0;top:1.05em;width:.7em;height:.7em;background:var(--color-accent);border-radius:50%}
+.feature-list{list-style:none;counter-reset:li-counter}
+.feature-list li{position:relative;padding:.5em 0 .5em 2.3em;font-size:clamp(1.45rem,1.9vw,1.9rem);border-bottom:1px dashed var(--color-line);line-height:1.5}
+.feature-list li::before{content:counter(li-counter);counter-increment:li-counter;position:absolute;left:0;top:.6em;width:1.6em;height:1.6em;background:var(--color-accent);color:var(--color-primary-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8em}
+.practice{background:linear-gradient(135deg,rgba(212,175,55,.13),rgba(212,175,55,.03));border:2px dashed var(--color-accent);padding:1.2em 1.5em;border-radius:16px;margin-top:.5em}
+.practice .label.kicker{display:inline-block;background:var(--color-primary);color:#fff;padding:.25em .9em;border-radius:999px;font-size:.85rem;font-weight:600;margin-bottom:.5em;letter-spacing:.1em}
+.big-q{font-family:var(--font-serif);font-weight:900;color:var(--color-primary);font-size:clamp(1.7rem,3.2vw,2.6rem);text-align:center;margin-top:.7em;line-height:1.4}
+/* 信封卡（活動道具說明） */
+.envrow{display:flex;gap:1.4vw;width:100%;margin-top:.4em}
+.envcard{flex:1;background:linear-gradient(160deg,#fff,#FCF7EA);border:2px solid var(--color-accent);border-radius:14px;padding:1em .6em;text-align:center;box-shadow:var(--shadow-soft)}
+.envcard .el{font-family:var(--font-serif);font-weight:900;color:var(--color-primary);font-size:clamp(1.8rem,3vw,2.6rem);line-height:1}
+.envcard .en{margin-top:.25em;color:var(--color-accent-deep);font-weight:700;font-size:clamp(1.1rem,1.6vw,1.5rem)}
+/* 流程卡 */
+.flowrow{display:flex;align-items:center;gap:.6em;width:100%;flex-wrap:wrap;margin-top:.5em}
+.flowstep{flex:1 1 0;min-width:9em;background:#fff;border-radius:14px;box-shadow:var(--shadow-soft);border-top:4px solid var(--color-accent);padding:1em .8em;text-align:center;font-size:clamp(1.4rem,2vw,1.8rem);font-weight:700;color:var(--color-primary-dark)}
+.flowarrow{color:var(--color-accent-deep);font-size:1.6rem;font-weight:900}
+/* 五個彼此 */
+.pentabox{display:flex;flex-wrap:wrap;gap:.6em;justify-content:center;margin-top:.6em}
+.pentabox span{background:var(--color-primary);color:#fff;padding:.4em 1.1em;border-radius:999px;font-weight:700;font-size:clamp(1.3rem,1.8vw,1.65rem);box-shadow:var(--shadow-soft)}
+/* 影片區 */
+.vstage{display:flex;gap:2.2vw;align-items:center;width:100%;flex:none;margin-top:.4em}
+.vframe{flex:1 1 58%;aspect-ratio:16/9;border-radius:16px;box-shadow:var(--shadow-strong);overflow:hidden;position:relative;background:var(--color-bg);border:1px solid rgba(212,175,55,.4)}
+.vframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vframe .vfs{position:absolute;bottom:.6em;right:.6em;z-index:8;width:2.3em;height:2.3em;border:none;border-radius:9px;background:rgba(0,0,0,.6);color:#fff;font-size:1.15rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;font-family:inherit}
+.vframe .vfs:hover{background:rgba(134,38,51,.95)}
+#zoomBackdrop{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:99990;opacity:0;visibility:hidden;transition:opacity .2s}
+body.has-zoom #zoomBackdrop{opacity:1;visibility:visible}
+.vframe.zoom{position:fixed;inset:2vh 2vw;width:auto!important;height:auto;aspect-ratio:auto;max-width:none!important;z-index:99999;border-radius:12px;box-shadow:0 30px 90px rgba(0,0,0,.7)}
+.vframe.zoom .vfs{width:2.7em;height:2.7em;font-size:1.35rem;bottom:1em;right:1em}
+.vside{flex:1 1 42%;min-width:0}
+.vside h3{margin-top:0}
+/* 引用來源 */
+ol.references{padding-left:1.4em;margin-top:.6em}
+ol.references li{font-size:clamp(1.25rem,1.7vw,1.55rem);margin-bottom:.65em;line-height:1.6;color:var(--color-text)}
+ol.references .note.src{color:var(--color-muted);font-size:.9em;font-style:italic;display:inline;margin:0}
+/* 封面 */
+.slide.cover{background:var(--grad-royal);color:#fff;text-align:center;align-items:center;overflow:hidden}
+.slide.cover::before{content:"";position:absolute;inset:0;background:radial-gradient(720px 720px at 50% 30%,rgba(212,175,55,.20),transparent 62%),radial-gradient(circle at 1px 1px,rgba(255,255,255,.05) 1px,transparent 0);background-size:auto,28px 28px;z-index:0}
+.slide.cover h1{color:#fff;font-size:clamp(3.2rem,7vw,6.4rem)}
+.slide.cover .lead{color:rgba(255,255,255,.88)}
+.slide.cover .ornament{width:80px;height:4px;background:var(--color-accent);margin:1.3em auto}
+.slide.cover .meta{margin-top:2.4em;font-size:1.65rem;color:rgba(255,255,255,.78);letter-spacing:.04em;max-width:46em;line-height:1.7}
+.cover-cta{position:relative;z-index:60;margin-top:1.6em;background:var(--color-accent);color:var(--color-primary-dark);border:none;padding:.75em 1.8em;font-size:1.05rem;font-weight:700;border-radius:999px;cursor:pointer;font-family:inherit;letter-spacing:.1em;box-shadow:0 8px 24px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s}
+.cover-cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.25)}
+/* 結語 */
+.closing{text-align:center;background:var(--grad-royal);color:#fff;overflow:hidden}
+.closing::before{content:"";position:absolute;inset:0;background:radial-gradient(720px 720px at 50% 40%,rgba(212,175,55,.2),transparent 62%);z-index:0}
+.closing h2{color:#fff;border-color:var(--color-accent)}
+.closing blockquote{color:#F3E6C8;background:rgba(212,175,55,.12);border-left-color:var(--color-accent-soft);margin:.6em auto;text-align:left}
+.closing .signature{margin-top:1.4em;font-size:1rem;letter-spacing:.15em;opacity:.85}
+.back-home-btn{position:relative;z-index:60;margin-top:1.4em;background:transparent;border:2px solid var(--color-accent-soft);color:#fff;padding:.6em 1.6em;border-radius:999px;font-family:inherit;font-size:1rem;cursor:pointer}
+/* 導覽 UI */
+.progress-bar{position:fixed;bottom:0;left:0;height:4px;background:var(--color-accent);width:0%;transition:width .4s ease;z-index:100}
+.page-indicator{position:fixed;bottom:1.5em;right:2em;font-size:.9rem;color:var(--color-muted);font-variant-numeric:tabular-nums;z-index:100;background:rgba(255,255,255,.8);padding:.3em .8em;border-radius:999px;backdrop-filter:blur(8px)}
+.nav-arrows{position:fixed;bottom:1.5em;left:2em;display:flex;gap:.5em;z-index:100}
+.nav-arrows button{width:2.4em;height:2.4em;border:none;background:rgba(134,38,51,.1);color:var(--color-primary);border-radius:50%;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.nav-arrows button:hover{background:var(--color-primary);color:#fff;transform:scale(1.1)}
+.fs-toggle{position:fixed;bottom:1.5em;right:1.5em;width:2.4em;height:2.4em;border:none;background:rgba(134,38,51,.1);color:var(--color-primary);border-radius:50%;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;z-index:100;font-family:inherit;transition:all .2s}
+.fs-toggle:hover{background:var(--color-primary);color:#fff;transform:scale(1.1)}
+.click-zones{position:fixed;inset:0;display:flex;pointer-events:none;z-index:50}
+.click-zone{flex:1;pointer-events:auto;cursor:pointer}
+body.no-clickzones .click-zones{display:none}
+.toast{position:fixed;top:1.5em;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;padding:.6em 1.4em;border-radius:999px;font-size:.9rem;z-index:200;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+@media (max-width:768px){.grid2,.grid3,.vstage,.envrow{grid-template-columns:1fr;flex-direction:column}}
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+<!-- 封面 -->
+<section class="slide cover active">
+  <h1>施與受</h1>
+  <div class="ornament"></div>
+  <p class="lead">溝通同理．關懷服務體驗活動</p>
+  <button class="cover-cta" onclick="startPresentation()">進入全螢幕．開始活動</button>
+  <div class="meta">孫效智教授　｜　國立臺灣大學生命教育研發育成中心</div>
+</section>
+
+<!-- 壹 活動說明 -->
+<section class="slide section-divider">
+  <div class="num">壹</div>
+  <h1>活動說明</h1>
+  <p class="when">準備工作、遊戲規則與進行方式</p>
+</section>
+
+<section class="slide">
+  <h2>活動前各組準備工作</h2>
+  <p class="lead" style="max-width:none">五人一組，每組會拿到五個信封（A、B、C、D、E）。</p>
+  <p>請先確認信封中的紙片是否符合信封上的數字，例如：信封 A 標示 ④，代表信封中應有 4 張 A 紙片。</p>
+  <div class="envrow">
+    <div class="envcard"><div class="el">A</div><div class="en">④</div></div>
+    <div class="envcard"><div class="el">B</div><div class="en">③</div></div>
+    <div class="envcard"><div class="el">C</div><div class="en">②</div></div>
+    <div class="envcard"><div class="el">D</div><div class="en">③</div></div>
+    <div class="envcard"><div class="el">E</div><div class="en">③</div></div>
+  </div>
+  <p class="src">示意圖：實際各信封紙片數量請依現場教材為準。</p>
+</section>
+
+<section class="slide">
+  <h2>遊戲規則</h2>
+  <ul class="feature-list" style="margin-top:.2em">
+    <li>五人一組，每人均應排出一個正方形</li>
+    <li>同一組，五個正方形一樣大</li>
+    <li>只可以給別人你手中的紙片，不可以從別人那裡拿</li>
+    <li>不可以說話或彼此暗示</li>
+  </ul>
+  <div class="practice">
+    <span class="label kicker">體驗重點</span>
+    <p style="margin:0;font-size:clamp(1.25rem,1.8vw,1.6rem)">這是一場「只能給、不能要」的體驗——你將在沉默與克制中，直接感受施與受之間的張力。</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>活動進行方式</h2>
+  <div class="flowrow">
+    <div class="flowstep">遊戲進行</div>
+    <div class="flowarrow">→</div>
+    <div class="flowstep">小組討論</div>
+    <div class="flowarrow">→</div>
+    <div class="flowstep">全體分享交流</div>
+    <div class="flowarrow">→</div>
+    <div class="flowstep">孫老師回饋時間</div>
+    <div class="flowarrow">→</div>
+    <div class="flowstep">頒獎</div>
+  </div>
+</section>
+
+<!-- 貳 團隊合作 -->
+<section class="slide section-divider">
+  <div class="num">貳</div>
+  <h1>從遊戲到反思：團隊合作</h1>
+  <p class="when">愛的平衡與藝術</p>
+</section>
+
+<section class="slide">
+  <h2>團隊合作（一）</h2>
+  <div class="grid3" style="flex:none;margin-top:.3em">
+    <div class="card"><h3>生命共同體</h3><p style="font-size:clamp(1.28rem,1.7vw,1.55rem)">好的團隊就像是一個有機的生命體：每一部分為了整體，而整體則滋養每一個部分。</p></div>
+    <div class="card"><h3>各司其職，彼此效力</h3><p style="font-size:clamp(1.28rem,1.7vw,1.55rem)">好的團隊各司其職，亦彼此效力。頭、手足、身體各有功能，但彼此協調幫助。</p></div>
+    <div class="card"><h3>互愛</h3><p style="font-size:clamp(1.28rem,1.7vw,1.55rem)">好的團隊相親相愛。在上位的頭不會瞧不起腳，相反的，腳愈是卑微，愈應愛護；平行的肢體也互相幫助。</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>團隊合作（二）</h2>
+  <div class="grid2" style="flex:none;align-items:stretch;margin-top:.2em">
+    <div class="card"><h3>自私本位，一盤散沙</h3><p>成員如果只關注自己，只從自己角度看事情，就會是各自為政的一盤散沙，而不是一個團隊。</p></div>
+    <div class="card"><h3>寄生蟲現象</h3><p>如果一個團隊只有少數人在動，其他人都被動，團隊就談不上效能——正如開會時如果只有主席有意見，其他人都沒有意見，那也就不必開會了。</p></div>
+  </div>
+  <p class="lead" style="text-align:center;max-width:none;margin-top:.8em">團隊成功之關鍵在於——</p>
+  <div class="pentabox">
+    <span>彼此互愛</span><span>彼此看見</span><span>彼此溝通</span><span>彼此效力</span><span>彼此給受</span>
+  </div>
+</section>
+
+<!-- 參 施與受的省思 -->
+<section class="slide section-divider">
+  <div class="num">參</div>
+  <h1>施與受的省思</h1>
+  <p class="when">給予、接受、自我充實、公義與溝通</p>
+</section>
+
+<section class="slide">
+  <h2>給予的省思</h2>
+  <p class="lead" style="max-width:none">「給」的品質，以「愛」與「看見」的品質為前提，否則——</p>
+  <ul class="fl" style="margin-top:.2em">
+    <li>有時只是把不要的給別人</li>
+    <li>有時由於只看自己，根本無心，也無暇看見別人的需要</li>
+    <li>有時，看別人看得「太」清楚，失去了愛與感恩的情懷，不能認同，想要干涉</li>
+  </ul>
+  <p class="big-q">只有「給」沒有「受」，會如何？</p>
+</section>
+
+<section class="slide">
+  <h2>接受的省思</h2>
+  <ul class="fl" style="margin-top:.2em">
+    <li>當別人用心而注意到我們的需要時，我們會領受到什麼？一份生命的禮物？還是視為理所當然？</li>
+    <li>當別人把他不要的東西塞給我們時，我們會有什麼感覺？大概不會是一種被愛與被看見的感覺</li>
+    <li>每個人都有盲點：有時別人注意到我們的需要時，我們卻沒有意識到</li>
+  </ul>
+  <p class="big-q">只有接受，沒有付出會怎樣？</p>
+</section>
+
+<section class="slide">
+  <h2>自我給予與自我充實的平衡</h2>
+  <p>給很重要，生命中要學習給。不過，如果給到掏空自己，那可能就難以為繼了，會 <b class="accent">burn-out</b>；burn-out 之後就會變成寄生蟲，在團隊中不能再給。</p>
+  <p>休息是為了走更長的路，人要給，但也要不斷充電與休息。</p>
+  <p>自我充實很重要：自我如果沒有智慧、沒有熱情，也沒有愛，自然也就沒有什麼東西可以給。</p>
+</section>
+
+<section class="slide">
+  <h2>完成自我、犧牲小我、完成大我</h2>
+  <p class="lead" style="max-width:none">有時候自己的部分已經完成了，可是團隊一直有人無法完成他的部分，該怎麼辦？</p>
+  <p>是否該打破自己？重組自己？抑或該維持自己的現狀？這很需要分辨的智慧。</p>
+  <p>人要預備好為了完成大我而超越自我，但這並不表示打破自我就是正確的選擇。</p>
+</section>
+
+<section class="slide">
+  <h2>利益與公義</h2>
+  <p class="lead" style="max-width:none">鋌而走險的誘惑——為了利益，罔顧公義的誘惑。</p>
+  <p>人要學習寬以待人，嚴以律己：我們要從自己的軟弱、自己的知行不一，去諒解接納別人的軟弱與知行不一。</p>
+  <p>人就是在這樣被愛與被諒解的經驗中得到力量，而能逐漸往知行合一的方向邁進。</p>
+</section>
+
+<section class="slide roomy">
+  <h2>溝通的省思</h2>
+  <p class="lead" style="max-width:none">人多麼需要溝通來彼此瞭解，但很多時候，人跟人之間不容易溝通，甚至無法溝通。</p>
+  <p>如何尊重溝通的限度，耐心等待溝通的時間，從其他方面建立彼此的連結與看見，是人生很重要的功課與挑戰，需要智慧與愛心。</p>
+  <p>在不能溝通的等待中，用心體會對方的需要與困難，練習王陽明「一體之仁」的大學問。</p>
+</section>
+
+<section class="slide">
+  <h2>王陽明「大學問」</h2>
+  <blockquote class="col2">大人者，以天地萬物為一體者也。其視天下猶一家，中國猶一人焉。若夫間形骸而分爾我者，小人矣。大人之能以天地萬物為一體也，非意之也，其心之仁本若是，其與天地萬物而為一也，豈惟大人，雖小人之心亦莫不然，彼顧自小之耳。是故見孺子之入井而必有怵惕惻隱之心焉，是其仁之與孺子而為一體也。孺子猶同類者也，見鳥獸之哀鳴觳觫，而必有不忍之心，是其仁之與鳥獸而為一體也。鳥獸猶有知覺者也，見草木之摧折而必有憫恤之心焉，是其仁之與草木而為一體也。草木猶有生意者也，見瓦石之毀壞而必有顧惜之心焉，是其仁之與瓦石而為一體也。是其一體之仁也，雖小人之心亦必有之。是故苟無私慾之蔽，則雖小人之心，而其一體之仁猶大人也；一有私慾之蔽，則雖大人之心，而其分隔隘陋猶小人矣。故夫為大人之學者，亦惟去其私慾之蔽，以明其明德，復其天地萬物一體之本然而已耳。非能於本體之外，而有所增益之也。</blockquote>
+  <p class="src">王陽明，《大學問》（節錄）</p>
+</section>
+
+<!-- 肆 微電影與生命課題 -->
+<section class="slide section-divider">
+  <div class="num">肆</div>
+  <h1>微電影與生命課題</h1>
+  <p class="when">從一部短片，看見施與受的雙向性</p>
+</section>
+
+<section class="slide">
+  <h2>微電影欣賞〈路過〉</h2>
+  <div class="vstage">
+    <div class="vframe">
+      <iframe src="https://www.youtube-nocookie.com/embed/E-qpG4gZoCY?rel=0&fs=0&modestbranding=1" title="親情微電影：路過" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
+      <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片">⛶</button>
+    </div>
+    <div class="vside">
+      <p class="lead" style="max-width:none;margin-bottom:.3em">一部關於母親、陪伴與看見的親情短片。</p>
+      <p class="muted" style="max-width:none">片長約 7 分鐘。</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide roomy">
+  <h2>生命課題的省思——施與受的正向循環</h2>
+  <p class="lead" style="max-width:none">愛的雙向性～給與受的藝術</p>
+  <p>對別人用心，就會體驗到與人連結的美好，以及付出的意義；</p>
+  <p>體會別人的用心，就會生出感恩之心，同時也讓用心對待我們的人得到安慰與鼓勵。</p>
+</section>
+
+<section class="slide">
+  <h2>通往至善的兩條途徑</h2>
+  <p class="lead" style="max-width:none">追求自己幸福，或犧牲自我的愛——東西方思想，殊途同歸</p>
+  <p>至善有追求利己、追求利他兩條路徑。前者思考角度是自我實現，後者則是自我超越。但事實上，兩者相輔相成，殊途同歸，因為人的自我實現必須在自我超越中完成。</p>
+  <p>東西方思想均肯定利己與利他的辯證統一，以下從宋明儒、佛教、道家、基督信仰四個傳統來看。</p>
+</section>
+
+<section class="slide">
+  <h2>四個傳統，同歸「愛」與「幸福」</h2>
+  <ul class="fl" style="margin-top:.1em">
+    <li>宋明儒王陽明的理解方式是復一體之仁，這比較接近「愛」的路徑</li>
+    <li>佛教崇尚「離苦得樂」，比較接近「幸福」的途徑；但佛教強調慈悲，又回歸了「愛」</li>
+    <li>道家：「聖人不積，既以為人己愈有，既以與人己愈多」（《道德經》第八十一章）</li>
+    <li>基督信仰以十字架犧牲之愛為核心，以復活之永生天國為終極：「我實在告訴你：今天你就要與我一同在樂園裏。」（《路加福音》23:43，思高本）</li>
+  </ul>
+</section>
+
+<!-- 引用來源 -->
+<section class="slide">
+  <h2>引用來源</h2>
+  <ol class="references">
+    <li>孫效智（2015）。〈施與受：溝通同理．關懷服務體驗活動〉。「成功人生：行政部門中高階生命教育」研習簡報，2015 年 6 月 26 日。<span class="note src">（本機檔案：施與受_1040626.ppt、施與受遊戲（文字詳細版）_20150502.ppt）</span></li>
+    <li>王陽明。《大學問》（節錄）。</li>
+    <li>老子。《道德經》第八十一章。</li>
+    <li>《聖經》思高聖經學會譯釋本。《路加福音》23:43。</li>
+    <li>〈路過〉親情微電影。Draco0580 上傳，YouTube，2012 年。<span class="note src">https://www.youtube.com/watch?v=E-qpG4gZoCY</span></li>
+  </ol>
+</section>
+
+<!-- 結語 -->
+<section class="slide closing">
+  <h2>結語</h2>
+  <blockquote>祝福大家心中有愛，身心靈無礙。</blockquote>
+  <p class="signature">——孫效智</p>
+</section>
+
+</div>
+
+<div class="click-zones" id="clickZones">
+  <div class="click-zone" onclick="prevSlide()" title="前一頁"></div>
+  <div class="click-zone" onclick="nextSlide()" title="下一頁"></div>
+</div>
+<div class="progress-bar" id="progress"></div>
+<div class="page-indicator"><span id="curr">1</span> / <span id="total">1</span></div>
+<div class="nav-arrows"><button onclick="prevSlide()" aria-label="上一頁">‹</button><button onclick="nextSlide()" aria-label="下一頁">›</button></div>
+<button class="fs-toggle" onclick="toggleFullscreen()" title="全螢幕（F）">⛶</button>
+<div class="toast" id="toast"></div>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+let current=1;const total=slides.length;
+document.getElementById('total').textContent=total;
+slides.forEach(s=>{const fw=document.createElement('div');fw.className='fitwrap';while(s.firstChild)fw.appendChild(s.firstChild);s.appendChild(fw);});
+function fitSlide(s){
+  const fw=s.firstElementChild;if(!fw||!fw.classList.contains('fitwrap'))return;
+  if(fw.querySelector('.vframe.zoom'))return;
+  fw.style.transform='none';
+  const cs=getComputedStyle(s);
+  const availW=s.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+  const availH=s.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+  const ph=fw.style.height,pj=fw.style.justifyContent;
+  fw.style.height='auto';fw.style.justifyContent='flex-start';
+  const natH=fw.scrollHeight,natW=fw.scrollWidth;
+  fw.style.height=ph;fw.style.justifyContent=pj;
+  let k=Math.min(1,availH/natH,availW/natW);
+  k=Math.floor(k*995)/1000;
+  fw.style.transform=k<1?'scale('+k+')':'';
+}
+function fitAll(){slides.forEach(fitSlide);}
+window.addEventListener('resize',fitAll);
+window.addEventListener('orientationchange',()=>setTimeout(fitAll,80));
+document.addEventListener('fullscreenchange',()=>setTimeout(fitAll,80));
+window.addEventListener('load',()=>setTimeout(fitAll,60));
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitAll);
+fitAll();
+(function assignSectionTints(){
+  const numerals=['壹','貳','參','肆'];
+  let chap=0;
+  slides.forEach(s=>{
+    if(s.classList.contains('section-divider')){chap++;return;}
+    if(s.classList.contains('cover')||s.classList.contains('closing'))return;
+    if(chap<1)return;
+    const sec=Math.min(chap,4);
+    s.classList.add('sec-tint','sec-'+sec);
+  });
+})();
+const noClickZoneSlides=[];
+slides.forEach((s,i)=>{if(s.classList.contains('cover')||s.classList.contains('closing')||s.querySelector('iframe,video,.cover-cta,.back-home-btn'))noClickZoneSlides.push(i+1);});
+function showSlide(n){
+  if(n<1)n=1;if(n>total)n=total;
+  if(window.__exitVideoZoom)window.__exitVideoZoom();
+  slides.forEach((s,i)=>{s.classList.remove('active','prev');if(i+1===n)s.classList.add('active');else if(i+1<n)s.classList.add('prev');});
+  current=n;
+  document.getElementById('curr').textContent=current;
+  document.getElementById('progress').style.width=(current/total*100)+'%';
+  history.replaceState(null,'','#'+current);
+  document.body.classList.toggle('no-clickzones',noClickZoneSlides.includes(n));
+}
+function nextSlide(){showSlide(current+1)}function prevSlide(){showSlide(current-1)}function goToSlide(n){showSlide(n)}
+function getFsReq(el){return el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen||el.msRequestFullscreen||null}
+function getFsExit(){return document.exitFullscreen||document.webkitExitFullscreen||document.mozCancelFullScreen||document.msExitFullscreen||null}
+function isFs(){return document.fullscreenElement||document.webkitFullscreenElement||document.mozFullScreenElement||document.msFullscreenElement}
+function enterFs(el){const r=getFsReq(el);if(!r){showToast('此瀏覽器不支援全螢幕，請按 F11',4000);return Promise.reject()}let p;try{p=r.call(el)}catch(e){return Promise.reject(e)}return(p&&p.then)?p:Promise.resolve()}
+function toggleFullscreen(){if(isFs()){const x=getFsExit();if(x)x.call(document);return}enterFs(document.documentElement).catch(()=>{showToast(window.self!==window.top?'預覽面板內無法全螢幕，請在新分頁開啟':'無法進入全螢幕，請按 F11',4500)})}
+function startPresentation(){toggleFullscreen()}
+function showToast(m,ms=2500){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),ms)}
+let __spaceMx=0,__spaceMy=0;
+document.addEventListener('mousemove',e=>{__spaceMx=e.clientX;__spaceMy=e.clientY;},{passive:true});
+function toggleVideoInFocus(){
+  const el=document.elementFromPoint(__spaceMx,__spaceMy);
+  const vc=el&&el.closest?el.closest('.vframe'):null;
+  if(!vc)return false;
+  return true;
+}
+document.addEventListener('keydown',e=>{
+  if(e.target&&/INPUT|TEXTAREA/.test(e.target.tagName))return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();nextSlide();}
+  if(e.key===' '){e.preventDefault();if(!toggleVideoInFocus())nextSlide();}
+  if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prevSlide()}
+  if(e.key==='f'||e.key==='F'){e.preventDefault();toggleFullscreen()}
+  if(e.key==='Escape'&&isFs())(getFsExit()||(()=>{})).call(document);
+  if(e.key==='Home')goToSlide(1);if(e.key==='End')goToSlide(total);
+});
+if(location.hash){const n=parseInt(location.hash.slice(1));if(!isNaN(n))showSlide(n);}
+else{document.body.classList.toggle('no-clickzones',noClickZoneSlides.includes(1));}
+</script>
+
+<!-- 影片就地放大 -->
+<div id="zoomBackdrop"></div>
+<script>
+(function(){
+  var backdrop=document.getElementById('zoomBackdrop');
+  function zoomedFrame(){return document.querySelector('.vframe.zoom');}
+  function enter(vf){
+    var fw=vf.closest('.fitwrap'), sl=vf.closest('.slide');
+    if(fw){fw.dataset.savedT=fw.style.transform||'';fw.style.transform='none';
+           fw.dataset.savedZ=fw.style.zIndex||'';fw.style.zIndex='auto';}
+    if(sl){sl.dataset.savedT=sl.style.transform||'';sl.style.transform='none';}
+    vf.classList.add('zoom');
+    document.body.classList.add('has-zoom');
+    var b=vf.querySelector('.vfs');if(b)b.textContent='✕';
+  }
+  function exit(){
+    var vf=zoomedFrame();
+    document.body.classList.remove('has-zoom');
+    if(!vf)return;
+    var fw=vf.closest('.fitwrap'), sl=vf.closest('.slide');
+    vf.classList.remove('zoom');
+    if(fw){fw.style.transform=fw.dataset.savedT||'';fw.style.zIndex=fw.dataset.savedZ||'';}
+    if(sl)sl.style.transform=sl.dataset.savedT||'';
+    var b=vf.querySelector('.vfs');if(b)b.textContent='⛶';
+    if(window.fitAll)fitAll();
+  }
+  function toggle(vf){
+    if(vf.classList.contains('zoom')){exit();}
+    else{var cur=zoomedFrame();if(cur&&cur!==vf)exit();enter(vf);}
+  }
+  window.__exitVideoZoom=exit;
+  document.querySelectorAll('.vframe .vfs').forEach(function(b){
+    b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();toggle(b.closest('.vframe'));});
+  });
+  if(backdrop)backdrop.addEventListener('click',function(e){e.stopPropagation();exit();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&zoomedFrame()){e.stopPropagation();exit();}},true);
+})();
+</script>
+
+</body>
+</html>
