@@ -63,30 +63,30 @@ blockquote.col2{max-width:none;column-count:2;column-gap:2.4em;font-size:clamp(1
 .section-divider h1{margin-top:.05em;color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.25)}
 .section-divider .when{color:rgba(255,255,255,.82);margin-top:.5em;letter-spacing:.05em;max-width:34em}
 /* 版面元件 */
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:3vw;align-items:center;flex:1;width:100%}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6vw;width:100%}
-.card{background:#fff;padding:1.3em 1.4em;border-radius:14px;box-shadow:var(--shadow-soft);border-top:4px solid var(--color-accent)}
-.card h3{margin-top:0;color:var(--color-primary)}
-ul.fl{list-style:none} ul.fl li{position:relative;padding:.5em 0 .5em 1.6em;font-size:clamp(1.25rem,1.9vw,1.7rem);border-bottom:1px dashed var(--color-line)}
-ul.fl li::before{content:"";position:absolute;left:0;top:1.05em;width:.7em;height:.7em;background:var(--color-accent);border-radius:50%}
+ul.fl{list-style:none} ul.fl li{position:relative;padding:.4em 0 .4em 1.6em;font-size:clamp(1.25rem,1.9vw,1.7rem);border-bottom:1px dashed var(--color-line);line-height:1.4}
+ul.fl li::before{content:"";position:absolute;left:0;top:.95em;width:.7em;height:.7em;background:var(--color-accent);border-radius:50%}
 .feature-list{list-style:none;counter-reset:li-counter}
-.feature-list li{position:relative;padding:.5em 0 .5em 2.3em;font-size:clamp(1.45rem,1.9vw,1.9rem);border-bottom:1px dashed var(--color-line);line-height:1.5}
-.feature-list li::before{content:counter(li-counter);counter-increment:li-counter;position:absolute;left:0;top:.6em;width:1.6em;height:1.6em;background:var(--color-accent);color:var(--color-primary-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8em}
-.practice{background:linear-gradient(135deg,rgba(212,175,55,.13),rgba(212,175,55,.03));border:2px dashed var(--color-accent);padding:1.2em 1.5em;border-radius:16px;margin-top:.5em}
+.feature-list li{position:relative;padding:var(--fli-pad,.4em) 0 var(--fli-pad,.4em) 2.3em;font-size:clamp(1.45rem,1.9vw,1.9rem);border-bottom:1px dashed var(--color-line);line-height:1.35}
+.feature-list li::before{content:counter(li-counter);counter-increment:li-counter;position:absolute;left:0;top:.5em;width:1.6em;height:1.6em;background:var(--color-accent);color:var(--color-primary-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8em}
+.practice{background:linear-gradient(135deg,rgba(212,175,55,.13),rgba(212,175,55,.03));border:2px dashed var(--color-accent);padding:.9em 1.5em;border-radius:16px;margin-top:.35em}
 .practice .label.kicker{display:inline-block;background:var(--color-primary);color:#fff;padding:.25em .9em;border-radius:999px;font-size:.85rem;font-weight:600;margin-bottom:.5em;letter-spacing:.1em}
 .big-q{font-family:var(--font-serif);font-weight:900;color:var(--color-primary);font-size:clamp(1.7rem,3.2vw,2.6rem);text-align:center;margin-top:.7em;line-height:1.4}
-/* 信封卡（活動道具說明） */
-.envrow{display:flex;gap:1.4vw;width:100%;margin-top:.4em}
-.envcard{flex:1;background:linear-gradient(160deg,#fff,#FCF7EA);border:2px solid var(--color-accent);border-radius:14px;padding:1em .6em;text-align:center;box-shadow:var(--shadow-soft)}
-.envcard .el{font-family:var(--font-serif);font-weight:900;color:var(--color-primary);font-size:clamp(1.8rem,3vw,2.6rem);line-height:1}
-.envcard .en{margin-top:.25em;color:var(--color-accent-deep);font-weight:700;font-size:clamp(1.1rem,1.6vw,1.5rem)}
 /* 五個彼此 */
 .pentabox{display:flex;flex-wrap:wrap;gap:.6em;justify-content:center;margin-top:.6em}
 .pentabox span{background:var(--color-primary);color:#fff;padding:.4em 1.1em;border-radius:999px;font-weight:700;font-size:clamp(1.3rem,1.8vw,1.65rem);box-shadow:var(--shadow-soft)}
 /* 影片區 */
-.vstage{display:flex;gap:2.2vw;align-items:center;width:100%;flex:none;margin-top:.4em}
+.vstage{display:flex;gap:2.2vw;align-items:center;width:100%;flex:none;margin-top:.2em}
 .vframe{flex:1 1 58%;aspect-ratio:16/9;border-radius:16px;box-shadow:var(--shadow-strong);overflow:hidden;position:relative;background:var(--color-bg);border:1px solid rgba(212,175,55,.4)}
 .vframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vframe.contain{background:#fff}
+.vframe.contain img{object-fit:contain;padding:.6em}
+.vframe.photorow{display:flex;gap:.5em;padding:.5em;background:#fff}
+.vframe.photorow img{position:static;flex:1;width:auto;height:100%;object-fit:cover;border-radius:8px}
+.pcap{position:absolute;left:0;right:0;bottom:0;padding:.5em .9em;background:linear-gradient(0deg,rgba(0,0,0,.62),transparent);color:#fff;font-size:.92rem;letter-spacing:.03em}
+/* 王陽明肖像章 */
+.medallion{flex:none;width:clamp(90px,9vw,120px);aspect-ratio:99/128;border-radius:10px;overflow:hidden;box-shadow:var(--shadow-strong);border:3px solid var(--color-accent)}
+.medallion img{width:100%;height:100%;object-fit:cover}
 .vframe .vfs{position:absolute;bottom:.6em;right:.6em;z-index:8;width:2.3em;height:2.3em;border:none;border-radius:9px;background:rgba(0,0,0,.6);color:#fff;font-size:1.15rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;font-family:inherit}
 .vframe .vfs:hover{background:rgba(134,38,51,.95)}
 #zoomBackdrop{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:99990;opacity:0;visibility:hidden;transition:opacity .2s}
@@ -95,24 +95,29 @@ body.has-zoom #zoomBackdrop{opacity:1;visibility:visible}
 .vframe.zoom .vfs{width:2.7em;height:2.7em;font-size:1.35rem;bottom:1em;right:1em}
 .vside{flex:1 1 42%;min-width:0}
 .vside h3{margin-top:0}
+.vside p{margin-bottom:.5em}
+.vside .lead{margin-bottom:.3em}
+.mini-list-plain{list-style:none;display:flex;flex-direction:column;gap:.35em}
+.mini-list-plain li{font-size:clamp(1.3rem,1.7vw,1.55rem);line-height:1.4}
+.mini-list-plain li b{color:var(--color-primary);font-family:var(--font-serif)}
 /* 引用來源 */
 ol.references{padding-left:1.4em;margin-top:.6em}
 ol.references li{font-size:clamp(1.25rem,1.7vw,1.55rem);margin-bottom:.65em;line-height:1.6;color:var(--color-text)}
 ol.references .note.src{color:var(--color-muted);font-size:.9em;font-style:italic;display:inline;margin:0}
-/* 封面 */
-.slide.cover{background:var(--grad-royal);color:#fff;text-align:center;align-items:center;overflow:hidden}
-.slide.cover::before{content:"";position:absolute;inset:0;background:radial-gradient(720px 720px at 50% 30%,rgba(212,175,55,.20),transparent 62%),radial-gradient(circle at 1px 1px,rgba(255,255,255,.05) 1px,transparent 0);background-size:auto,28px 28px;z-index:0}
-.slide.cover h1{color:#fff;font-size:clamp(3.2rem,7vw,6.4rem)}
-.slide.cover .lead{color:rgba(255,255,255,.88)}
-.slide.cover .ornament{width:80px;height:4px;background:var(--color-accent);margin:1.3em auto}
-.slide.cover .meta{margin-top:2.4em;font-size:1.65rem;color:rgba(255,255,255,.78);letter-spacing:.04em;max-width:46em;line-height:1.7}
-.cover-cta{position:relative;z-index:60;margin-top:2em;background:var(--color-accent);color:var(--color-primary-dark);border:none;padding:1em 2.4em;font-size:1.05rem;font-weight:700;border-radius:999px;cursor:pointer;font-family:inherit;letter-spacing:.1em;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .2s}
+/* 封面：全幅實景照＋文字直疊（依原簡報樣式還原） */
+.slide.cover{background:#EAEAE6 url('施與受_images/cover_heart_mittens.jpg') center/cover no-repeat;color:#0E2A52;text-align:left;align-items:flex-start;justify-content:flex-end;overflow:hidden}
+.slide.cover::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(255,255,255,.72) 0%,rgba(255,255,255,.42) 38%,rgba(255,255,255,.08) 62%,transparent 78%);z-index:0}
+.slide.cover h1{color:#0E2A52;font-size:clamp(2.6rem,5.6vw,5rem);text-shadow:0 2px 18px rgba(255,255,255,.5)}
+.slide.cover .lead{color:#1c3a63;font-weight:500}
+.slide.cover .ornament{width:80px;height:4px;background:var(--color-primary);margin:1em 0}
+.slide.cover .meta{margin-top:1.6em;font-size:1.3rem;color:#1c3a63;letter-spacing:.03em;max-width:46em;line-height:1.7;font-weight:500}
+.cover-cta{position:relative;z-index:60;margin-top:1.6em;background:var(--color-primary);color:#fff;border:none;padding:.8em 2em;font-size:1.05rem;font-weight:700;border-radius:999px;cursor:pointer;font-family:inherit;letter-spacing:.1em;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .2s}
 .cover-cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.25)}
-/* 結語 */
-.closing{text-align:center;background:var(--grad-royal);color:#fff;overflow:hidden}
-.closing::before{content:"";position:absolute;inset:0;background:radial-gradient(720px 720px at 50% 40%,rgba(212,175,55,.2),transparent 62%);z-index:0}
+/* 結語：全幅實景照，與封面首尾呼應 */
+.closing{text-align:center;background:#2a1014 url('施與受_images/hearts_deco.jpg') center/cover no-repeat;color:#fff;overflow:hidden}
+.closing::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,8,10,.55),rgba(20,8,10,.72));z-index:0}
 .closing h2{color:#fff;border-color:var(--color-accent)}
-.closing blockquote{color:#F3E6C8;background:rgba(212,175,55,.12);border-left-color:var(--color-accent-soft);margin:.6em auto;text-align:left}
+.closing blockquote{color:#F3E6C8;background:rgba(0,0,0,.28);border-left-color:var(--color-accent-soft);margin:.6em auto;text-align:left}
 .closing .signature{margin-top:1.4em;font-size:1rem;letter-spacing:.15em;opacity:.85}
 .back-home-btn{position:relative;z-index:60;margin-top:1.4em;background:transparent;border:2px solid var(--color-accent-soft);color:#fff;padding:.6em 1.6em;border-radius:999px;font-family:inherit;font-size:1rem;cursor:pointer}
 /* 導覽 UI */
@@ -153,29 +158,36 @@ body.no-clickzones .click-zones{display:none}
 
 <section class="slide">
   <h2>活動前各組準備工作</h2>
-  <p class="lead" style="max-width:none">五人一組，每組會拿到五個信封（A、B、C、D、E）。</p>
-  <p>請先確認信封中的紙片是否符合信封上的數字，例如：信封 A 標示 ④，代表信封中應有 4 張 A 紙片。</p>
-  <div class="envrow">
-    <div class="envcard"><div class="el">A</div><div class="en">④</div></div>
-    <div class="envcard"><div class="el">B</div><div class="en">③</div></div>
-    <div class="envcard"><div class="el">C</div><div class="en">②</div></div>
-    <div class="envcard"><div class="el">D</div><div class="en">③</div></div>
-    <div class="envcard"><div class="el">E</div><div class="en">③</div></div>
+  <div class="vstage">
+    <div class="vframe photorow">
+      <img src="施與受_images/envelopes_five.jpg" alt="五個信封A至E">
+      <img src="施與受_images/envelope_a_pieces.jpg" alt="信封A與其中的紙片">
+    </div>
+    <div class="vside">
+      <p class="lead" style="max-width:none">五人一組，每組會拿到五個信封（A、B、C、D、E）。</p>
+      <p>請先確認信封中的紙片是否符合信封上的數字，例如：信封 A 標示 ④，代表信封中應有 4 張 A 紙片。</p>
+    </div>
   </div>
-  <p class="src">示意圖：實際各信封紙片數量請依現場教材為準。</p>
 </section>
 
 <section class="slide">
   <h2>遊戲規則</h2>
-  <ul class="feature-list" style="margin-top:.2em">
-    <li>五人一組，每人均應排出一個正方形</li>
-    <li>同一組，五個正方形一樣大</li>
-    <li>只可以給別人你手中的紙片，不可以從別人那裡拿</li>
-    <li>不可以說話或彼此暗示</li>
-  </ul>
-  <div class="practice">
+  <div class="vstage">
+    <div class="vframe contain">
+      <img src="施與受_images/puzzle_hands.png" alt="眾人手持拼圖">
+    </div>
+    <div class="vside">
+      <ul class="feature-list" style="margin-top:0;--fli-pad:.2em;font-size:.92em">
+        <li>五人一組，每人均應排出一個正方形</li>
+        <li>同一組，五個正方形一樣大</li>
+        <li>只可以給別人你手中的紙片，不可以從別人那裡拿</li>
+        <li>不可以說話或彼此暗示</li>
+      </ul>
+    </div>
+  </div>
+  <div class="practice" style="padding:.7em 1.3em;margin-top:.25em">
     <span class="label kicker">體驗重點</span>
-    <p style="margin:0;font-size:clamp(1.25rem,1.8vw,1.6rem)">這是一場「只能給、不能要」的體驗——你將在沉默與克制中，直接感受施與受之間的張力。</p>
+    <p style="margin:0;font-size:clamp(1.2rem,1.7vw,1.5rem)">這是一場「只能給、不能要」的體驗——你將在沉默與克制中，直接感受施與受之間的張力。</p>
   </div>
 </section>
 
@@ -198,21 +210,35 @@ body.no-clickzones .click-zones{display:none}
 
 <section class="slide">
   <h2>團隊合作（一）</h2>
-  <div class="grid3" style="flex:none;margin-top:.3em">
-    <div class="card"><h3>生命共同體</h3><p style="font-size:clamp(1.28rem,1.7vw,1.55rem)">好的團隊就像是一個有機的生命體：每一部分為了整體，而整體則滋養每一個部分。</p></div>
-    <div class="card"><h3>各司其職，彼此效力</h3><p style="font-size:clamp(1.28rem,1.7vw,1.55rem)">好的團隊各司其職，亦彼此效力。頭、手足、身體各有功能，但彼此協調幫助。</p></div>
-    <div class="card"><h3>互愛</h3><p style="font-size:clamp(1.28rem,1.7vw,1.55rem)">好的團隊相親相愛。在上位的頭不會瞧不起腳，相反的，腳愈是卑微，愈應愛護；平行的肢體也互相幫助。</p></div>
+  <div class="vstage">
+    <div class="vframe contain">
+      <img src="施與受_images/team_wheel.png" alt="團隊合作齒輪">
+    </div>
+    <div class="vside">
+      <ul class="mini-list-plain">
+        <li><b>生命共同體</b>：好的團隊就像是一個有機的生命體：每一部分為了整體，而整體則滋養每一個部分。</li>
+        <li><b>各司其職，彼此效力</b>：好的團隊各司其職，亦彼此效力。頭、手足、身體各有功能，但彼此協調幫助。</li>
+        <li><b>互愛</b>：好的團隊相親相愛。在上位的頭不會瞧不起腳，相反的，腳愈是卑微，愈應愛護；平行的肢體也互相幫助。</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <section class="slide">
   <h2>團隊合作（二）</h2>
-  <div class="grid2" style="flex:none;align-items:stretch;margin-top:.2em">
-    <div class="card"><h3>自私本位，一盤散沙</h3><p>成員如果只關注自己，只從自己角度看事情，就會是各自為政的一盤散沙，而不是一個團隊。</p></div>
-    <div class="card"><h3>寄生蟲現象</h3><p>如果一個團隊只有少數人在動，其他人都被動，團隊就談不上效能——正如開會時如果只有主席有意見，其他人都沒有意見，那也就不必開會了。</p></div>
+  <div class="vstage">
+    <div class="vframe contain">
+      <img src="施與受_images/meeting_hammer.png" alt="會議中只有主席有意見">
+    </div>
+    <div class="vside">
+      <ul class="mini-list-plain">
+        <li><b>自私本位，一盤散沙</b>：成員如果只關注自己，只從自己角度看事情，就會是各自為政的一盤散沙，而不是一個團隊。</li>
+        <li><b>寄生蟲現象</b>：如果一個團隊只有少數人在動，其他人都被動，團隊就談不上效能——正如開會時如果只有主席有意見，其他人都沒有意見，那也就不必開會了。</li>
+      </ul>
+    </div>
   </div>
-  <p class="lead" style="text-align:center;max-width:none;margin-top:.8em">團隊成功之關鍵在於——</p>
-  <div class="pentabox">
+  <p class="lead" style="text-align:center;max-width:none;margin-top:.3em;margin-bottom:0">團隊成功之關鍵在於——</p>
+  <div class="pentabox" style="margin-top:.35em">
     <span>彼此互愛</span><span>彼此看見</span><span>彼此溝通</span><span>彼此效力</span><span>彼此給受</span>
   </div>
 </section>
@@ -226,55 +252,100 @@ body.no-clickzones .click-zones{display:none}
 
 <section class="slide">
   <h2>給予的省思</h2>
-  <p class="lead" style="max-width:none">「給」的品質，以「愛」與「看見」的品質為前提，否則——</p>
-  <ul class="fl" style="margin-top:.2em">
-    <li>有時只是把不要的給別人</li>
-    <li>有時由於只看自己，根本無心，也無暇看見別人的需要</li>
-    <li>有時，看別人看得「太」清楚，失去了愛與感恩的情懷，不能認同，想要干涉</li>
-  </ul>
+  <div class="vstage">
+    <div class="vframe">
+      <img src="施與受_images/give_sign.jpg" alt="手持「Give」牌子">
+    </div>
+    <div class="vside">
+      <p class="lead" style="max-width:none;margin-bottom:.3em">「給」的品質，以「愛」與「看見」的品質為前提，否則——</p>
+      <ul class="fl" style="margin-top:.1em">
+        <li>有時只是把不要的給別人</li>
+        <li>有時由於只看自己，根本無心，也無暇看見別人的需要</li>
+        <li>有時，看別人看得「太」清楚，失去了愛與感恩的情懷，不能認同，想要干涉</li>
+      </ul>
+    </div>
+  </div>
   <p class="big-q">只有「給」沒有「受」，會如何？</p>
 </section>
 
 <section class="slide">
   <h2>接受的省思</h2>
-  <ul class="fl" style="margin-top:.2em">
-    <li>當別人用心而注意到我們的需要時，我們會領受到什麼？一份生命的禮物？還是視為理所當然？</li>
-    <li>當別人把他不要的東西塞給我們時，我們會有什麼感覺？大概不會是一種被愛與被看見的感覺</li>
-    <li>每個人都有盲點：有時別人注意到我們的需要時，我們卻沒有意識到</li>
-  </ul>
+  <div class="vstage">
+    <div class="vframe">
+      <img src="施與受_images/fingers_love.jpg" alt="兩根手指相依，寫著I'm all yours">
+    </div>
+    <div class="vside">
+      <ul class="fl" style="margin-top:0">
+        <li>當別人用心而注意到我們的需要時，我們會領受到什麼？一份生命的禮物？還是視為理所當然？</li>
+        <li>當別人把他不要的東西塞給我們時，我們會有什麼感覺？大概不會是一種被愛與被看見的感覺</li>
+        <li>每個人都有盲點：有時別人注意到我們的需要時，我們卻沒有意識到</li>
+      </ul>
+    </div>
+  </div>
   <p class="big-q">只有接受，沒有付出會怎樣？</p>
 </section>
 
 <section class="slide">
   <h2>自我給予與自我充實的平衡</h2>
-  <p>給很重要，生命中要學習給。不過，如果給到掏空自己，那可能就難以為繼了，會 <b class="accent">burn-out</b>；burn-out 之後就會變成寄生蟲，在團隊中不能再給。</p>
-  <p>休息是為了走更長的路，人要給，但也要不斷充電與休息。</p>
-  <p>自我充實很重要：自我如果沒有智慧、沒有熱情，也沒有愛，自然也就沒有什麼東西可以給。</p>
+  <div class="vstage">
+    <div class="vframe">
+      <img src="施與受_images/passion_tag.jpg" alt="passion 吊牌">
+    </div>
+    <div class="vside">
+      <p>給很重要，生命中要學習給。不過，如果給到掏空自己，那可能就難以為繼了，會 <b class="accent">burn-out</b>；burn-out 之後就會變成寄生蟲，在團隊中不能再給。</p>
+      <p>休息是為了走更長的路，人要給，但也要不斷充電與休息。</p>
+      <p style="margin-bottom:0">自我充實很重要：自我如果沒有智慧、沒有熱情，也沒有愛，自然也就沒有什麼東西可以給。</p>
+    </div>
+  </div>
 </section>
 
 <section class="slide">
   <h2>完成自我、犧牲小我、完成大我</h2>
-  <p class="lead" style="max-width:none">有時候自己的部分已經完成了，可是團隊一直有人無法完成他的部分，該怎麼辦？</p>
-  <p>是否該打破自己？重組自己？抑或該維持自己的現狀？這很需要分辨的智慧。</p>
-  <p>人要預備好為了完成大我而超越自我，但這並不表示打破自我就是正確的選擇。</p>
+  <div class="vstage">
+    <div class="vframe contain">
+      <img src="施與受_images/outsider_figure.png" alt="獨自站立於團隊之外的人形">
+    </div>
+    <div class="vside">
+      <p class="lead" style="max-width:none;margin-bottom:.3em">有時候自己的部分已經完成了，可是團隊一直有人無法完成他的部分，該怎麼辦？</p>
+      <p>是否該打破自己？重組自己？抑或該維持自己的現狀？這很需要分辨的智慧。</p>
+      <p style="margin-bottom:0">人要預備好為了完成大我而超越自我，但這並不表示打破自我就是正確的選擇。</p>
+    </div>
+  </div>
 </section>
 
 <section class="slide">
   <h2>利益與公義</h2>
-  <p class="lead" style="max-width:none">鋌而走險的誘惑——為了利益，罔顧公義的誘惑。</p>
-  <p>人要學習寬以待人，嚴以律己：我們要從自己的軟弱、自己的知行不一，去諒解接納別人的軟弱與知行不一。</p>
-  <p>人就是在這樣被愛與被諒解的經驗中得到力量，而能逐漸往知行合一的方向邁進。</p>
-</section>
-
-<section class="slide roomy">
-  <h2>溝通的省思</h2>
-  <p class="lead" style="max-width:none">人多麼需要溝通來彼此瞭解，但很多時候，人跟人之間不容易溝通，甚至無法溝通。</p>
-  <p>如何尊重溝通的限度，耐心等待溝通的時間，從其他方面建立彼此的連結與看見，是人生很重要的功課與挑戰，需要智慧與愛心。</p>
-  <p>在不能溝通的等待中，用心體會對方的需要與困難，練習王陽明「一體之仁」的大學問。</p>
+  <div class="vstage">
+    <div class="vframe contain">
+      <img src="施與受_images/relation_arrows.png" alt="兒女妻子下屬與父母丈夫主管的雙向關係圖">
+    </div>
+    <div class="vside">
+      <p class="lead" style="max-width:none;margin-bottom:.3em">鋌而走險的誘惑——為了利益，罔顧公義的誘惑。</p>
+      <p>人要學習寬以待人，嚴以律己：我們要從自己的軟弱、自己的知行不一，去諒解接納別人的軟弱與知行不一。</p>
+      <p style="margin-bottom:0">人就是在這樣被愛與被諒解的經驗中得到力量，而能逐漸往知行合一的方向邁進。</p>
+    </div>
+  </div>
 </section>
 
 <section class="slide">
-  <h2>王陽明「大學問」</h2>
+  <h2>溝通的省思</h2>
+  <div class="vstage">
+    <div class="vframe">
+      <img src="施與受_images/chicken_chat.jpg" alt="雞與小雞雞同鴨講">
+    </div>
+    <div class="vside">
+      <p class="lead" style="max-width:none;margin-bottom:.3em">人多麼需要溝通來彼此瞭解，但很多時候，人跟人之間不容易溝通，甚至無法溝通。</p>
+      <p>如何尊重溝通的限度，耐心等待溝通的時間，從其他方面建立彼此的連結與看見，是人生很重要的功課與挑戰，需要智慧與愛心。</p>
+      <p style="margin-bottom:0">在不能溝通的等待中，用心體會對方的需要與困難，練習王陽明「一體之仁」的大學問。</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div style="display:flex;align-items:center;gap:1em;margin-bottom:.2em">
+    <div class="medallion"><img src="施與受_images/wangyangming_portrait.jpg" alt="王陽明畫像"></div>
+    <h2 style="margin-bottom:0">王陽明「大學問」</h2>
+  </div>
   <blockquote class="col2">大人者，以天地萬物為一體者也。其視天下猶一家，中國猶一人焉。若夫間形骸而分爾我者，小人矣。大人之能以天地萬物為一體也，非意之也，其心之仁本若是，其與天地萬物而為一也，豈惟大人，雖小人之心亦莫不然，彼顧自小之耳。是故見孺子之入井而必有怵惕惻隱之心焉，是其仁之與孺子而為一體也。孺子猶同類者也，見鳥獸之哀鳴觳觫，而必有不忍之心，是其仁之與鳥獸而為一體也。鳥獸猶有知覺者也，見草木之摧折而必有憫恤之心焉，是其仁之與草木而為一體也。草木猶有生意者也，見瓦石之毀壞而必有顧惜之心焉，是其仁之與瓦石而為一體也。是其一體之仁也，雖小人之心亦必有之。是故苟無私慾之蔽，則雖小人之心，而其一體之仁猶大人也；一有私慾之蔽，則雖大人之心，而其分隔隘陋猶小人矣。故夫為大人之學者，亦惟去其私慾之蔽，以明其明德，復其天地萬物一體之本然而已耳。非能於本體之外，而有所增益之也。</blockquote>
   <p class="src">王陽明，《大學問》（節錄）</p>
 </section>
@@ -300,11 +371,18 @@ body.no-clickzones .click-zones{display:none}
   </div>
 </section>
 
-<section class="slide roomy">
+<section class="slide">
   <h2>生命課題的省思——施與受的正向循環</h2>
-  <p class="lead" style="max-width:none">愛的雙向性～給與受的藝術</p>
-  <p>對別人用心，就會體驗到與人連結的美好，以及付出的意義；</p>
-  <p>體會別人的用心，就會生出感恩之心，同時也讓用心對待我們的人得到安慰與鼓勵。</p>
+  <div class="vstage">
+    <div class="vframe contain">
+      <img src="施與受_images/giving_heart_hands.png" alt="一隻手把紙心遞給另一隻手">
+    </div>
+    <div class="vside">
+      <p class="lead" style="max-width:none;margin-bottom:.3em">愛的雙向性～給與受的藝術</p>
+      <p>對別人用心，就會體驗到與人連結的美好，以及付出的意義；</p>
+      <p style="margin-bottom:0">體會別人的用心，就會生出感恩之心，同時也讓用心對待我們的人得到安慰與鼓勵。</p>
+    </div>
+  </div>
 </section>
 
 <section class="slide">
@@ -316,12 +394,19 @@ body.no-clickzones .click-zones{display:none}
 
 <section class="slide">
   <h2>四個傳統，同歸「愛」與「幸福」</h2>
-  <ul class="fl" style="margin-top:.1em">
-    <li>宋明儒王陽明的理解方式是復一體之仁，這比較接近「愛」的路徑</li>
-    <li>佛教崇尚「離苦得樂」，比較接近「幸福」的途徑；但佛教強調慈悲，又回歸了「愛」</li>
-    <li>道家：「聖人不積，既以為人己愈有，既以與人己愈多」（《道德經》第八十一章）</li>
-    <li>基督信仰以十字架犧牲之愛為核心，以復活之永生天國為終極：「我實在告訴你：今天你就要與我一同在樂園裏。」（《路加福音》23:43，思高本）</li>
-  </ul>
+  <div class="vstage">
+    <div class="vframe">
+      <img src="施與受_images/foot_washing.jpg" alt="教宗為人洗腳">
+    </div>
+    <div class="vside">
+      <ul class="fl" style="margin-top:0">
+        <li>宋明儒王陽明的理解方式是復一體之仁，這比較接近「愛」的路徑</li>
+        <li>佛教崇尚「離苦得樂」，比較接近「幸福」的途徑；但佛教強調慈悲，又回歸了「愛」</li>
+        <li>道家：「聖人不積，既以為人己愈有，既以與人己愈多」（《道德經》第八十一章）</li>
+        <li>基督信仰以十字架犧牲之愛為核心，以復活之永生天國為終極：「我實在告訴你：今天你就要與我一同在樂園裏。」（《路加福音》23:43，思高本）</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <!-- 引用來源 -->
