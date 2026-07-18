@@ -355,7 +355,7 @@ ol.references{padding-left:1.4em;margin-top:.6em}
 ol.references li{font-size:clamp(1.25rem,1.7vw,1.55rem);margin-bottom:.65em;line-height:1.6;color:var(--color-text)}
 ol.references .note.src{color:var(--color-muted);font-size:.9em;font-style:italic;display:inline;margin:0}
 /* 施與受活動：忠實還原原 ppt 版式（橘色標題橫幅＋紅/藍強調＋勾選清單） */
-.slide.pptx{--jc:flex-start;--ai:stretch}
+.slide.pptx{--jc:center;--ai:stretch}/* 垂直置中：短內容頁整塊往下拉、留白上下均分，不頂在上方（教授 2026-07-18 S55 原則） */
 .pptx .band{background:#F6D6B8;border-radius:3px;text-align:center;padding:.28em .5em;margin:0 auto .7em;width:100%}
 .pptx .band h2{font-family:var(--font-sans);font-weight:900;color:#1A1A1A;border:none;display:inline-block;margin:0;padding:0;line-height:1.2;font-size:clamp(2.4rem,4.8vw,3.9rem)}
 .pptx .band h2 .sub{font-size:.42em;font-weight:700;vertical-align:.55em;margin-left:.15em}
@@ -977,7 +977,7 @@ function showConfirm({title='確認',message='',okText='確定',cancelText='取�
   <div class="vstage">
     <div class="vframe" data-video="JFsQftmyPc0">
       <iframe src="https://www.youtube-nocookie.com/embed/JFsQftmyPc0?rel=0&fs=0&modestbranding=1" title="垃圾人定律" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-      <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片">⛶</button>
+      <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片"><svg viewBox="0 0 24 24" width="1.05em" height="1.05em" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
     </div>
     <div class="vside">
       <p class="muted" style="max-width:none;margin:0 0 .2em">對治：易怒、記仇、嫉妒、難寬恕。「生命的 90% 在於你如何看待事情。」</p>
@@ -994,7 +994,7 @@ function showConfirm({title='確認',message='',okText='確定',cancelText='取�
   <div class="vstage">
     <div class="vframe" data-video="cFmJt8iBAfU">
       <iframe src="https://www.youtube-nocookie.com/embed/cFmJt8iBAfU?rel=0&fs=0&modestbranding=1" title="西遊記你讀懂了嗎" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-      <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片">⛶</button>
+      <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片"><svg viewBox="0 0 24 24" width="1.05em" height="1.05em" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
     </div>
     <div class="vside">
       <p class="lead" style="max-width:none;margin-bottom:.25em">師徒四人，其實是一個人修行的四種內在力量——</p>
@@ -1014,7 +1014,7 @@ function showConfirm({title='確認',message='',okText='確定',cancelText='取�
   <div class="vstage">
     <div class="vframe" data-video="Ht-3xpVOr38">
       <iframe src="https://www.youtube-nocookie.com/embed/Ht-3xpVOr38?rel=0&fs=0&modestbranding=1" title="毘盧遮那仁波切：開悟的五個步驟" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-      <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片">⛶</button>
+      <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片"><svg viewBox="0 0 24 24" width="1.05em" height="1.05em" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
     </div>
     <div class="vside">
       <p class="muted" style="max-width:none;margin:0 0 .2em">不丹「毘盧遮那仁波切」——被認證為千年前譯經大師的轉世靈童，這場開示時年僅九歲，親口說出他的開悟五步驟：</p>
@@ -1035,7 +1035,7 @@ function showConfirm({title='確認',message='',okText='確定',cancelText='取�
   <div class="vstage">
     <div class="vframe" data-video="3PxNR-nhrc8">
       <iframe src="https://www.youtube-nocookie.com/embed/3PxNR-nhrc8?rel=0&fs=0&modestbranding=1&start=79" title="毘盧遮那仁波切：適用所有宗派的法門" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-      <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片">⛶</button>
+      <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片"><svg viewBox="0 0 24 24" width="1.05em" height="1.05em" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
     </div>
     <div class="vside">
       <p class="muted" style="max-width:none;margin:0 0 .2em">十三歲的他在法會上接受提問——</p>
@@ -1055,7 +1055,7 @@ function showConfirm({title='確認',message='',okText='確定',cancelText='取�
     <div>
       <div class="vframe" data-video="O1mvVs3WuJU" style="width:100%">
         <iframe src="https://www.youtube-nocookie.com/embed/O1mvVs3WuJU?rel=0&fs=0&modestbranding=1" title="原則與基礎" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-        <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片">⛶</button>
+        <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片"><svg viewBox="0 0 24 24" width="1.05em" height="1.05em" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
       </div>
       <p style="font-family:var(--font-serif);font-weight:700;color:var(--color-primary);font-size:clamp(1.1rem,1.5vw,1.4rem);margin:.5em 0 .2em">原則與基礎——一生的心靈地圖</p>
       <ul class="fl" style="font-size:clamp(.95rem,1.2vw,1.15rem);line-height:1.55;gap:.3em">
@@ -1067,7 +1067,7 @@ function showConfirm({title='確認',message='',okText='確定',cancelText='取�
     <div>
       <div class="vframe" data-video="tgthDzXWOb0" style="width:100%">
         <iframe src="https://www.youtube-nocookie.com/embed/tgthDzXWOb0?rel=0&fs=0&modestbranding=1" title="意識省察" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-        <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片">⛶</button>
+        <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片"><svg viewBox="0 0 24 24" width="1.05em" height="1.05em" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
       </div>
       <p style="font-family:var(--font-serif);font-weight:700;color:var(--color-primary);font-size:clamp(1.1rem,1.5vw,1.4rem);margin:.5em 0 .2em">意識省察——聖依納爵親傳的五步祈禱</p>
       <ul class="fl" style="font-size:clamp(.95rem,1.2vw,1.15rem);line-height:1.55;gap:.3em">
@@ -1129,9 +1129,9 @@ function showConfirm({title='確認',message='',okText='確定',cancelText='取�
 <!-- ppt S4 小組討論問題 -->
 <section class="slide pptx">
   <div class="band"><h2>小組討論問題</h2></div>
-  <ul class="pl" style="font-size:1.05em">
-    <li>回顧一下完成任務的過程，有什麼卡關的地方？關鍵的突破點是什麼？</li>
-    <li>如果重新再來一次，怎麼做比較好？</li>
+  <ul class="pl" style="font-size:1.32em;margin-top:.3em">
+    <li style="padding:.5em 0 .5em 1.5em">回顧一下完成任務的過程，有什麼卡關的地方？關鍵的突破點是什麼？</li>
+    <li style="padding:.5em 0 .5em 1.5em">如果重新再來一次，怎麼做比較好？</li>
   </ul>
 </section>
 
@@ -1313,7 +1313,7 @@ function showConfirm({title='確認',message='',okText='確定',cancelText='取�
   <div class="vstage" style="justify-content:center">
     <div class="vframe" data-video="E-qpG4gZoCY" style="flex:0 1 auto;width:min(72vw,124vh);max-width:none">
       <iframe src="https://www.youtube-nocookie.com/embed/E-qpG4gZoCY?rel=0&fs=0&modestbranding=1" title="親情微電影：路過" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-      <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片">⛶</button>
+      <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片"><svg viewBox="0 0 24 24" width="1.05em" height="1.05em" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
     </div>
   </div>
 </section>
@@ -1436,12 +1436,16 @@ function showConfirm({title='確認',message='',okText='確定',cancelText='取�
 <div class="progress-bar" id="progress"></div>
 <div class="page-indicator"><span id="curr">1</span> / <span id="total">1</span></div>
 <div class="nav-arrows"><button onclick="prevSlide()" aria-label="上一頁">‹</button><button onclick="nextSlide()" aria-label="下一頁">›</button></div>
-<button class="fs-toggle" onclick="toggleFullscreen()" title="全螢幕（F）">⛶</button>
+<button class="fs-toggle" onclick="toggleFullscreen()" title="全螢幕（F）"><svg viewBox="0 0 24 24" width="1.05em" height="1.05em" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
 <div class="toast" id="toast"></div>
 
 <script>
 const slides=document.querySelectorAll('.slide');
 let current=1;const total=slides.length;
+const FS_ICON_EXPAND='<svg viewBox="0 0 24 24" width="1.05em" height="1.05em" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/></svg>';
+const FS_ICON_COMPRESS='<svg viewBox="0 0 24 24" width="1.05em" height="1.05em" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>';
+window.FS_ICON_EXPAND=FS_ICON_EXPAND;window.FS_ICON_COMPRESS=FS_ICON_COMPRESS;
+function updateFsIcon(){const b=document.querySelector('.fs-toggle');if(b)b.innerHTML=isFs()?FS_ICON_COMPRESS:FS_ICON_EXPAND;}
 document.getElementById('total').textContent=total;
 slides.forEach(s=>{const fw=document.createElement('div');fw.className='fitwrap';while(s.firstChild)fw.appendChild(s.firstChild);s.appendChild(fw);});
 function fitSlide(s){
@@ -1462,10 +1466,10 @@ function fitSlide(s){
 function fitAll(){slides.forEach(fitSlide);}
 window.addEventListener('resize',fitAll);
 window.addEventListener('orientationchange',()=>setTimeout(fitAll,80));
-document.addEventListener('fullscreenchange',()=>setTimeout(fitAll,80));
+document.addEventListener('fullscreenchange',()=>{setTimeout(fitAll,80);updateFsIcon();});
 window.addEventListener('load',()=>setTimeout(fitAll,60));
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitAll);
-fitAll();
+fitAll();updateFsIcon();
 (function assignSectionTints(){
   const numerals=['壹','貳','參','肆','伍','陸','柒'];
   let chap=0;
@@ -1682,7 +1686,7 @@ window.U4=(function(){
     if(sl){sl.dataset.savedT=sl.style.transform||'';sl.style.transform='none';}
     vf.classList.add('zoom');
     document.body.classList.add('has-zoom');
-    var b=vf.querySelector('.vfs');if(b)b.textContent='✕';
+    var b=vf.querySelector('.vfs');if(b)b.innerHTML=window.FS_ICON_COMPRESS;
   }
   function exit(){
     var vf=zoomedFrame();
@@ -1692,7 +1696,7 @@ window.U4=(function(){
     vf.classList.remove('zoom');
     if(fw){fw.style.transform=fw.dataset.savedT||'';fw.style.zIndex=fw.dataset.savedZ||'';}
     if(sl)sl.style.transform=sl.dataset.savedT||'';
-    var b=vf.querySelector('.vfs');if(b)b.textContent='⛶';
+    var b=vf.querySelector('.vfs');if(b)b.innerHTML=window.FS_ICON_EXPAND;
     if(window.fitAll)fitAll(); // 放大期間若曾 resize，補一次正確縮放
   }
   function toggle(vf){
