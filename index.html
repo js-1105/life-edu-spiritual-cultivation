@@ -354,6 +354,27 @@ blockquote.col2{max-width:none;column-count:2;column-gap:2.4em;font-size:clamp(1
 ol.references{padding-left:1.4em;margin-top:.6em}
 ol.references li{font-size:clamp(1.25rem,1.7vw,1.55rem);margin-bottom:.65em;line-height:1.6;color:var(--color-text)}
 ol.references .note.src{color:var(--color-muted);font-size:.9em;font-style:italic;display:inline;margin:0}
+/* 施與受活動：忠實還原原 ppt 版式（橘色標題橫幅＋紅/藍強調＋勾選清單） */
+.slide.pptx{--jc:flex-start;--ai:stretch}
+.pptx .band{background:#F6D6B8;border-radius:3px;text-align:center;padding:.28em .5em;margin:0 auto .7em;width:100%}
+.pptx .band h2{font-family:var(--font-sans);font-weight:900;color:#1A1A1A;border:none;display:inline-block;margin:0;padding:0;line-height:1.2;font-size:clamp(2.4rem,4.8vw,3.9rem)}
+.pptx .band h2 .sub{font-size:.42em;font-weight:700;vertical-align:.55em;margin-left:.15em}
+.pptx .band.deep{background:#E0791C}
+.pptx .band.deep h2{color:#fff}
+.pptx ul.pl{list-style:none;margin:0}
+.pptx ul.pl>li{position:relative;padding:.26em 0 .26em 1.5em;font-size:clamp(1.5rem,2.35vw,2.05rem);line-height:1.7}
+.pptx ul.pl>li::before{content:"•";position:absolute;left:.25em;color:#1A1A1A}
+.pptx .subl{list-style:none;margin:.05em 0 .2em 1.5em}
+.pptx .subl li{font-size:.9em;line-height:1.55;padding:.03em 0;color:#1A1A1A}
+.pptx .subl li::before{content:"–　";color:#555}
+.pptx .check{list-style:none;margin:.15em 0}
+.pptx .check>li{position:relative;padding:.16em 0 .16em 1.7em;font-size:clamp(1.6rem,2.5vw,2.2rem);line-height:1.5;color:#1A1A1A}
+.pptx .check>li::before{content:"✓";position:absolute;left:0;color:#E60000;font-weight:900;font-size:1.05em}
+.pr{color:#E60000;font-weight:700}
+.pb{color:#1F3864;font-weight:700}
+.pbig{font-weight:900;font-size:1.24em;color:#1A1A1A}
+.pptx .goal{text-align:center;font-weight:700;color:#1A1A1A;font-size:clamp(1.7rem,2.7vw,2.35rem);line-height:1.5;margin:.1em 0}
+.pptx-hearts{--ai:flex-start;--jc:center;background:#F2EFEA}
 /* 肆內的子節分隔（不與壹貳參肆頂層編號衝突：走 sec-4 底色＋暖金 kicker） */
 .slide.subdiv{--ai:flex-start;--jc:center}
 .slide.subdiv .kick{display:inline-block;background:var(--color-accent-deep);color:#fff;padding:.3em 1.1em;border-radius:999px;font-family:var(--font-serif);font-weight:700;letter-spacing:.14em;font-size:clamp(1.5rem,1.8vw,1.75rem);margin-bottom:.5em}
@@ -1061,285 +1082,286 @@ function showConfirm({title='確認',message='',okText='確定',cancelText='取�
 
 
 <!-- ===================== 肆　體驗活動：施與受 ===================== -->
-<section class="slide section-divider">
-  <div class="num">肆</div>
-  <h1>體驗活動：施與受</h1>
-  <p class="when">從一場「五個正方形」的無聲遊戲，走進溝通、同理與關懷服務的省思——靈性修養，最終要落在與人的相處裡。</p>
+<section class="slide photo-bleed chap-divider" style="background-image:url('施與受_images/cover_heart_mittens.jpg');--veil:linear-gradient(100deg,rgba(250,247,242,.92) 0%,rgba(250,247,242,.72) 40%,rgba(250,247,242,.22) 66%,transparent 84%);--ai:flex-start;--jc:center">
+  <div class="stage" style="color:var(--color-accent-deep);font-weight:700;letter-spacing:.3em;font-size:clamp(1.1rem,2vw,1.5rem);margin-bottom:.2em">肆　·　第四部分</div>
+  <h1 style="color:#1F3864;font-size:clamp(3rem,7vw,5.8rem);margin-bottom:.2em">體驗活動</h1>
+  <p class="when" style="color:var(--color-primary-dark);max-width:none;font-size:clamp(1.4rem,2.2vw,1.9rem)">從一場「五個正方形」的無聲遊戲，走進溝通、同理與關懷服務的省思。</p>
 </section>
 
-<!-- ① 活動說明 -->
-<section class="slide subdiv photo-bleed" style="background-image:url('施與受_images/cover_heart_mittens.jpg');--veil:linear-gradient(100deg,rgba(250,247,242,.94) 0%,rgba(250,247,242,.82) 38%,rgba(250,247,242,.34) 64%,rgba(250,247,242,.05) 84%)">
-  <span class="kick">體驗活動　①</span>
-  <h1>活動說明</h1>
-  <p class="when" style="color:var(--color-primary-dark)">準備工作、遊戲規則與進行方式</p>
-</section>
-
-<section class="slide">
-  <h2>活動前各組準備工作</h2>
-  <ul class="fl" style="margin-top:0">
-    <li>五人一組，每組會拿到五個信封（A、B、C、D、E）</li>
-    <li>請先確認信封中的紙片是否符合信封上數字，如：A ④ 有 4 張 A 紙片</li>
+<!-- ppt S2 各組準備工作 -->
+<section class="slide pptx">
+  <div class="band"><h2>各組準備工作</h2></div>
+  <ul class="pl">
+    <li>5 人一組，每組有 5 個信封（A、B、C、D、E）</li>
+    <li>例如 <span class="pr">A ④</span>：表示 <span class="pr">A 信封</span>內，有 <span class="pr">4 張</span> A 拼塊</li>
+    <li>請先確認：信封內的拼塊數目，是否符合信封上的數字</li>
   </ul>
-  <div class="photo-duo">
+  <div class="photo-duo" style="margin-top:.6em;max-height:46vh">
     <figure><img src="施與受_images/envelopes_five.jpg" alt="每組五個信封，分別標示 A④、B④、C②、D②、E③"></figure>
-    <figure><img src="施與受_images/envelope_a_pieces.jpg" alt="信封 A ④ 與倒出的 4 張 A 紙片"></figure>
+    <figure><img src="施與受_images/envelope_a_pieces.jpg" alt="信封 A ④ 與倒出的 4 張 A 拼塊"></figure>
   </div>
 </section>
 
-<section class="slide">
-  <h2>活動進行方式</h2>
-  <div class="vstage" style="align-items:flex-start">
-    <div class="vside" style="flex:1 1 62%">
-      <h3 style="margin-top:0">遊戲方式</h3>
-      <ul class="fl" style="margin-top:0">
-        <li>每人均應排出一個正方形，<span class="hot">同一組排出五個一樣大的正方形</span></li>
-        <li><span class="hot">只可以<span class="xl hot">給</span>別人你手中的紙片，不可以<span class="xl hot">拿</span>別人的紙片</span></li>
-        <li><span class="hot">不可以說話或彼此暗示</span></li>
+<!-- ppt S3 活動進行方式（規則） -->
+<section class="slide pptx">
+  <div class="band"><h2>活動進行方式</h2></div>
+  <p class="goal">目標：每一組、每一人要拼出一個正方形。</p>
+  <p class="goal">(每組要拼出<span class="pr">5 個</span>相同的正方形)</p>
+  <div class="vstage" style="align-items:center;margin-top:.4em">
+    <div class="vside" style="flex:1 1 60%">
+      <ul class="check">
+        <li><span class="pr">只可以</span><span class="pbig">給出</span>你自己的紙片，</li>
+        <li><span class="pr">不可以</span><span class="pbig">拿取</span>別人的紙片</li>
+        <li><span class="pr">全程保持安靜：</span></li>
       </ul>
-      <p style="margin-top:.7em"><b class="accent">接續流程：</b>小組討論 → 全體分享交流 → 孫老師回饋 → 頒獎</p>
+      <ul class="subl" style="margin-left:1.9em">
+        <li>不可說話</li>
+        <li>不可動作示意</li>
+        <li>不可以眼傳神</li>
+      </ul>
     </div>
-    <div class="vframe contain" style="flex:1 1 30%;aspect-ratio:1/1;max-height:52vh;align-self:center;border:3px solid var(--color-accent-soft)">
+    <div class="vframe contain" style="flex:1 1 34%;aspect-ratio:1/1;max-height:52vh;align-self:center;border:3px solid var(--color-accent-soft)">
       <img src="施與受_images/girl_shush.jpg" alt="女孩以食指比在唇上，示意保持安靜" style="object-fit:cover">
     </div>
   </div>
 </section>
 
-<!-- ② 團隊合作 -->
-<section class="slide subdiv">
-  <span class="kick">體驗活動　②</span>
-  <h1>從遊戲到反思：團隊合作</h1>
-  <p class="when">愛的平衡與藝術</p>
+<!-- ppt S4 小組討論問題 -->
+<section class="slide pptx">
+  <div class="band"><h2>小組討論問題</h2></div>
+  <ul class="pl" style="font-size:1.05em">
+    <li>回顧一下完成任務的過程，有什麼卡關的地方？關鍵的突破點是什麼？</li>
+    <li>如果重新再來一次，怎麼做比較好？</li>
+  </ul>
 </section>
 
-<section class="slide">
-  <h2>團隊合作（一）</h2>
-  <div class="imgrow" style="max-width:80%;margin-left:auto;margin-right:auto">
+<!-- ppt S5 活動進行方式（流程） -->
+<section class="slide pptx">
+  <div class="band"><h2>活動進行方式</h2></div>
+  <div class="vstage" style="align-items:center">
+    <div class="vside" style="flex:1 1 55%">
+      <ul class="pl" style="font-size:1.1em">
+        <li>小組討論</li>
+        <li>全體分享</li>
+        <li>回饋時間</li>
+        <li>頒獎</li>
+      </ul>
+    </div>
+    <div class="figure-hero" style="flex:1 1 42%;margin-top:0">
+      <img src="施與受_images/trophy.png" alt="三座金色獎盃" style="max-height:52vh">
+    </div>
+  </div>
+</section>
+
+<!-- ppt S6 施與受的反思（分節） -->
+<section class="slide photo-bleed" style="background-image:url('施與受_images/hearts_reflection_ppt.jpg');--veil:linear-gradient(105deg,rgba(255,255,255,.9) 0%,rgba(255,255,255,.66) 40%,rgba(255,255,255,.2) 66%,transparent 84%);--ai:flex-start;--jc:center">
+  <h1 style="color:#1F3864;font-size:clamp(3rem,6.4vw,5.4rem);margin-bottom:.15em">施與受的反思</h1>
+  <p style="color:#C00000;font-weight:700;font-size:clamp(1.9rem,3.4vw,2.8rem);max-width:none">愛的平衡與藝術</p>
+</section>
+
+<!-- ppt S7 團隊合作（1/2） -->
+<section class="slide pptx">
+  <div class="band"><h2>團隊合作 <span class="sub">(1/2)</span></h2></div>
+  <div class="imgrow" style="margin-top:1em">
     <figure>
       <div class="disc"><img src="施與受_images/team_circle.png" alt="眾人手牽手圍成一個彩色圓環"></div>
       <figcaption>生命共同體</figcaption>
-      <p class="note">每一部分為了整體，整體則滋養每一個部分。</p>
     </figure>
     <figure>
       <div class="disc"><img src="施與受_images/puzzle_hands.png" alt="多雙手各持一片拼圖，共同拼合"></div>
       <figcaption>各司其職<br>彼此效力</figcaption>
-      <p class="note">頭、手足、身體各有功能，但彼此協調幫助。</p>
     </figure>
     <figure>
       <div class="disc"><img src="施與受_images/heart_wood.png" alt="木紋上的紅色愛心"></div>
       <figcaption>互愛</figcaption>
-      <p class="note">頭不瞧不起腳；腳愈是卑微，愈應愛護。</p>
     </figure>
   </div>
 </section>
 
-<section class="slide">
-  <h2>團隊合作（二）</h2>
-  <div class="imgrow" style="max-width:70%;margin-left:auto;margin-right:auto">
+<!-- ppt S8 團隊合作（2/2） -->
+<section class="slide pptx">
+  <div class="band"><h2>團隊合作 <span class="sub">(2/2)</span></h2></div>
+  <div class="imgrow" style="margin-top:1em;max-width:74%;margin-left:auto;margin-right:auto">
     <figure>
       <div class="card"><img src="施與受_images/outsider_figure.png" alt="一群藍色人偶擠成一堆，一個橘色人偶獨自站在旁邊"></div>
       <figcaption>自私本位<br>一盤散沙</figcaption>
-      <p class="note">只從自己的角度看事情，就成了各自為政的一盤散沙。</p>
     </figure>
     <figure>
       <div class="card"><img src="施與受_images/meeting_hammer.png" alt="會議桌上眾人皆為圖釘，只有主席是槌子"></div>
       <figcaption>寄生蟲現象</figcaption>
-      <p class="note">開會時如果只有主席有意見，那也就不必開會了。</p>
     </figure>
   </div>
 </section>
 
-<section class="slide">
-  <h2>團隊成功關鍵</h2>
-  <div class="figure-hero">
-    <div class="hero-card"><img src="施與受_images/team_star.png" alt="六芒星圖：彼此互愛、彼此看見、彼此溝通、彼此效力、彼此給受、彼此信任，環繞中心的 TEAM" style="max-height:60vh"></div>
+<!-- ppt S9 團隊成功關鍵 -->
+<section class="slide pptx">
+  <div class="band"><h2>團隊成功關鍵</h2></div>
+  <div class="figure-hero" style="margin-top:.4em">
+    <img src="施與受_images/team_star.png" alt="六芒星圖：彼此互愛、彼此看見、彼此溝通、彼此效力、彼此給受、彼此信任，環繞中心的 TEAM" style="max-height:60vh">
   </div>
 </section>
 
-<!-- ③ 施與受的省思 -->
-<section class="slide subdiv">
-  <span class="kick">體驗活動　③</span>
-  <h1>施與受的省思</h1>
-  <p class="when">給予、接受、自我充實、公義與溝通</p>
-</section>
-
-<section class="slide">
-  <h2>給予的省思</h2>
-  <div class="vstage">
+<!-- ppt S10 給予的省思 -->
+<section class="slide pptx">
+  <div class="band"><h2>給予的省思</h2></div>
+  <div class="vstage" style="align-items:center">
     <div class="vside" style="flex:1 1 60%">
-      <p class="lead" style="max-width:none;margin-bottom:.3em">「給」的品質，以<span class="hot">愛</span>與<span class="hot">看見</span>的品質為前提，否則——</p>
-      <ul class="fl" style="margin-top:.1em">
-        <li>只是把不要的給別人</li>
-        <li>只看自己，無心也無暇看見別人的需要</li>
-        <li>看別人看得「太」清楚，失去愛與感恩的情懷，不能認同，想要干涉</li>
+      <ul class="pl">
+        <li>「給」的品質以<span class="pr">愛</span>與<span class="pr">看見</span>的品質為前提</li>
+        <li>否則
+          <ul class="subl">
+            <li>只是把不要的給別人</li>
+            <li>只看自己，無心也無暇看見別人的需要</li>
+            <li>看別人看得「太」清楚，失去愛與感恩的情懷，不能認同，想要干涉</li>
+          </ul>
+        </li>
+        <li><span class="pb">只有「給」沒有「受」會如何？</span></li>
       </ul>
     </div>
-    <div class="vframe contain" style="flex:1 1 40%;aspect-ratio:4/3;border:3px solid var(--color-accent-soft)">
+    <div class="vframe contain" style="flex:1 1 38%;aspect-ratio:3/4;max-height:54vh;align-self:center;border:3px solid var(--color-accent-soft)">
       <img src="施與受_images/girl_red_heart.jpg" alt="小女孩雙手捧著一顆紅色的心" style="object-fit:cover">
     </div>
   </div>
-  <p class="big-q" style="text-align:center">只有「給」沒有「受」，會如何？</p>
 </section>
 
-<section class="slide">
-  <h2>接受的省思</h2>
-  <ul class="fl" style="margin-top:0">
+<!-- ppt S11 接受的省思 -->
+<section class="slide pptx">
+  <div class="band"><h2>接受的省思</h2></div>
+  <ul class="pl">
     <li>人是要先接受，才能懂得給</li>
     <li>當別人用心注意到我們的需要時，我們會領受到一份生命的禮物</li>
-    <li>當別人把他不要的東西塞給我們時，大概不會是被愛與被看見的感覺</li>
+    <li>當別人把他不要的東西塞給我們時， 大概不會是被愛與被看見的感覺</li>
     <li>每個人都有盲點：有時別人注意到我們的需要時，我們卻沒有意識到。我們需要別人。</li>
+    <li><b style="color:#1A1A1A">只有接受，沒有付出會怎樣？</b></li>
   </ul>
-  <p class="big-q" style="text-align:center">只有接受，沒有付出，會怎樣？</p>
 </section>
 
-<section class="slide">
-  <h2>自我給予與自我充實的平衡</h2>
-  <ul class="fl" style="margin-top:0">
-    <li><span class="hot">給</span>很重要，生命中要學習給</li>
-    <li><span class="hot">休息</span>是為了走更長的路，人要給，但也要不斷充電與休息</li>
-    <li><span class="hot">自我充實</span>很重要，自我如果沒有智慧、沒有熱情，也沒有愛，也就沒有什麼東西可以給</li>
+<!-- ppt S12 自我給予與自我充實的平衡 -->
+<section class="slide pptx">
+  <div class="band"><h2>自我給予與自我充實的平衡</h2></div>
+  <ul class="pl">
+    <li><span class="pr">給</span>很重要，生命中要學習給</li>
+    <li><span class="pr">休息</span>是為了走更長的路，人要給，但也要不斷充電與休息</li>
+    <li><span class="pr">自我充實</span>很重要，自我如果沒有智慧、沒有熱情、沒有愛，也就沒有什麼東西可以給</li>
   </ul>
-  <div class="imgrow" style="margin-top:.7em">
+  <div class="imgrow" style="margin-top:.6em">
     <figure><div class="card" style="aspect-ratio:3/2;padding:0"><img src="施與受_images/give_sign.jpg" alt="路人手持寫著 Give 的紙牌" style="width:100%;height:100%;object-fit:cover"></div></figure>
     <figure><div class="card" style="aspect-ratio:3/2;padding:0"><img src="施與受_images/close_sign.jpg" alt="店門口掛著 CLOSE 的木牌" style="width:100%;height:100%;object-fit:cover"></div></figure>
     <figure><div class="card" style="aspect-ratio:3/2;padding:0"><img src="施與受_images/passion_tag.jpg" alt="寫著 passion 的吊牌" style="width:100%;height:100%;object-fit:cover"></div></figure>
   </div>
 </section>
 
-<section class="slide">
-  <h2>完成自我、犧牲小我、完成大我</h2>
-  <ul class="fl" style="margin-top:0">
+<!-- ppt S13 完成自我、犧牲小我、完成大我 -->
+<section class="slide pptx">
+  <div class="band"><h2>完成自我、犧牲小我、完成大我</h2></div>
+  <ul class="pl">
     <li>有時候自己的部分已經完成了，可是團隊一直有人無法完成他的部分，該怎麼辦？</li>
     <li>是否該打破自己？重組自己？抑或該維持自己的現狀？這很需要分辨的智慧</li>
-    <li><span class="cool">人要預備好為了完成大我而超越自我，但這並不表示打破自我就是正確的選擇。</span></li>
+    <li><span class="pb">人要預備好為了完成大我而超越自我，但這並不表示打破自我就是正確的選擇。</span></li>
   </ul>
   <div class="figure-hero" style="margin-top:.3em">
-    <img src="施與受_images/teamwork_wheel.png" alt="一群彩色人偶合力推動寫著 TEAM WORK 的大輪子" style="max-height:34vh">
+    <img src="施與受_images/teamwork_wheel.png" alt="一群彩色人偶合力推動寫著 TEAM WORK 的大輪子" style="max-height:32vh">
   </div>
 </section>
 
-<section class="slide">
-  <h2>利益與公義</h2>
-  <div class="vstage">
+<!-- ppt S14 利益與公義 -->
+<section class="slide pptx">
+  <div class="band"><h2>利益與公義</h2></div>
+  <div class="vstage" style="align-items:center">
     <div class="vside" style="flex:1 1 58%">
-      <ul class="fl" style="margin-top:0">
+      <ul class="pl">
         <li>鋌而走險的誘惑</li>
         <li>為了利益，罔顧公義的誘惑</li>
         <li>人要學習寬以待人，嚴以律己</li>
         <li>在被愛與被諒解的經驗中得到力量，而能逐漸往知行合一的方向邁進</li>
       </ul>
     </div>
-    <div class="vframe contain" style="flex:1 1 42%;aspect-ratio:4/3;border:3px solid var(--color-accent-soft)">
+    <div class="vframe contain" style="flex:1 1 40%;aspect-ratio:4/3;align-self:center;border:3px solid var(--color-accent-soft)">
       <img src="施與受_images/silhouette_balloons.jpg" alt="人張開雙臂的剪影，天空飄著彩色氣球" style="object-fit:cover">
     </div>
   </div>
 </section>
 
-<section class="slide">
-  <h2>溝通的省思</h2>
-  <ul class="fl" style="margin-top:0">
+<!-- ppt S15 溝通的省思 -->
+<section class="slide pptx">
+  <div class="band"><h2>溝通的省思</h2></div>
+  <ul class="pl">
     <li>人需要溝通，但很多時候，不容易溝通，甚至無法溝通</li>
     <li>尊重溝通的限度，耐心等待溝通的時間，從其他方面建立彼此的連結與看見，是人生很重要的功課與挑戰，需要智慧與愛心</li>
     <li>在不能溝通的等待中，用心體會對方的需要與困難</li>
   </ul>
-  <div class="imgrow" style="margin-top:.5em;max-width:66%;margin-left:auto;margin-right:auto">
+  <div class="imgrow" style="margin-top:.4em;max-width:64%;margin-left:auto;margin-right:auto">
     <figure><div class="card" style="aspect-ratio:16/10;border:none;box-shadow:none;background:transparent"><img src="施與受_images/chicken_chat.png" alt="母雞與小鴨面對面，各自頭上冒出問號——雞同鴨講"></div></figure>
     <figure><div class="card" style="aspect-ratio:16/10;border:none;box-shadow:none;background:transparent"><img src="施與受_images/heads_bubbles.png" alt="兩個人頭相對，各自吐出一大團由圓圈構成的對話泡泡"></div></figure>
   </div>
 </section>
 
-<section class="slide">
-  <h2>王陽明「大學問」</h2>
+<!-- ppt S16 王陽明「大學問」 -->
+<section class="slide pptx">
+  <div class="band"><h2>王陽明「大學問」</h2></div>
   <div class="vstage" style="align-items:stretch">
-  <blockquote class="col2" style="flex:1 1 78%;margin-top:0;line-height:1.5;font-size:clamp(1.5rem,1.62vw,1.6rem)">大人者，以天地萬物為一體者也。其視天下猶一家，中國猶一人焉。若夫間形骸而分爾我者，小人矣。大人之能以天地萬物為一體也，非意之也，其心之仁本若是，其與天地萬物而為一也，豈惟大人，雖小人之心亦莫不然，彼顧自小之耳。是故見孺子之入井而必有怵惕惻隱之心焉，是其仁之與孺子而為一體也。孺子猶同類者也，見鳥獸之哀鳴觳觫，而必有不忍之心，是其仁之與鳥獸而為一體也。鳥獸猶有知覺者也，見草木之摧折而必有憫恤之心焉，是其仁之與草木而為一體也。草木猶有生意者也，見瓦石之毀壞而必有顧惜之心焉，是其仁之與瓦石而為一體也。是其一體之仁也，雖小人之心亦必有之。是故苟無私慾之蔽，則雖小人之心，而其一體之仁猶大人也；一有私慾之蔽，則雖大人之心，而其分隔隘陋猶小人矣。故夫為大人之學者，亦惟去其私慾之蔽，以明其明德，復其天地萬物一體之本然而已耳。非能於本體之外，而有所增益之也。</blockquote>
-    <div class="vframe contain" style="flex:1 1 28%;aspect-ratio:99/128;border:3px solid var(--color-accent-soft)">
+    <blockquote class="col2" style="flex:1 1 76%;margin-top:0;line-height:1.5;font-size:clamp(1.5rem,1.62vw,1.6rem)">大人者，以天地萬物為一體者也。其視天下猶一家，中國猶一人焉。若夫間形骸而分爾我者，小人矣。大人之能以天地萬物為一體也，非意之也，其心之仁本若是，其與天地萬物而為一也，豈惟大人，雖小人之心亦莫不然，彼顧自小之耳。是故見孺子之入井而必有怵惕惻隱之心焉，是其仁之與孺子而為一體也。孺子猶同類者也，見鳥獸之哀鳴觳觫，而必有不忍之心，是其仁之與鳥獸而為一體也。鳥獸猶有知覺者也，見草木之摧折而必有憫恤之心焉，是其仁之與草木而為一體也。草木猶有生意者也，見瓦石之毀壞而必有顧惜之心焉，是其仁之與瓦石而為一體也。是其一體之仁也，雖小人之心亦必有之。是故苟無私慾之蔽，則雖小人之心，而其一體之仁猶大人也；一有私慾之蔽，則雖大人之心，而其分隔隘陋猶小人矣。故夫為大人之學者，亦惟去其私慾之蔽，以明其明德，復其天地萬物一體之本然而已耳。非能於本體之外，而有所增益之也。</blockquote>
+    <div class="vframe contain" style="flex:1 1 24%;aspect-ratio:99/128;border:3px solid var(--color-accent-soft)">
       <img src="施與受_images/wangyangming_portrait.jpg" alt="王陽明水墨畫像">
     </div>
   </div>
-  <p class="src">王陽明，《大學問》（節錄）</p>
 </section>
 
-<!-- ④ 微電影與生命課題 -->
-<section class="slide subdiv">
-  <span class="kick">體驗活動　④</span>
-  <h1>微電影與生命課題</h1>
-  <p class="when">從一部短片，看見施與受的雙向性</p>
-</section>
-
-<section class="slide">
-  <h2>微電影欣賞〈路過〉</h2>
-  <div class="vstage">
-    <div class="vframe" data-video="E-qpG4gZoCY">
+<!-- ppt S17 微電影欣賞-路過 -->
+<section class="slide" style="background:#000">
+  <h2 style="color:#fff;border-color:var(--color-accent);text-align:center;display:block;margin:0 auto .5em">微電影欣賞-路過</h2>
+  <div class="vstage" style="justify-content:center">
+    <div class="vframe" data-video="E-qpG4gZoCY" style="flex:0 1 auto;width:min(72vw,124vh);max-width:none">
       <iframe src="https://www.youtube-nocookie.com/embed/E-qpG4gZoCY?rel=0&fs=0&modestbranding=1" title="親情微電影：路過" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
       <button class="vfs" title="放大影片（不離開簡報全螢幕）" aria-label="放大影片">⛶</button>
     </div>
-    <div class="vside">
-      <p class="lead" style="max-width:none;margin-bottom:.3em">一部關於母親、陪伴與看見的親情短片。</p>
-      <p class="muted" style="max-width:none">片長約 7 分鐘。</p>
-    </div>
   </div>
 </section>
 
-<section class="slide">
-  <h2>生命課題的省思</h2>
-  <div class="figure-hero" style="margin-top:0">
-    <img src="施與受_images/relation_arrows.png" alt="左右相對的兩個大箭頭：左側為兒女、妻子、下屬，右側為父母、丈夫、主管" style="max-height:32vh">
+<!-- ppt S18 生命課題的省思 -->
+<section class="slide pptx">
+  <div class="band"><h2>生命課題的省思</h2></div>
+  <div class="figure-hero" style="margin-top:.5em">
+    <img src="施與受_images/relation_arrows_ppt.png" alt="左右相對的兩個藍色大箭頭：左側為兒女、妻子、下屬，右側為父母、丈夫、主管" style="max-height:44vh">
   </div>
-  <div class="vstage" style="margin-top:.5em;align-items:center">
-    <div class="vside" style="flex:1 1 66%">
-      <p class="big-q" style="margin-top:0;text-align:left">愛的雙向性，施與受的平衡</p>
-    </div>
-    <div class="vframe contain" style="flex:1 1 34%;aspect-ratio:3/2;border:3px solid var(--color-accent-soft)">
-      <img src="施與受_images/giving_heart_hands.png" alt="一隻手把紙摺的紅心遞給另一隻攤開的手">
-    </div>
-  </div>
+  <p class="pb" style="text-align:center;font-size:clamp(1.9rem,3.2vw,2.6rem);margin-top:.5em">愛的雙向性，施與受的平衡</p>
 </section>
 
-<section class="slide photo-bleed" style="background-image:url('施與受_images/hearts_two_bokeh.jpg');--veil:linear-gradient(180deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.82) 42%,rgba(255,255,255,.35) 68%,rgba(255,255,255,.12) 100%)">
-  <h2>施與受的正向循環</h2>
-  <ul class="fl" style="margin-top:0;max-width:34em">
+<!-- ppt S19 施與受的正向循環 -->
+<section class="slide pptx">
+  <div class="band"><h2>施與受的正向循環</h2></div>
+  <ul class="pl">
     <li>對別人用心，別人快樂，看到別人快樂，自己快樂</li>
     <li>體會別人用心，自己快樂，同時也會升起感恩之心。快樂會散播，讓更多人快樂；感恩則讓用心的人得到安慰與鼓勵</li>
   </ul>
+  <div class="figure-hero" style="margin-top:.5em">
+    <img src="施與受_images/hearts_two_bokeh.jpg" alt="木紋桌上並靠的兩顆紅色木心" style="max-height:40vh;border-radius:14px">
+  </div>
 </section>
 
-<section class="slide">
-  <h2>通往至善的兩條途徑</h2>
-  <div class="collage">
+<!-- ppt S20 通往至善的兩條途徑 -->
+<section class="slide pptx">
+  <div class="band deep"><h2>通往至善的兩條途徑</h2></div>
+  <div class="collage" style="margin-top:.5em">
     <figure style="grid-row:span 2">
       <img src="施與受_images/girl_slide.png" alt="小女孩在遊戲場的溜滑梯上開心地笑">
-      <figcaption class="tag warm">追求自己幸福</figcaption>
+      <figcaption class="tag" style="background:transparent;color:#E60000;top:.2em;bottom:auto;font-size:clamp(1.5rem,2.4vw,2.15rem);text-shadow:0 1px 6px rgba(255,255,255,.9)">追求自己幸福</figcaption>
     </figure>
     <figure>
       <img src="施與受_images/fingers_love.jpg" alt="兩根畫上笑臉的手指相依偎">
     </figure>
     <figure>
       <img src="施與受_images/foot_washing.jpg" alt="一個人俯身為另一個人擦洗雙腳">
-      <figcaption class="tag cold">犧牲自我的愛</figcaption>
+      <figcaption class="tag" style="background:#3BB6D4;color:#E60000">犧牲自我的愛</figcaption>
     </figure>
   </div>
-  <p class="big-q" style="margin-top:.5em;text-align:center">幸福與愛有何關係？</p>
+  <p style="text-align:center;color:#5A7A3A;font-weight:700;font-size:clamp(1.7rem,2.7vw,2.3rem);margin-top:.45em">幸福與愛有何關係？</p>
 </section>
 
-<section class="slide">
-  <h2>殊途同歸：自我實現與自我超越</h2>
-  <p class="lead" style="max-width:none;margin-bottom:.3em">至善有追求利己、追求利他兩條路徑：前者是自我實現，後者是自我超越。兩者相輔相成、殊途同歸——因為人的自我實現必須在自我超越中完成。</p>
-  <ul class="fl" style="margin-top:0">
-    <li>宋明儒王陽明的理解方式是復一體之仁，這比較接近「愛」的路徑</li>
-    <li>佛教崇尚「離苦得樂」，比較接近「幸福」的途徑；但佛教強調慈悲，又回歸了「愛」</li>
-    <li>道家：「聖人不積，既以為人己愈有，既以與人己愈多」（《道德經》第八十一章）</li>
-    <li>基督信仰以十字架犧牲之愛為核心，以復活之永生天國為終極：「我實在告訴你：今天你就要與我一同在樂園裏。」（《路加福音》23:43，思高本）</li>
-  </ul>
-</section>
-
-<section class="slide">
-  <h2>體驗活動·引用來源</h2>
-  <ol class="references">
-    <li>孫效智（2015）。〈施與受：溝通同理．關懷服務體驗活動〉。「成功人生：行政部門中高階生命教育」研習簡報，2015 年 6 月 26 日。<span class="note src">（本機檔案：施與受_1040626.ppt、施與受遊戲（文字詳細版）_20150502.ppt）</span></li>
-    <li>王陽明。《大學問》（節錄）。</li>
-    <li>老子。《道德經》第八十一章。</li>
-    <li>《聖經》思高聖經學會譯釋本。《路加福音》23:43。</li>
-    <li>〈路過〉親情微電影。Draco0580 上傳，YouTube，2012 年。<span class="note src">https://www.youtube.com/watch?v=E-qpG4gZoCY</span></li>
-  </ol>
+<!-- ppt S21 結語（施與受活動） -->
+<section class="slide photo-bleed" style="background-image:url('施與受_images/hearts_deco.jpg');--veil:linear-gradient(180deg,rgba(30,12,16,.5),rgba(30,12,16,.68));--ai:center;--jc:center;text-align:center">
+  <h2 style="color:#fff;border:none;display:block;margin:0 auto .2em;font-size:clamp(2.4rem,4.6vw,3.8rem)">祝福大家</h2>
+  <p style="color:#fff;font-size:clamp(2.4rem,4.6vw,3.8rem);font-weight:700;max-width:none">心中有愛　身心靈無礙</p>
 </section>
 
 <!-- ===================== 伍　結語 ===================== -->
@@ -1448,7 +1470,7 @@ fitAll();
   const numerals=['壹','貳','參','肆','伍','陸','柒'];
   let chap=0;
   slides.forEach(s=>{
-    if(s.classList.contains('section-divider')){chap++;return;}
+    if(s.classList.contains('section-divider')||s.classList.contains('chap-divider')){chap++;return;}
     if(s.classList.contains('cover')||s.classList.contains('closing')||s.classList.contains('eggsong'))return;
     if(s.classList.contains('photo-bleed'))return;// 全幅實景照頁自帶背景，勿套 sec-tint 底色
     if(chap<1)return;
