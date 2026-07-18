@@ -1138,10 +1138,10 @@ function showConfirm({title='確認',message='',okText='確定',cancelText='取�
 <!-- ppt S5 活動進行方式（流程）；頒獎環節 2026-07-18 教授指示獨立成頁，移至 S71 之後 -->
 <section class="slide pptx">
   <div class="band"><h2>活動進行方式</h2></div>
-  <ul class="pl" style="font-size:1.32em;margin:.3em auto 0;width:fit-content">
-    <li style="padding:.5em 0 .5em 1.5em">小組討論</li>
-    <li style="padding:.5em 0 .5em 1.5em">全體分享</li>
-    <li style="padding:.5em 0 .5em 1.5em">回饋時間</li>
+  <ul class="pl" style="margin:.6em auto 0;width:fit-content">
+    <li style="padding:.7em 0 .7em 2em;font-size:2.6rem">小組討論</li>
+    <li style="padding:.7em 0 .7em 2em;font-size:2.6rem">全體分享</li>
+    <li style="padding:.7em 0 .7em 2em;font-size:2.6rem">回饋時間</li>
   </ul>
 </section>
 
@@ -1350,12 +1350,6 @@ function showConfirm({title='確認',message='',okText='確定',cancelText='取�
   <p style="text-align:center;color:#5A7A3A;font-weight:700;font-size:clamp(1.7rem,2.7vw,2.3rem);margin-top:.45em">幸福與愛有何關係？</p>
 </section>
 
-<!-- ppt S21 結語（施與受活動） -->
-<section class="slide photo-bleed" style="background-image:url('施與受_images/hearts_deco.jpg');--veil:linear-gradient(180deg,rgba(30,12,16,.5),rgba(30,12,16,.68));--ai:center;--jc:center;text-align:center">
-  <h2 style="color:#fff;border:none;display:block;margin:0 auto .2em;font-size:clamp(2.4rem,4.6vw,3.8rem)">祝福大家</h2>
-  <p style="color:#fff;font-size:clamp(2.4rem,4.6vw,3.8rem);font-weight:700;max-width:none">心中有愛　身心靈無礙</p>
-</section>
-
 <!-- ===================== 伍　結語 ===================== -->
 <section class="slide section-divider">
   <div class="num">伍</div>
@@ -1382,18 +1376,20 @@ function showConfirm({title='確認',message='',okText='確定',cancelText='取�
   <p class="muted" style="max-width:none">這也是為什麼，今天是這整週的「中軸」。</p>
 </section>
 
-<!-- 結語＋頒獎合併頁（原「頒獎」獨立頁 2026-07-18 教授指示併入本頁，取代原本分開的兩頁） -->
+<!-- 頒獎（獨立頁，凸顯獎盃與頒獎儀式，2026-07-18 教授指示：不放結語文字、不放回到首頁按鈕） -->
 <section class="slide closing">
-  <div class="award-line" style="font-family:var(--font-serif);font-weight:700;color:var(--color-accent-soft);font-size:clamp(1.5rem,2.2vw,1.9rem);letter-spacing:.18em;position:relative;z-index:2;margin-bottom:.2em">頒　獎</div>
-  <div class="figure-hero" style="position:relative;z-index:2;margin:0 auto .3em">
-    <img src="施與受_images/trophy.png" alt="三座金色獎盃" style="max-height:20vh;border-radius:10px">
+  <div class="award-line" style="font-family:var(--font-serif);font-weight:700;color:var(--color-accent-soft);font-size:clamp(2.4rem,4.6vw,3.8rem);letter-spacing:.22em;position:relative;z-index:2;margin-bottom:.3em">頒　　獎</div>
+  <div class="figure-hero" style="position:relative;z-index:2;margin:0 auto .4em">
+    <img src="施與受_images/trophy.png" alt="三座金色獎盃" style="max-height:52vh;border-radius:14px">
   </div>
-  <p style="position:relative;z-index:2;color:rgba(255,255,255,.85);font-size:clamp(1.5rem,1.7vw,1.6rem);margin-bottom:.4em">為活動中展現最佳默契與合作的小組喝采</p>
-  <div class="ending-line" style="font-size:clamp(2rem,4.6vw,3.6rem)">你不必完美，才能成為光</div>
-  <div class="ending-ornament" style="margin:.6em auto"></div>
-  <div class="ending-sub">不是因為靈性完美才能陪伴；<br>帶著一顆真誠、接納的心，就能陪學生走過他們的靈性爭戰。</div>
-  <div class="signature">單元四 · 靈性修養</div>
-  <button class="back-home-btn" onclick="goToSlide(1)">↑　回到首頁</button>
+  <p style="position:relative;z-index:2;color:rgba(255,255,255,.85);font-size:clamp(1.6rem,2vw,2rem);margin:0">為活動中展現最佳默契與合作的小組喝采</p>
+</section>
+
+<!-- 結束頁（原 ppt S21「祝福大家」，2026-07-18 教授指示移到彩蛋頁之前作為結束頁，加回到首頁按鈕） -->
+<section class="slide photo-bleed" style="background-image:url('施與受_images/hearts_deco.jpg');--veil:linear-gradient(180deg,rgba(30,12,16,.5),rgba(30,12,16,.68));--ai:center;--jc:center;text-align:center">
+  <h2 style="color:#fff;border:none;display:block;margin:0 auto .2em;font-size:clamp(2.4rem,4.6vw,3.8rem)">祝福大家</h2>
+  <p style="color:#fff;font-size:clamp(2.4rem,4.6vw,3.8rem);font-weight:700;max-width:none">心中有愛　身心靈無礙</p>
+  <button class="back-home-btn" style="position:relative;z-index:2;margin-top:1.2em" onclick="goToSlide(1)">↑　回到首頁</button>
 </section>
 
 <!-- 彩蛋·主題曲（末頁） -->
